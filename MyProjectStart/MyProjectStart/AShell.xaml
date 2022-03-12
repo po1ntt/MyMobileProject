@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyProjectStart.AShell"
+       xmlns:views="clr-namespace:MyProjectStart.Views">
+   <Shell.Resources>
+    <ResourceDictionary>
+        <Style x:Key="BaseStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="#1e2223" />
+            <Setter Property="Shell.ForegroundColor" Value="White" />
+            <Setter Property="Shell.TitleColor" Value="White" />
+            <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="#1e2223" />
+            <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+            <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+            <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            
+        </Style>
+        <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+        
+    </ResourceDictionary>
+    </Shell.Resources>
+    <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
+        <ShellContent  ContentTemplate="{DataTemplate views:LoginPage}" /> 
+    </ShellItem>
+    
+
+    <TabBar>
+
+        <ShellContent Icon="HomeIcon.png" Title="Home"  ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage" />
+        <ShellContent Title="Results" Icon="star.png" ContentTemplate="{DataTemplate views:ResultsProgressPage}" Route="ResultsPage"/>
+        <ShellContent Title="Profile" Icon="ProfilePng.png" ContentTemplate="{DataTemplate views:ProfilePage}" Route="ProfilePage"/>
+        <ShellContent Title="Contact" Icon="Contacticon.png" ContentTemplate="{DataTemplate views:ContactsPage}" Route="ContactPage"/>
+    </TabBar>
+   
+
+</Shell>

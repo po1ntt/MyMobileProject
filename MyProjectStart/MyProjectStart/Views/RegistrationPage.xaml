@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyProjectStart.Views.RegistrationPage"
+             xmlns:vm="clr-namespace:MyProjectStart.ViewsModel"
+             BackgroundColor="#484848">
+    
+    <ContentPage.BindingContext>
+        <vm:RegisterPageVm/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Регистрация" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" Margin="10" FontSize="30"/>
+            <StackLayout Padding="40">
+                <Entry Placeholder="Придумайте логин" HorizontalTextAlignment="Center" FontSize="15" TextColor="White" PlaceholderColor="FloralWhite" Text="{Binding Login}"/>
+                <Entry Placeholder="Пароль" HorizontalTextAlignment="Center" FontSize="15" TextColor="White" PlaceholderColor="FloralWhite" Text="{Binding Password}"/>
+                <Entry Placeholder="Повторите пароль" IsPassword="True" HorizontalTextAlignment="Center" FontSize="15" TextColor="White" PlaceholderColor="FloralWhite"/>
+                <Label Text="Null"/>
+                <ProgressBar HeightRequest="5" BackgroundColor="Gray" ProgressColor="Green" Progress="0.1" />
+                <Entry Placeholder="E-mail" HorizontalTextAlignment="Center" FontSize="15" TextColor="White" PlaceholderColor="FloralWhite" Text="{Binding Email}"/>
+                <Label Text="Дата рождения" FontSize="15" Margin="0,0,0, 4" TextColor="White" />
+                <DatePicker MinimumDate="01/01/1970" MaximumDate="11/03/2022" FontSize="15" TextColor="White"/>
+                <Button CornerRadius="50" Text="Завершить регистрацию" BackgroundColor="FloralWhite" Command="{Binding RegCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

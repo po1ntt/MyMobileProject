@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyProjectStart.Views.LoginPage"
+             Background="#2a2a2a"
+             xmlns:vm="clr-namespace:MyProjectStart.ViewsModel"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled"
+             Visual="Material"
+            
+             >
+    <ContentPage.BindingContext>
+        <vm:LoginPageVm/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout  VerticalOptions="StartAndExpand" Margin="0,100,0,0" Padding="30" HorizontalOptions="FillAndExpand">
+            <Image Source="bookPng.png" WidthRequest="180" HeightRequest="180" />
+            <Entry  Placeholder="Login" TextColor="White" PlaceholderColor="Gray" Text="{Binding Login}">
+
+            </Entry>
+            <Entry  Placeholder="Password" IsPassword="True" TextColor="White" PlaceholderColor="Gray" Text="{Binding Password}" >
+
+            </Entry>
+            <StackLayout Orientation="Vertical" >
+                <Button Text="Авторизация" Background="Transparent"  CornerRadius="50" BorderColor="White" BorderWidth="1.5" TextColor="White" Command="{Binding LoginCommand}"></Button>
+                <Label HorizontalOptions="Center" Margin="10" FontSize="15">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Нет аккаунта? " TextColor="White"/>
+                            <Span Text="Регистрация" TextColor="White" FontAttributes="Bold" TextDecorations="Underline" FontSize="15"/>
+                        </FormattedString>
+                    
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToRegistration}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

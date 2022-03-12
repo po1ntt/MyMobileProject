@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyProjectStart.Views.HomePage"
+             Background="#2a2a2a"
+            xmlns:vm="clr-namespace:MyProjectStart.ViewsModel"
+             Title="Home"
+            BarBackgroundColor="#2a2a2a"
+           >
+    
+  <!--Pages can be added as references or inline-->
+    <TabbedPage.BindingContext>
+        <vm:HomePageVm/>
+    </TabbedPage.BindingContext>
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem  Text="Logout" Command="{Binding LogoutCommand}"  />
+    </TabbedPage.ToolbarItems>
+    <ContentPage Title="C#" BackgroundColor="#2a2a2a">
+        <ContentPage.BindingContext>
+            <vm:HomePageVm/>
+        </ContentPage.BindingContext>
+        <StackLayout>
+            <Label Text="GroupExample1" TextColor="White"  FontSize="20" HorizontalOptions="Center"/>
+            <CarouselView ItemsSource="{Binding tests}" HeightRequest="200" PeekAreaInsets="100" IsScrollAnimated="True">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ClassId="dsdsd">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapToTest"/>
+                            </Grid.GestureRecognizers>
+                            <Frame  HeightRequest="210"
+                           WidthRequest="130"
+                             BackgroundColor="FloralWhite"
+                             HorizontalOptions="CenterAndExpand"
+                             CornerRadius="10"
+                             HasShadow="True" >
+                                
+                                <StackLayout>
+                                    <Label Text="{Binding title}" VerticalOptions="StartAndExpand" TextColor="Black" HorizontalOptions="Start" FontSize="13" Margin="-10,-10,0,0"  />
+                                    <Label Text="{Binding language}" FontSize="40" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" Margin="0,-80,0,0" TextColor="Black"/>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Label Text="GroupExample2" TextColor="White"  FontSize="20" HorizontalOptions="Center"/>
+            <CarouselView ItemsSource="{Binding tests}" HeightRequest="200" PeekAreaInsets="100">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Frame  HeightRequest="210"
+                           WidthRequest="130"
+                             BackgroundColor="FloralWhite"
+                             HorizontalOptions="CenterAndExpand"
+                             CornerRadius="10"
+                             HasShadow="True" >
+                                <StackLayout>
+                                    <Label Text="{Binding title}" VerticalOptions="StartAndExpand" TextColor="Black" HorizontalOptions="Start" FontSize="13" Margin="-10,-10,0,0"  />
+                                    <Label Text="{Binding language}" FontSize="40" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" Margin="0,-80,0,0" TextColor="Black"/>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Label Text="GroupExample3" TextColor="White"  FontSize="20" HorizontalOptions="Center"/>
+            <CarouselView ItemsSource="{Binding tests}" HeightRequest="200" PeekAreaInsets="100">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Frame  HeightRequest="210"
+                           WidthRequest="130"
+                             BackgroundColor="FloralWhite"
+                             HorizontalOptions="CenterAndExpand"
+                             CornerRadius="10"
+                             HasShadow="True" >
+                                <StackLayout>
+                                    <Label Text="{Binding title}" VerticalOptions="StartAndExpand" TextColor="Black" HorizontalOptions="Start" FontSize="13" Margin="-10,-10,0,0"  />
+                                    <Label Text="{Binding language}" FontSize="40" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" Margin="0,-80,0,0" TextColor="Black"/>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="SQL" BackgroundColor="#2a2a2a">
+        
+    </ContentPage>
+   
+    
+
+</TabbedPage>
