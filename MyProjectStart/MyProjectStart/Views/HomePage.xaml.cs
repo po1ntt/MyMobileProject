@@ -1,4 +1,5 @@
 ﻿using Android.Service.Controls;
+using MyProjectStart.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,15 @@ namespace MyProjectStart.Views
         {
             string nametest = this.ClassId.ToString();
           
+        }
+
+        async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var category = e.CurrentSelection.FirstOrDefault() as Cathegory;
+            if (category == null)
+                return;
+            await Shell.Current.Navigation.PushModalAsync(new CategoryView(category));
+            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }

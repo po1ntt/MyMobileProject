@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyProjectStart.Views.TestView"
+             BackgroundColor="#484848">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="50"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" Orientation="Horizontal" VerticalOptions="Start">
+            <ImageButton Source="Arrowleft.png" HeightRequest="30" WidthRequest="30" Margin="10,0,0,0" BackgroundColor="#484848" HorizontalOptions="Start" />
+                <Label Text="{Binding SelectedTest.Name}" HorizontalOptions="Center" Margin="100,5,0,0" FontSize="25" TextColor="White"/>
+        </StackLayout>
+            <CarouselView ItemsSource="{Binding QestionsByTest}"
+                            VerticalScrollBarVisibility="Never"
+                            Grid.Row="1"> 
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Grid.Row="1">
+                            <Image Source="https://cdn2.iconfinder.com/data/icons/lovely-line-package/44/_-23-256.png" WidthRequest="300" HeightRequest="300" HorizontalOptions="Center" VerticalOptions="Start" Margin="10,-50,30,0" />
+                            <Label  Text="{Binding TextQuest}" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-50,20,0" FontSize="20" TextColor="White" />
+                            
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+           
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

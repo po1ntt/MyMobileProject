@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:MyProjectStart.Helpers"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:vm="clr-namespace:MyProjectStart.ViewsModel"
+             x:Class="MyProjectStart.Views.CategoryView"
+             BackgroundColor="#484848">
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Orientation="Horizontal">
+                <ImageButton Source="Arrowleft.png" Grid.Row="0"  WidthRequest="30" HeightRequest="30" BackgroundColor="White" HorizontalOptions="Start" Aspect="AspectFill" VerticalOptions="Start" Margin="10,30,0,0" Clicked="ImageButton_Clicked"/>
+                <Label Text="{Binding SelectedCateg.CathegoryName}" HorizontalOptions="CenterAndExpand" TextColor="Black" Margin="20"  FontAttributes="Bold" FontSize="25"/>
+            </StackLayout>
+            <pancake:PancakeView Grid.Row="2" CornerRadius="30" BackgroundColor="#2a2a2a" Margin="0,-20">
+                <Grid Padding="25,30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"  Text="{Binding TotalTest, StringFormat='{0} Total tests '}" FontAttributes="Bold"   FontSize="18"/>
+                    <CollectionView ItemsSource="{Binding testByCathegory}"
+                                    VerticalOptions="Start"
+                                    VerticalScrollBarVisibility="Never"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    SelectionMode="Single"
+                                    SelectionChanged="CollectionView_SelectionChanged">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame HasShadow="True" BackgroundColor="White" HeightRequest="90" CornerRadius="20" Margin="0,10">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                                
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                           
+                                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding Name}" FontSize="15" FontAttributes="Bold" TextColor="Black"/>
+                                            <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Description}" FontSize="15" TextColor="Gray" />
+                                            
+                                            
+                                              
+                                        </Grid>
+                                        
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        
+                    </CollectionView>
+                </Grid>
+            </pancake:PancakeView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

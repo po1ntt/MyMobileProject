@@ -7,75 +7,72 @@ using MyProjectStart.Views;
 using System.Collections.ObjectModel;
 
 using MyProjectStart.Models;
+using MyProjectStart.Services;
+
+using Xamarin.Essentials;
 
 namespace MyProjectStart.ViewsModel
 {
     class HomePageVm : BaseViewModel
     {
-        public ICommand LogoutCommand { get; private set; }
-
-        private ObservableCollection<TestsData> Tests;
-        public ObservableCollection<TestsData> tests
+        private string _Login;
+        public string Login
         {
-            get { return Tests; }
-            set { Tests = value;
-                NotifyPropertyChanged(nameof(tests));
+            set
+            {
+                _Login = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _Login;
             }
         }
+
+        public ObservableCollection<Cathegory> cathegories { get; set; }
+        public ObservableCollection<TestsModel> LatestItems { get; set; }
+
+        public ICommand LogoutCommand { get; private set; }
+
+    
         public HomePageVm()
         {
-            LogoutCommand = new Command(Logout);
-            tests = new ObservableCollection<TestsData>();
-            addData();
-
+            var login = Preferences.Get("Login", string.Empty);
+            if (string.IsNullOrEmpty(login))
+                Login = "Гость";
+            else
+                Login = login;
+            cathegories = new ObservableCollection<Cathegory>();
+            LatestItems = new ObservableCollection<TestsModel>();
+            GetCategories();
+            GetLatestItems();
         }
+
+        private async void GetLatestItems()
+        {
+            var data = await new Services.TestItemServices().GetLatestTestsAsunc();
+            LatestItems.Clear();
+            foreach(var item in data)
+            {
+                LatestItems.Add(item);
+            }
+        }
+
+        private async void GetCategories()
+        {
+            var data = await new Services.СathegoryServices().GetCathegoryAsync();
+            cathegories.Clear();
+            foreach (var item in data)
+            {
+                cathegories.Add(item);
+            }
+        }
+
         private async void Logout()
         {
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
-        private void addData()
-        {
-            tests.Add(new TestsData
-            {
-                id = 1,
-                title = "TestExample1",
-                language ="с#"
-                
-                
-                        
-            });
-            tests.Add(new TestsData
-            {
-                id = 2,
-                title = "TestExample2",
-                language = "с#"
-
-
-            });
-            tests.Add(new TestsData
-            {
-                id = 3,
-                title = "TestExample3",
-                language = "с#"
-
-
-            });
-            tests.Add(new TestsData
-            {
-                id = 4,
-                title = "TestExample4",
-                language = "с#"
-
-
-            });
-            tests.Add(new TestsData
-            {
-                id = 5,
-                title = "TestExample5",
-                language = "с#"
-
-
-            });
-        }
+       
+        
     }
 }

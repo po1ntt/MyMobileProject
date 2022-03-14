@@ -27,6 +27,7 @@
     
 
     <TabBar>
+        
 
         <ShellContent Icon="HomeIcon.png" Title="Home"  ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage" />
         <ShellContent Title="Results" Icon="star.png" ContentTemplate="{DataTemplate views:ResultsProgressPage}" Route="ResultsPage"/>

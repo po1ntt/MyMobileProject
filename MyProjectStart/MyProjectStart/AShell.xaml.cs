@@ -17,9 +17,11 @@ namespace MyProjectStart
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+            Routing.RegisterRoute(nameof(CategoryView), typeof(CategoryView));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(ResultsProgressPage), typeof(ResultsProgressPage));
             Routing.RegisterRoute(nameof(ContactsPage), typeof(ContactsPage));
+
 
         }
     }
