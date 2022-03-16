@@ -10,15 +10,16 @@ using Xamarin.Forms.Xaml;
 using MyProjectStart.ViewsModel;
 using System.Windows.Input;
 using System.Collections.Generic;
-
+using MyProjectStart.Services;
+using Xamarin.Essentials;
 
 namespace MyProjectStart.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-   
+
     public partial class TestView : ContentPage
     {
-
+        public TestsModel test { get; set; }
         public static int lenghtCarousel = 0;
         public static int currentPos = 0;
         TestViewModel cvm;
@@ -29,7 +30,8 @@ namespace MyProjectStart.Views
             InitializeComponent();
             this.BindingContext = cvm;
             currentPos = 0;
-  
+            test = tests;
+
         }
 
         private void Button_test_clicked(object sender, EventArgs e)
@@ -39,12 +41,14 @@ namespace MyProjectStart.Views
             lenghtCarousel = cvm.QestionsByTest.Count;
             foreach (var item in data)
             {
-                if(textanswer == item.quest_rightanswer)
+                if (textanswer == item.quest_rightanswer)
                 {
                     ((Button)sender).BackgroundColor = Color.Green;
                     NextButton.IsEnabled = true;
+                    OverButton.IsEnabled = true;
+                    OverButton.BackgroundColor = Color.Yellow;
                     NextButton.BackgroundColor = Color.Yellow;
-                    if(currentPos < lenghtCarousel-1)
+                    if (currentPos < lenghtCarousel - 1)
                     {
                         currentPos = currentPos + 1;
                     }
@@ -53,37 +57,36 @@ namespace MyProjectStart.Views
                 else
                 {
                     ((Button)sender).BackgroundColor = Color.Red;
-                    
+
                 }
+
+            }
+
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            if (currentPos < lenghtCarousel - 1)
+            {
+                Carousel.Position = currentPos;
+                NextButton.IsEnabled = false;
+                NextButton.BackgroundColor = Color.Gray;
+            }
+            else if (lenghtCarousel - 1 == currentPos)
+            {
+                Carousel.Position = currentPos;
+                NextButton.IsVisible = false;
+                NextButton.IsEnabled = false;
+                OverButton.IsEnabled = false;
+                NextButton.BackgroundColor = Color.Gray;
+                OverButton.BackgroundColor = Color.Gray;
+                OverButton.IsVisible = true;
                 
             }
-            
         }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            if (currentPos < lenghtCarousel-1)
-            {
-                Carousel.Position = currentPos;
-                NextButton.IsEnabled = false;
-                NextButton.BackgroundColor = Color.Gray;
-            }
-            else if (lenghtCarousel-1 == currentPos)
-            {
-               if(NextButton.Text == "Завершить тест")
-                {
-                    Shell.Current.DisplayAlert("Тест успешно завершен", "text-example", "OK");
-                }
-                    
-                Carousel.Position = currentPos;
-                NextButton.Text = "Завершить тест";
-                NextButton.IsEnabled = false;
-                NextButton.BackgroundColor = Color.Gray;
-            }
-            
-            
-        }
+    }
+}   
+        
 
         
-    }
-}
+  

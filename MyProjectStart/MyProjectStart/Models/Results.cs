@@ -8,7 +8,9 @@ namespace MyProjectStart.Models
     {
         public int id_result { get; set; }
         public string NameTestDone { get; set; }
-        public int User_login { get; set; }
+        public string User_login { get; set; }
+        public int CathegoryId { get; set; }
+        public int TemaId { get; set; }
 
     }
 }
