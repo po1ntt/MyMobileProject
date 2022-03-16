@@ -16,6 +16,7 @@ namespace MyProjectStart.Views
         public LoginPage()
         {
             InitializeComponent();
+           
         }
     }
 }

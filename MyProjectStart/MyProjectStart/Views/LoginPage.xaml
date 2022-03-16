@@ -23,7 +23,7 @@
 
             </Entry>
             <StackLayout Orientation="Vertical" >
-                <Button Text="Авторизация" Background="Transparent"  CornerRadius="50" BorderColor="White" BorderWidth="1.5" TextColor="White" Command="{Binding LoginCommand}"></Button>
+                <Button Text="Авторизация" Background="Transparent" x:Name="LogButton"  CornerRadius="50" BorderColor="White" BorderWidth="1.5" TextColor="White" Command="{Binding LoginCommand}"></Button>
                 <Label HorizontalOptions="Center" Margin="10" FontSize="15">
                     <Label.FormattedText>
                         <FormattedString>

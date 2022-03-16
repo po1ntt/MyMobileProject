@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MyProjectStart.Views;
+using MyProjectStart.Models;
 
 namespace MyProjectStart
 {

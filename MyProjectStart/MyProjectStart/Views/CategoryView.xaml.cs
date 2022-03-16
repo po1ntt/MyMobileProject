@@ -20,6 +20,7 @@ namespace MyProjectStart.Views
             InitializeComponent();
             cvm = new CategoryViewModel(cathegory);
             this.BindingContext = cvm;
+            
         }
 
         private async void ImageButton_Clicked(object sender, EventArgs e)
@@ -31,8 +32,8 @@ namespace MyProjectStart.Views
         {
             var selectedTest = e.CurrentSelection.FirstOrDefault() as TestsModel;
             if (selectedTest == null)
-                return;
-            await Shell.Current.Navigation.PushModalAsync(new TestView(selectedTest));
+             return;
+            await Shell.Current.Navigation.PushAsync(new TestView(selectedTest));
             ((CollectionView)sender).SelectedItem = null;
         }
     }

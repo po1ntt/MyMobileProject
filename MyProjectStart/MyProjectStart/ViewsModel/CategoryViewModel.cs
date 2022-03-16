@@ -15,6 +15,19 @@ namespace MyProjectStart.ViewsModel
 {
     class CategoryViewModel : BaseViewModel
     {
+        private string _Color_test;
+        public string Color_test
+        {
+            set
+            {
+                _Color_test = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _Color_test;
+            }
+        }
         private Cathegory _SelectedCateg;
         public Cathegory SelectedCateg
         {
@@ -51,6 +64,7 @@ namespace MyProjectStart.ViewsModel
             SelectedCateg = cathegory;
             testByCathegory = new ObservableCollection<TestsModel>();
             getTestsItems(cathegory.CathegoryId);
+            Color_test = "Green";
         }
 
         private async void getTestsItems(int cathegoryId)
