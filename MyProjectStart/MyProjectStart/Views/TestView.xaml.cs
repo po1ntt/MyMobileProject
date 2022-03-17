@@ -68,16 +68,24 @@ namespace MyProjectStart.Views
         {
             if (currentPos < lenghtCarousel - 1)
             {
-                Carousel.Position = currentPos;
                 NextButton.IsEnabled = false;
                 NextButton.BackgroundColor = Color.Gray;
+                cvm.GetQuestInfo(test.TestId);
+                FirstAnswer.BackgroundColor = Color.White;
+                SeconAnswer.BackgroundColor = Color.White;
+                ThirdAnswer.BackgroundColor = Color.White;
+                FourButton.BackgroundColor = Color.White;
             }
             else if (lenghtCarousel - 1 == currentPos)
             {
-                Carousel.Position = currentPos;
                 NextButton.IsVisible = false;
                 NextButton.IsEnabled = false;
+                cvm.GetQuestInfo(test.TestId);
                 OverButton.IsEnabled = false;
+                FirstAnswer.BackgroundColor = Color.White;
+                SeconAnswer.BackgroundColor = Color.White;
+                ThirdAnswer.BackgroundColor = Color.White;
+                FourButton.BackgroundColor = Color.White;
                 NextButton.BackgroundColor = Color.Gray;
                 OverButton.BackgroundColor = Color.Gray;
                 OverButton.IsVisible = true;

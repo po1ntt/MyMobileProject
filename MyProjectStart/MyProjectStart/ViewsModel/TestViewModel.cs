@@ -10,6 +10,7 @@ using MyProjectStart.Models;
 using MyProjectStart.Services;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using System.Linq;
 
 namespace MyProjectStart.ViewsModel
 {
@@ -156,7 +157,7 @@ namespace MyProjectStart.ViewsModel
         {
             get
             {
-                return _currentQuestionIndex < QestionsByTest.Count ? QestionsByTest[_currentQuestionIndex] : null;
+                return _CurrentQuest;
             }
             set
             {     
@@ -188,9 +189,12 @@ namespace MyProjectStart.ViewsModel
             SelectedTest = tests;
             QestionsByTest = new ObservableCollection<Questions>();
             getQuestionsBuTest(tests.TestId);
+            GetQuestInfo(tests.TestId);
+           
             RegisterResultCommand = new Command(async () => await RegisterResultCommandasync());
-
         }
+
+        
 
         private async Task RegisterResultCommandasync()
         {
@@ -224,6 +228,7 @@ namespace MyProjectStart.ViewsModel
             }
         }
 
+
         private async void getQuestionsBuTest(int test_id)
         {
             var data = await new Services.QuestionService().GetQuestionsAsyncBYTest(test_id);
@@ -234,6 +239,31 @@ namespace MyProjectStart.ViewsModel
 
             }
             
+        }
+        public List<Questions> questions { get; set; }
+        public async void GetQuestInfo(int test_id)
+        {
+            QuestionService questionService = new QuestionService();
+            if(questions == null)
+            {
+                questions = (await questionService.GetQuestionsAsync()).Where(p => p.id_test == test_id).ToList();
+                foreach (var item in questions.ToList())
+                {
+                    CurrentQuest = item;
+                    questions.Remove(item);
+                    break;
+                }
+            }
+            else
+            {
+                foreach (var item in questions.ToList())
+                {
+                    CurrentQuest = item;
+                    questions.Remove(item);
+                    break;
+                }
+            }
+           
         }
 
        

@@ -13,37 +13,23 @@
       
                 <ImageButton Grid.Row="0" Source="Arrowleft.png" HeightRequest="30" WidthRequest="30" Margin="10,0,0,0" BackgroundColor="#484848" HorizontalOptions="Start" VerticalOptions="Center" />
                 <Label Text="{Binding SelectedTest.Name}" x:Name="NameTest" HorizontalOptions="CenterAndExpand"  VerticalOptions="Center" Margin="0,5,0,0" FontSize="25" TextColor="White"/>
-        
-            
-                <CarouselView x:Name="Carousel" ItemsSource="{Binding QestionsByTest}"
-                            VerticalScrollBarVisibility="Never"
-                            Grid.Row="1"
-                          Loop="False"
-                              Visual="Material"
-                              IndicatorView="Indicator"
-                              IsSwipeEnabled="False"
-                              > 
-                   
-                <CarouselView.ItemTemplate>
-                    <DataTemplate>
-                            
-                            <StackLayout Grid.Row="1">
-                                <Image Source="https://cdn2.iconfinder.com/data/icons/lovely-line-package/44/_-23-256.png" WidthRequest="300" HeightRequest="300" HorizontalOptions="Center" VerticalOptions="Start" Margin="10,-50,30,0" />
-                                <StackLayout Padding="20">
-                                <Label  Text="{Binding TextQuest}" x:Name="TestNamegdf" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-50,20,0" FontSize="20" TextColor="White" />
-                                <Button Text="{Binding quest_answer1}" x:Name="FirstAnswer"  CornerRadius="50" Margin="10" HeightRequest="60" BackgroundColor="White" TextColor="Black" Clicked="Button_test_clicked" />
-                                <Button Text="{Binding quest_answer2}"  x:Name="SeconAnswer"  CornerRadius="50" Margin="10" HeightRequest="60" BackgroundColor="White" TextColor="Black"  Clicked="Button_test_clicked" AutomationProperties.Name="YES"/>
-                                <Button Text="{Binding quest_answer3}" x:Name ="ThirdAnswer" CornerRadius="50" Margin="10" HeightRequest="60" BackgroundColor="White" TextColor="Black" Clicked="Button_test_clicked" />
-                                <Button Text="{Binding quest_answer4}" x:Name="FourButton" CornerRadius="50" Margin="10" HeightRequest="60" BackgroundColor="White" TextColor="Black" Clicked="Button_test_clicked" />
 
-                            </StackLayout>
 
-                        </StackLayout>
+
+
+            <StackLayout Grid.Row="1">
+                <Image Source="https://cdn2.iconfinder.com/data/icons/lovely-line-package/44/_-23-256.png" WidthRequest="300" HeightRequest="300" HorizontalOptions="Center" VerticalOptions="Start" Margin="10,-50,30,0" />
+                <StackLayout Padding="20">
+                    <Label  Text="{Binding CurrentQuest.TextQuest}" x:Name="TestNamegdf" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-50,20,0" FontSize="20" TextColor="White" />
+                    <Button Text="{Binding CurrentQuest.quest_answer1}" x:Name="FirstAnswer"  CornerRadius="50" Margin="10" HeightRequest="60" BackgroundColor="White" TextColor="Black" Clicked="Button_test_clicked" />
+                    <Button Text="{Binding CurrentQuest.quest_answer2}"  x:Name="SeconAnswer"  CornerRadius="50" Margin="10" HeightRequest="60" BackgroundColor="White" TextColor="Black"  Clicked="Button_test_clicked" AutomationProperties.Name="YES"/>
+                    <Button Text="{Binding CurrentQuest.quest_answer3}" x:Name ="ThirdAnswer" CornerRadius="50" Margin="10" HeightRequest="60" BackgroundColor="White" TextColor="Black" Clicked="Button_test_clicked" />
+                    <Button Text="{Binding CurrentQuest.quest_answer4}" x:Name="FourButton" CornerRadius="50" Margin="10" HeightRequest="60" BackgroundColor="White" TextColor="Black" Clicked="Button_test_clicked" />
+
+                </StackLayout>
+            </StackLayout>
                       
-                       
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
+                
             <StackLayout Grid.Row="2">
                 <Button Grid.Row="2" HeightRequest="50" Text="Следующий вопрос" x:Name="NextButton" CornerRadius="50" Margin="10" Clicked="Button_Clicked" TextColor="Black" BackgroundColor="Gray" IsEnabled="False"/>
                 <Button Grid.Row="2" HeightRequest="50" Text="Завершить тест" x:Name="OverButton" CornerRadius="50" Margin="10" Command="{Binding RegisterResultCommand}" TextColor="Black" BackgroundColor="Gray" IsEnabled="False" IsVisible="False"/>
