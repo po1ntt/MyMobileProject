@@ -29,7 +29,7 @@ namespace MyProjectStart.ViewsModel
             }
         }
 
-        public ObservableCollection<Cathegory> cathegories { get; set; }
+        public ObservableCollection<Cathegory> Cathegories { get; set; }
         public ObservableCollection<TestsModel> LatestItems { get; set; }
 
         public ICommand LogoutCommand { get; private set; }
@@ -42,7 +42,7 @@ namespace MyProjectStart.ViewsModel
                 Login = "Гость";
             else
                 Login = login;
-            cathegories = new ObservableCollection<Cathegory>();
+            Cathegories = new ObservableCollection<Cathegory>();
             LatestItems = new ObservableCollection<TestsModel>();
             GetCategories();
             GetLatestItems();
@@ -61,17 +61,14 @@ namespace MyProjectStart.ViewsModel
         private async void GetCategories()
         {
             var data = await new Services.СathegoryServices().GetCathegoryAsync();
-            cathegories.Clear();
+            Cathegories.Clear();
             foreach (var item in data)
             {
-                cathegories.Add(item);
+                Cathegories.Add(item);
             }
         }
 
-        private async void Logout()
-        {
-            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
-        }
+
        
         
     }

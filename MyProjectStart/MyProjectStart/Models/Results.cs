@@ -12,5 +12,6 @@ namespace MyProjectStart.Models
         public int CathegoryId { get; set; }
         public int TemaId { get; set; }
 
+        public double Scoreprecennt { get; set; }
     }
 }

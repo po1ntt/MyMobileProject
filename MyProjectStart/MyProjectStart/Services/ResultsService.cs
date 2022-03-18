@@ -39,17 +39,24 @@ namespace MyProjectStart.Services
             var result = (await client.Child("Results").OnceAsync<Results>()).Where(u => u.Object.User_login == login && u.Object.NameTestDone == NameTest && u.Object.CathegoryId == CathegoryID).FirstOrDefault();
             return (result != null);
         }
-        public async Task<bool> RegisterResult( string NameTest, string user_login, int CathegoryId)
+        public async Task<bool> IsResultScorePercentChanged(string login, string NameTest, int CathegoryID, double ScorePercent)
+        {
+            var result = (await client.Child("Results").OnceAsync<Results>()).Where(u => u.Object.User_login == login && u.Object.NameTestDone == NameTest && u.Object.CathegoryId == CathegoryID).FirstOrDefault();
+            return (result != null);
+        }
+        public async Task<bool> RegisterResult( string NameTest, string user_login, int CathegoryId, double Scorepercent)
         {
             if (await IsResultExists(user_login,NameTest,CathegoryId) == false)
             {
+                
                 await client.Child("Results").PostAsync(new Results()
                 {
                     id_result = 1,
                     NameTestDone = NameTest,
                     User_login = user_login,
-                    CathegoryId = CathegoryId
-
+                    CathegoryId = CathegoryId,
+                    Scoreprecennt = Scorepercent
+                    
                     
                 });
                 return true;
@@ -57,7 +64,9 @@ namespace MyProjectStart.Services
             }
             else
             {
-                return false;
+                
+              return false;
+
             }
         }
     }

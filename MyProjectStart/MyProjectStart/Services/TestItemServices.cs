@@ -25,7 +25,7 @@ namespace MyProjectStart.Services
                 Description = f.Object.Description,
                 Name = f.Object.Name,
                 TestId = f.Object.TestId
-
+                
             }).ToList();
             return tests;
         }
@@ -51,5 +51,14 @@ namespace MyProjectStart.Services
             return latestTestItems;
 
         }
+        public async Task<Results> GetResultsTestByUserLogin(string user_login, string nametest)
+        {
+            var result = (await client.Child("Results").OnceAsync<Results>()).Select(f => new Results
+            {
+                Scoreprecennt = f.Object.Scoreprecennt
+            }).Where(p => p.User_login == user_login && p.NameTestDone == nametest).FirstOrDefault();
+            return result;
+        }
+
     }
 }

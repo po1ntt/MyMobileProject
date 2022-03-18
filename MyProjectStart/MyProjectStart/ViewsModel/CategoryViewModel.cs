@@ -28,8 +28,8 @@ namespace MyProjectStart.ViewsModel
                 return _Color_test;
             }
         }
-        private Cathegory _SelectedCateg;
-        public Cathegory SelectedCateg
+        private static Cathegory _SelectedCateg;
+        public  Cathegory SelectedCateg
         {
             set
             {
@@ -43,7 +43,7 @@ namespace MyProjectStart.ViewsModel
 
             }
         }
-        public ObservableCollection<TestsModel> testByCathegory { get; set; }
+        public ObservableCollection<TestsModel> TestByCathegory { get; set; }
         private int _TotalTest;
         public int TotalTest
         {
@@ -62,21 +62,21 @@ namespace MyProjectStart.ViewsModel
         public CategoryViewModel(Cathegory cathegory)
         {
             SelectedCateg = cathegory;
-            testByCathegory = new ObservableCollection<TestsModel>();
-            getTestsItems(cathegory.CathegoryId);
+            TestByCathegory = new ObservableCollection<TestsModel>();
+            GetTestsItems(cathegory.CathegoryId);
             Color_test = "Green";
         }
 
-        private async void getTestsItems(int cathegoryId)
+        private async void GetTestsItems(int cathegoryId)
         {
             var data = await new Services.TestItemServices().GetTestByCathegoryAsync(cathegoryId);
-            testByCathegory.Clear();
+            TestByCathegory.Clear();
             foreach(var item in data)
             {
-                testByCathegory.Add(item);
+                TestByCathegory.Add(item);
 
             }
-            TotalTest = testByCathegory.Count;
+            TotalTest = TestByCathegory.Count;
         }
     }
 }

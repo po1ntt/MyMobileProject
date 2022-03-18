@@ -1,28 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyProjectStart.Views.HomePage"
              Background="#2a2a2a"
             xmlns:vm="clr-namespace:MyProjectStart.ViewsModel"
              Title="Home"
             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-            BarBackgroundColor="#2a2a2a"
+            
+           
               xmlns:helpers ="clr-namespace:MyProjectStart.Helpers"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
+            
            >
-    
-  <!--Pages can be added as references or inline-->
-    <TabbedPage.BindingContext>
+
+    <!--Pages can be added as references or inline-->
+
+    <ContentPage.BindingContext>
         <vm:HomePageVm/>
-    </TabbedPage.BindingContext>
-    <TabbedPage.ToolbarItems>
-        <ToolbarItem  Text="{Binding Login}"/>
-    </TabbedPage.ToolbarItems>
-    <ContentPage Title="C#" BackgroundColor="#2a2a2a">
-        <ContentPage.BindingContext>
-            <vm:HomePageVm/>
-        </ContentPage.BindingContext>
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems >
+        <ToolbarItem Text="{Binding Login}" Clicked="ToolbarItem_Clicked" >
+           
+
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+    <Style TargetType="StackLayout">
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor"
+                                        Value="Transparent" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions >
                 <RowDefinition  Height="auto"/>
@@ -35,7 +55,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
            
-                <CollectionView ItemsSource="{Binding cathegories}"
+                <CollectionView ItemsSource="{Binding Cathegories}"
                             Margin="0,10"
                             HeightRequest="150"
                             VerticalOptions="FillAndExpand"
@@ -97,11 +117,9 @@
 
         </Grid>
         
-    </ContentPage>
-    <ContentPage Title="SQL" BackgroundColor="#2a2a2a">
-        
-    </ContentPage>
+    </ContentPage.Content>
+  
    
     
 
-</TabbedPage>
+</ContentPage>

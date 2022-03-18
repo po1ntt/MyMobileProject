@@ -15,11 +15,13 @@ namespace MyProjectStart.Views
     public partial class CategoryView : ContentPage
     {
         CategoryViewModel cvm;
+        public Cathegory cathegory1;
         public CategoryView(Cathegory cathegory)
         {
             InitializeComponent();
             cvm = new CategoryViewModel(cathegory);
             this.BindingContext = cvm;
+            cathegory1 = cathegory;
             
         }
 
@@ -33,7 +35,7 @@ namespace MyProjectStart.Views
             var selectedTest = e.CurrentSelection.FirstOrDefault() as TestsModel;
             if (selectedTest == null)
              return;
-            await Shell.Current.Navigation.PushAsync(new TestView(selectedTest));
+            await Shell.Current.Navigation.PushAsync(new TestView(selectedTest, cathegory1));
             ((CollectionView)sender).SelectedItem = null;
         }
     }

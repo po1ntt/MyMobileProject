@@ -14,9 +14,22 @@ using System.Linq;
 
 namespace MyProjectStart.ViewsModel
 {
-    class TestViewModel : BaseViewModel
+    internal class TestViewModel : BaseViewModel
     {
         public int numberForCollection = 0;
+        private  int _CurrentPos;
+        public int CurrentPos
+        {
+            get
+            {
+                return this._CurrentPos;
+            }
+            set
+            {
+                this._CurrentPos = value;
+                OnPropertyChanged();
+            }
+        }
         private string _Login;
         public string Login
         {
@@ -183,12 +196,28 @@ namespace MyProjectStart.ViewsModel
         {
             _currentQuestionIndex = -1;
         }
+        private Cathegory _SelectedCathegory;
+        public Cathegory SelectedCathegory
+        {
+            set
+            {
+                _SelectedCathegory = value;
+                OnPropertyChanged();
+
+            }
+            get
+            {
+                return _SelectedCathegory;
+
+            }
+        }
         public Command RegisterResultCommand { get; private set; }
-        public TestViewModel(TestsModel tests)
+        public TestViewModel(TestsModel tests,Cathegory cathegory)
         {
             SelectedTest = tests;
+            SelectedCathegory = cathegory;
             QestionsByTest = new ObservableCollection<Questions>();
-            getQuestionsBuTest(tests.TestId);
+            GetQuestionsBuTest(tests.TestId);
             GetQuestInfo(tests.TestId);
            
             RegisterResultCommand = new Command(async () => await RegisterResultCommandasync());
@@ -206,16 +235,21 @@ namespace MyProjectStart.ViewsModel
                 var resultservice = new ResultsService();
                 var login = Preferences.Get("Login", string.Empty);
                 string Login = login;
-                Result = await resultservice.RegisterResult(SelectedTest.Name, Login, SelectedTest.CategoryId);
+                double ScorePercent = TestView.score  / QestionsByTest.Count * 100;
+                Result = await resultservice.RegisterResult(SelectedTest.Name, Login, SelectedTest.CategoryId,ScorePercent);
                 if (Result)
                 {
-                    await Shell.Current.DisplayAlert("Успешно,Тест пройден", "Результат сохранен", "OK");
-                    await Shell.Current.Navigation.PopAsync();
+                    
+                    await Shell.Current.DisplayAlert("Успешно,Тест пройден", "Новый результат сохранен!" + "\n" + TestView.scorepercent + "%", "OK");
+                    await Shell.Current.GoToAsync("..");
 
                 }
                 else
                 {
-                    await Shell.Current.DisplayAlert("Успешно,Тест пройден", "Рузультат не сохранен, так как уже существует", "OK");
+                
+                    await Shell.Current.DisplayAlert("Успешно,Тест пройден", "Результат не сохранен, процент правильных ответов не изменился" + "\n" + TestView.scorepercent + "%", "OK");
+                    await Shell.Current.GoToAsync("..");
+
                 }
             }
             catch (Exception ex)
@@ -229,7 +263,7 @@ namespace MyProjectStart.ViewsModel
         }
 
 
-        private async void getQuestionsBuTest(int test_id)
+        private async void GetQuestionsBuTest(int test_id)
         {
             var data = await new Services.QuestionService().GetQuestionsAsyncBYTest(test_id);
             QestionsByTest.Clear();
@@ -240,7 +274,7 @@ namespace MyProjectStart.ViewsModel
             }
             
         }
-        public List<Questions> questions { get; set; }
+        public static List<Questions> questions { get; set; }
         public async void GetQuestInfo(int test_id)
         {
             QuestionService questionService = new QuestionService();
@@ -260,6 +294,10 @@ namespace MyProjectStart.ViewsModel
                 {
                     CurrentQuest = item;
                     questions.Remove(item);
+                    if(questions.Count == 0)
+                    {
+                        questions = null;
+                    }
                     break;
                 }
             }

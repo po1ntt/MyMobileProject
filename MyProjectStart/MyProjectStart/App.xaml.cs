@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MyProjectStart.Views;
 using MyProjectStart.Models;
+using Xamarin.Essentials;
 
 namespace MyProjectStart
 {
@@ -11,10 +12,14 @@ namespace MyProjectStart
         public App()
         {
             InitializeComponent();
-
-            MainPage = new AShell();
-        
-            
+            if (Preferences.ContainsKey("Login"))
+            {
+                MainPage = new AshellWithLogin();
+            }
+            else
+            {
+                MainPage = new AShell();
+            }
         }
        
         protected override void OnStart()
