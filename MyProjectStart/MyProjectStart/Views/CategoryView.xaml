@@ -46,7 +46,10 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0"  Text="{Binding TotalTest, StringFormat='{0} Total tests '}" FontAttributes="Bold" TextColor="White" FontSize="18" Margin="5"/>
+                    <Label Grid.Row="0"  Text="{Binding TotalTest, StringFormat='{0} Total tests '}" FontAttributes="Bold" TextColor="White" FontSize="18" Margin="0,10,0,15"/>
+                    <Button Grid.Row="0" Text="Показать завершенные тесты" Command="{Binding getResults}"  HorizontalOptions="EndAndExpand" Margin="-5,0,0,0" BackgroundColor="Transparent" TextColor="White" BorderColor="White" BorderWidth="1" HeightRequest="20" CornerRadius="50" Clicked="Button_Clicked"/>
+
+
                     <CollectionView ItemsSource="{Binding TestByCathegory}"
                                     VerticalOptions="Start"
                                     VerticalScrollBarVisibility="Never"
@@ -56,7 +59,7 @@
                                     SelectionMode="Single"
                                     SelectionChanged="CollectionView_SelectionChanged"
                                     BackgroundColor="Transparent"
-                                    >
+                                    x:Name="TestNotDone">
                      
 
                         <CollectionView.ItemTemplate>
@@ -78,7 +81,7 @@
                                             </Grid.RowDefinitions>
 
                                             <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                                                   Text="{Binding Name}" FontSize="15" FontAttributes="Bold" TextColor="Black"/>
+                                                   Text="{Binding Name}" FontSize="20" FontAttributes="Bold" TextColor="Black" Margin="0,-10,0,0"/>
                                             <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Description}" FontSize="15" TextColor="Gray" />
                                             <Label  Grid.Row="1" Grid.Column="2" Text="{Binding TotalTest}" FontSize="15" TextColor="Gray" />
 
@@ -89,7 +92,51 @@
                         </CollectionView.ItemTemplate>
                         
                     </CollectionView>
-                   
+                    <CollectionView ItemsSource="{Binding AlreadyDone}"
+                                    VerticalOptions="Start"
+                                    VerticalScrollBarVisibility="Never"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    SelectionMode="Single"
+                                    SelectionChanged="CollectionView_SelectionChanged"
+                                    IsVisible="false"
+                                    x:Name="TestDone"
+                                    BackgroundColor="Transparent">
+
+
+                        <CollectionView.ItemTemplate>
+
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame HasShadow="True"  BackgroundColor="Green" HeightRequest="90" CornerRadius="20" Margin="0,10">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding NameTestDone}" FontSize="20" FontAttributes="Bold" TextColor="White" Margin="0,-10,0,0"/>
+                                            <Button Text="Пройти снова" x:Name="{Binding NameTestDone}" Grid.Row="1" Margin="-5,0,0,10" FontSize="14" BackgroundColor="Yellow" CornerRadius="50"  Grid.RowSpan="2" Grid.Column="1"  HorizontalOptions="StartAndExpand" HeightRequest="60" WidthRequest="200"/>
+                                            <Label  Grid.Row="1" Grid.Column="2" Text="{Binding Scoreprecennt, StringFormat='{0}%'}" FontSize="20" TextColor="White" />
+
+
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
                 </Grid>
             </pancake:PancakeView>
 

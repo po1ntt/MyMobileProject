@@ -38,5 +38,21 @@ namespace MyProjectStart.Views
             await Shell.Current.Navigation.PushAsync(new TestView(selectedTest, cathegory1));
             ((CollectionView)sender).SelectedItem = null;
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            if(TestDone.IsVisible == false)
+            {
+                TestNotDone.IsVisible = false;
+                TestDone.IsVisible = true;
+                ((Button)sender).Text = "Показать не завершенные тесты";
+            }
+            else
+            {
+                TestNotDone.IsVisible = true;
+                TestDone.IsVisible = false;
+                ((Button)sender).Text = "Показать завершенные тесты";
+            }
+        }
     }
 }

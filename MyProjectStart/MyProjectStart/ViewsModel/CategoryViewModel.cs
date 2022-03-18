@@ -11,6 +11,8 @@ using MyProjectStart.Services;
 
 
 using Xamarin.Essentials;
+using System.Threading.Tasks;
+
 namespace MyProjectStart.ViewsModel
 {
     class CategoryViewModel : BaseViewModel
@@ -44,6 +46,8 @@ namespace MyProjectStart.ViewsModel
             }
         }
         public ObservableCollection<TestsModel> TestByCathegory { get; set; }
+        public ObservableCollection<Results> AlreadyDone { get; set; }
+
         private int _TotalTest;
         public int TotalTest
         {
@@ -63,7 +67,10 @@ namespace MyProjectStart.ViewsModel
         {
             SelectedCateg = cathegory;
             TestByCathegory = new ObservableCollection<TestsModel>();
-            GetTestsItems(cathegory.CathegoryId);
+            AlreadyDone = new ObservableCollection<Results>();
+            int idcat = cathegory.CathegoryId;
+            GetTestsItems(SelectedCateg.CathegoryId);
+            GetTestsItemsResult(SelectedCateg.CathegoryId);
             Color_test = "Green";
         }
 
@@ -73,10 +80,27 @@ namespace MyProjectStart.ViewsModel
             TestByCathegory.Clear();
             foreach(var item in data)
             {
-                TestByCathegory.Add(item);
+                string login = Preferences.Get("Login", string.Empty);
+                ResultsService resultsService = new ResultsService();
+                if(await resultsService.IsResultExists(login,item.Name,item.CategoryId) == false)
+                {
+                    TestByCathegory.Add(item);
+                }
 
             }
             TotalTest = TestByCathegory.Count;
+        }
+        private async void GetTestsItemsResult(int cathegoryId)
+        {
+            var data = await new Services.ResultsService().GetTestResultByCathegoryAsync(cathegoryId);
+            AlreadyDone.Clear();
+            foreach (var item in data)
+            {
+               
+                 AlreadyDone.Add(item);
+           
+            }
+            TotalTest = AlreadyDone.Count;
         }
     }
 }

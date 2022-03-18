@@ -236,7 +236,7 @@ namespace MyProjectStart.ViewsModel
                 var login = Preferences.Get("Login", string.Empty);
                 string Login = login;
                 double ScorePercent = TestView.score  / QestionsByTest.Count * 100;
-                Result = await resultservice.RegisterResult(SelectedTest.Name, Login, SelectedTest.CategoryId,ScorePercent);
+                Result = await resultservice.RegisterResult(SelectedTest.Name, Login, SelectedTest.CategoryId,ScorePercent,SelectedTest.TestId);
                 if (Result)
                 {
                     

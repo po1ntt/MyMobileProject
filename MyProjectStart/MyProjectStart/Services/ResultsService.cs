@@ -21,11 +21,11 @@ namespace MyProjectStart.Services
         {
             var results = (await client.Child("Results").OnceAsync<Results>()).Select(f => new Results
             {
-               id_result = f.Object.id_result,
+               TestId = f.Object.TestId,
                NameTestDone = f.Object.NameTestDone,
                User_login = f.Object.User_login,
-               CathegoryId = f.Object.CathegoryId,
-               TemaId = f.Object.TemaId
+               CathegoryId = f.Object.CathegoryId
+               
                
                
 
@@ -33,6 +33,18 @@ namespace MyProjectStart.Services
 
             }).ToList();
             return results;
+        }
+        public async Task<List<Results>> GetTestsResultsModelsAsync()
+        {
+            var tests = (await client.Child("Results").OnceAsync<Results>()).Select(f => new Results
+            {
+                CathegoryId = f.Object.CathegoryId,
+                NameTestDone = f.Object.NameTestDone,
+                Scoreprecennt = f.Object.Scoreprecennt,
+                LearningUrlTestDone = f.Object.LearningUrlTestDone
+
+            }).ToList();
+            return tests;
         }
         public async Task<bool> IsResultExists(string login,string NameTest, int CathegoryID)
         {
@@ -44,14 +56,14 @@ namespace MyProjectStart.Services
             var result = (await client.Child("Results").OnceAsync<Results>()).Where(u => u.Object.User_login == login && u.Object.NameTestDone == NameTest && u.Object.CathegoryId == CathegoryID).FirstOrDefault();
             return (result != null);
         }
-        public async Task<bool> RegisterResult( string NameTest, string user_login, int CathegoryId, double Scorepercent)
+        public async Task<bool> RegisterResult( string NameTest, string user_login, int CathegoryId, double Scorepercent, int test_id)
         {
             if (await IsResultExists(user_login,NameTest,CathegoryId) == false)
             {
                 
                 await client.Child("Results").PostAsync(new Results()
                 {
-                    id_result = 1,
+                    TestId = test_id ,
                     NameTestDone = NameTest,
                     User_login = user_login,
                     CathegoryId = CathegoryId,
@@ -68,6 +80,16 @@ namespace MyProjectStart.Services
               return false;
 
             }
+        }
+        public async Task<ObservableCollection<Results>> GetTestResultByCathegoryAsync(int categoryID)
+        {
+            var TestItemsByCathegoryResult = new ObservableCollection<Results>();
+            var items = (await GetTestsResultsModelsAsync()).Where(p => p.CathegoryId == categoryID).ToList();
+            foreach (var item in items)
+            {
+                TestItemsByCathegoryResult.Add(item);
+            }
+            return TestItemsByCathegoryResult;
         }
     }
 }

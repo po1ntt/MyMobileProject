@@ -19,6 +19,7 @@ namespace MyProjectStart.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public string LearningUrl { get; set; }
         public int CategoryId { get; set; }
     
 
