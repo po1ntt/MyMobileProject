@@ -125,6 +125,7 @@
                                  ItemsSource="{Binding lerningCategories}"
                                  ItemDisplayBinding="{Binding NameLernCategory}"
                                  SelectedItem="{Binding SelectedLearningCategory}"
+                                 TextColor="Black"
                                 >
 
                         </Picker>

@@ -128,7 +128,7 @@
 
                                             <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
                                                    Text="{Binding NameTestDone}" FontSize="20" FontAttributes="Bold" TextColor="White" Margin="0,-10,0,0"/>
-                                            <Button Text="Пройти снова" x:Name="{Binding NameTestDone}" Grid.Row="1" Margin="-5,0,0,10" FontSize="14" BackgroundColor="Yellow" CornerRadius="50"  Grid.RowSpan="2" Grid.Column="1"  HorizontalOptions="StartAndExpand" HeightRequest="60" WidthRequest="200"/>
+                                            <Button Text="Пройти снова" x:Name="{Binding NameTestDone}" Grid.Row="1" Margin="-5,0,0,10" FontSize="14" BackgroundColor="Yellow" CornerRadius="50" TextColor="Black"  Grid.RowSpan="2" Grid.Column="1"  HorizontalOptions="StartAndExpand" HeightRequest="60" WidthRequest="200"/>
                                             <Label  Grid.Row="1" Grid.Column="2" Text="{Binding Scoreprecennt, StringFormat='{0}%'}" FontSize="20" TextColor="White" />
 
 
