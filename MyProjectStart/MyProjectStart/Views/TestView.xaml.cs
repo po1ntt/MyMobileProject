@@ -35,10 +35,10 @@ namespace MyProjectStart.Views
             currentPos = 0;
             Test = tests;
             score = 0;
-            FirstAnswer.BackgroundColor = Color.White;
-            SeconAnswer.BackgroundColor = Color.White;
-            ThirdAnswer.BackgroundColor = Color.White;
-            FourButton.BackgroundColor = Color.White;
+            FirstAnswer.BorderColor = Color.Blue;
+            SeconAnswer.BorderColor = Color.Blue;
+            ThirdAnswer.BorderColor = Color.Blue;
+            FourButton.BorderColor = Color.Blue;
             questions = TestViewModel.questions;
             lenghtCarousel = cvm.QestionsByTest.Count;
             cvm.CurrentPos = posforinte;
@@ -49,10 +49,10 @@ namespace MyProjectStart.Views
             if(((Button)sender).Text == FirstAnswer.Text)
             {
                
-                FirstAnswer.BackgroundColor = Color.Yellow;
-                SeconAnswer.BackgroundColor = Color.White;
-                ThirdAnswer.BackgroundColor = Color.White;
-                FourButton.BackgroundColor = Color.White;
+                FirstAnswer.BorderColor = Color.Yellow;
+                SeconAnswer.BorderColor = Color.Blue;
+                ThirdAnswer.BorderColor = Color.Blue;
+                FourButton.BorderColor = Color.Blue;
                 NextButton.IsEnabled = true;
                 OverButton.IsEnabled = true;
                 OverButton.BackgroundColor = Color.Yellow;
@@ -63,10 +63,10 @@ namespace MyProjectStart.Views
             else if(((Button)sender).Text == SeconAnswer.Text)
             {
                
-                SeconAnswer.BackgroundColor = Color.Yellow;
-                ThirdAnswer.BackgroundColor = Color.White;
-                FourButton.BackgroundColor = Color.White;
-                FirstAnswer.BackgroundColor = Color.White;
+                SeconAnswer.BorderColor = Color.Yellow;
+                ThirdAnswer.BorderColor = Color.Blue;
+                FourButton.BorderColor = Color.Blue;
+                FirstAnswer.BorderColor = Color.Blue;
                 NextButton.IsEnabled = true;
                 OverButton.IsEnabled = true;
                 OverButton.BackgroundColor = Color.Yellow;
@@ -76,10 +76,10 @@ namespace MyProjectStart.Views
             else if(((Button)sender).Text == ThirdAnswer.Text)
             {
                
-                ThirdAnswer.BackgroundColor = Color.Yellow;
-                FourButton.BackgroundColor = Color.White;
-                FirstAnswer.BackgroundColor = Color.White;
-                SeconAnswer.BackgroundColor = Color.White;
+                ThirdAnswer.BorderColor = Color.Yellow;
+                FourButton.BorderColor = Color.Blue;
+                FirstAnswer.BorderColor = Color.Blue;
+                SeconAnswer.BorderColor = Color.Blue;
                 NextButton.IsEnabled = true;
                 OverButton.IsEnabled = true;
                 OverButton.BackgroundColor = Color.Yellow;
@@ -91,9 +91,9 @@ namespace MyProjectStart.Views
             {
                 
                 FourButton.BackgroundColor = Color.Yellow;
-                FirstAnswer.BackgroundColor = Color.White;
-                SeconAnswer.BackgroundColor = Color.White;
-                ThirdAnswer.BackgroundColor = Color.White;
+                FirstAnswer.BorderColor = Color.Blue;
+                SeconAnswer.BorderColor = Color.Blue;
+                ThirdAnswer.BorderColor = Color.Blue;
                 NextButton.IsEnabled = true;
                 OverButton.IsEnabled = true;
                 OverButton.BackgroundColor = Color.Yellow;
@@ -117,7 +117,7 @@ namespace MyProjectStart.Views
                 {
                     currentPos++;
                 }
-                if (FirstAnswer.BackgroundColor == Color.Yellow)
+                if (FirstAnswer.BorderColor == Color.Yellow)
                 {
                     var data = cvm.QestionsByTest.ToList();
                     foreach (var item in data)
@@ -129,7 +129,7 @@ namespace MyProjectStart.Views
                         }
                     }
                 }
-                else if(SeconAnswer.BackgroundColor == Color.Yellow)
+                else if(SeconAnswer.BorderColor == Color.Yellow)
                 {
                     var data = cvm.QestionsByTest.ToList();
                     foreach (var item in data)
@@ -141,7 +141,7 @@ namespace MyProjectStart.Views
                         }
                     }
                 }
-                else if(ThirdAnswer.BackgroundColor == Color.Yellow)
+                else if(ThirdAnswer.BorderColor == Color.Yellow)
                 {
                     var data = cvm.QestionsByTest.ToList();
                     foreach (var item in data)
@@ -154,7 +154,7 @@ namespace MyProjectStart.Views
                     }
 
                 }
-                else if(FourButton.BackgroundColor == Color.Yellow)
+                else if(FourButton.BorderColor == Color.Yellow)
                 {
                     var data = cvm.QestionsByTest.ToList();
                     foreach (var item in data)
@@ -167,16 +167,16 @@ namespace MyProjectStart.Views
                     }
                 }
                 cvm.CurrentPos = posforinte + currentPos;
-                FirstAnswer.BackgroundColor = Color.White;
-                SeconAnswer.BackgroundColor = Color.White;
-                ThirdAnswer.BackgroundColor = Color.White;
-                FourButton.BackgroundColor = Color.White;
+                FirstAnswer.BorderColor = Color.Blue;
+                SeconAnswer.BorderColor = Color.Blue;
+                ThirdAnswer.BorderColor = Color.Blue;
+                FourButton.BorderColor = Color.Blue;
             }
             else if (lenghtCarousel - 2 == currentPos)
             {
                 cvm.GetQuestInfo(Test.TestId);
                 cvm.CurrentPos = posforinte + currentPos + 1;
-                if (FirstAnswer.BackgroundColor == Color.Yellow)
+                if (FirstAnswer.BorderColor == Color.Yellow)
                 {
                     var data = cvm.QestionsByTest.ToList();
                     foreach (var item in data)
@@ -188,7 +188,7 @@ namespace MyProjectStart.Views
                         }
                     }
                 }
-                else if (SeconAnswer.BackgroundColor == Color.Yellow)
+                else if (SeconAnswer.BorderColor == Color.Yellow)
                 {
                     var data = cvm.QestionsByTest.ToList();
                     foreach (var item in data)
@@ -200,7 +200,7 @@ namespace MyProjectStart.Views
                         }
                     }
                 }
-                else if (ThirdAnswer.BackgroundColor == Color.Yellow)
+                else if (ThirdAnswer.BorderColor == Color.Yellow)
                 {
                     var data = cvm.QestionsByTest.ToList();
                     foreach (var item in data)
@@ -213,7 +213,7 @@ namespace MyProjectStart.Views
                     }
 
                 }
-                else if (FourButton.BackgroundColor == Color.Yellow)
+                else if (FourButton.BorderColor == Color.Yellow)
                 {
                     var data = cvm.QestionsByTest.ToList();
                     foreach (var item in data)
@@ -229,10 +229,10 @@ namespace MyProjectStart.Views
                 NextButton.IsVisible = false;
                 NextButton.IsEnabled = false;
                 OverButton.IsEnabled = false;
-                FirstAnswer.BackgroundColor = Color.White;
-                SeconAnswer.BackgroundColor = Color.White;
-                ThirdAnswer.BackgroundColor = Color.White;
-                FourButton.BackgroundColor = Color.White;
+                FirstAnswer.BorderColor = Color.Blue;
+                SeconAnswer.BorderColor = Color.Blue;
+                ThirdAnswer.BorderColor = Color.Blue;
+                FourButton.BorderColor = Color.Blue;
                 NextButton.BackgroundColor = Color.Gray;
                 OverButton.BackgroundColor = Color.Gray;
                 OverButton.IsVisible = true;
@@ -243,7 +243,7 @@ namespace MyProjectStart.Views
         private void OverButton_Clicked(object sender, EventArgs e)
         {
             cvm.CurrentPos = posforinte + currentPos + 1;
-            if (FirstAnswer.BackgroundColor == Color.Yellow)
+            if (FirstAnswer.BorderColor == Color.Yellow)
             {
                 var data = cvm.QestionsByTest.ToList();
                 foreach (var item in data)
@@ -255,7 +255,7 @@ namespace MyProjectStart.Views
                     }
                 }
             }
-            else if (SeconAnswer.BackgroundColor == Color.Yellow)
+            else if (SeconAnswer.BorderColor == Color.Yellow)
             {
                 var data = cvm.QestionsByTest.ToList();
                 foreach (var item in data)
@@ -267,7 +267,7 @@ namespace MyProjectStart.Views
                     }
                 }
             }
-            else if (ThirdAnswer.BackgroundColor == Color.Yellow)
+            else if (ThirdAnswer.BorderColor == Color.Yellow)
             {
                 var data = cvm.QestionsByTest.ToList();
                 foreach (var item in data)
@@ -280,7 +280,7 @@ namespace MyProjectStart.Views
                 }
 
             }
-            else if (FourButton.BackgroundColor == Color.Yellow)
+            else if (FourButton.BorderColor == Color.Yellow)
             {
                 var data = cvm.QestionsByTest.ToList();
                 foreach (var item in data)
@@ -295,10 +295,10 @@ namespace MyProjectStart.Views
             scorepercent = 0;
             scorepercent = score / cvm.QestionsByTest.Count * 100;
             cvm.CurrentPos = posforinte + currentPos;
-            FirstAnswer.BackgroundColor = Color.White;
-            SeconAnswer.BackgroundColor = Color.White;
-            ThirdAnswer.BackgroundColor = Color.White;
-            FourButton.BackgroundColor = Color.White;
+            FirstAnswer.BorderColor = Color.Blue;
+            SeconAnswer.BorderColor = Color.Blue;
+            ThirdAnswer.BorderColor = Color.Blue;
+            FourButton.BorderColor = Color.Blue;
         }
     }
 }   

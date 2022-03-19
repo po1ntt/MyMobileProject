@@ -10,11 +10,45 @@ using MyProjectStart.Models;
 using MyProjectStart.Services;
 
 using Xamarin.Essentials;
+using System.Threading.Tasks;
 
 namespace MyProjectStart.ViewsModel
 {
     class HomePageVm : BaseViewModel
     {
+        private ItemLearnCategory _SelectedItemLearningCategory;
+        public ItemLearnCategory SelectedItemLearningCategory
+        {
+            get
+            {
+                return _SelectedItemLearningCategory;
+            }
+            set
+            {
+                _SelectedItemLearningCategory = value;
+                if(_SelectedItemLearningCategory != null)
+                {
+                    Launcher.OpenAsync(_SelectedItemLearningCategory.Url_toLerningSite);
+                    
+
+                }
+                OnPropertyChanged();
+            }
+        }
+        private LerningCategories _SelectedLearningCategory;
+        public LerningCategories SelectedLearningCategory
+        {
+            get
+            {
+                return _SelectedLearningCategory;
+            }
+            set
+            {
+                _SelectedLearningCategory = value;
+                GetItemsLearningCategory(_SelectedLearningCategory.id_learncat);
+                OnPropertyChanged();
+            }
+        }
         private string _Login;
         public string Login
         {
@@ -30,10 +64,10 @@ namespace MyProjectStart.ViewsModel
         }
 
         public ObservableCollection<Cathegory> Cathegories { get; set; }
-        public ObservableCollection<TestsModel> LatestItems { get; set; }
+        public ObservableCollection<LerningCategories> lerningCategories { get; set; }
+        public ObservableCollection<ItemLearnCategory> itemofLerningCategory { get; set; }
 
         public ICommand LogoutCommand { get; private set; }
-
     
         public HomePageVm()
         {
@@ -42,19 +76,32 @@ namespace MyProjectStart.ViewsModel
                 Login = "Гость";
             else
                 Login = login;
+            itemofLerningCategory = new ObservableCollection<ItemLearnCategory>();
             Cathegories = new ObservableCollection<Cathegory>();
-            LatestItems = new ObservableCollection<TestsModel>();
+            lerningCategories = new ObservableCollection<LerningCategories>();
             GetCategories();
-            GetLatestItems();
+            GetLearningCategories();
+         
         }
 
-        private async void GetLatestItems()
+        private async void GetItemsLearningCategory(int id_learncat)
         {
-            var data = await new Services.TestItemServices().GetLatestTestsAsunc();
-            LatestItems.Clear();
+
+            var data = await new Services.ItemLearningService().GetItemsLeanCategoriesAsunc(id_learncat);
+            itemofLerningCategory.Clear();
             foreach(var item in data)
             {
-                LatestItems.Add(item);
+                itemofLerningCategory.Add(item);
+            }
+        }
+
+        private async void GetLearningCategories()
+        {
+            var data = await new Services.LearningCategoryService().GetCategoryLearningAsunc();
+            lerningCategories.Clear();
+            foreach(var item in data)
+            {
+                lerningCategories.Add(item);
             }
         }
 

@@ -8,19 +8,22 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using MyProjectStart.Services;
+using MyProjectStart.ViewsModel;
 
 namespace MyProjectStart.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
+        HomePageVm cvm;
         public HomePage()
         {
             InitializeComponent();
+             cvm = new HomePageVm();
+            
         }
-
-   
+         
 
         async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -36,5 +39,11 @@ namespace MyProjectStart.Views
             Preferences.Clear();
             Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+        }
+
+       
     }
 }

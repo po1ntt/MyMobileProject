@@ -241,14 +241,14 @@ namespace MyProjectStart.ViewsModel
                 {
                     
                     await Shell.Current.DisplayAlert("Успешно,Тест пройден", "Новый результат сохранен!" + "\n" + TestView.scorepercent + "%", "OK");
-                    await Shell.Current.GoToAsync("..");
+                    await Shell.Current.Navigation.PopAsync();
 
                 }
                 else
                 {
                 
                     await Shell.Current.DisplayAlert("Успешно,Тест пройден", "Результат не сохранен, процент правильных ответов не изменился" + "\n" + TestView.scorepercent + "%", "OK");
-                    await Shell.Current.GoToAsync("..");
+                    await Shell.Current.Navigation.PopAsync();
 
                 }
             }

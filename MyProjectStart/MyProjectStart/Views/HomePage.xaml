@@ -2,31 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyProjectStart.Views.HomePage"
-             Background="#2a2a2a"
+             Background="White"
             xmlns:vm="clr-namespace:MyProjectStart.ViewsModel"
-             Title="Home"
+            
+            
             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
             
            
               xmlns:helpers ="clr-namespace:MyProjectStart.Helpers"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
-            
+             Title="Главная страница"
            >
 
     <!--Pages can be added as references or inline-->
-
+   
     <ContentPage.BindingContext>
         <vm:HomePageVm/>
     </ContentPage.BindingContext>
-    <ContentPage.ToolbarItems >
-        <ToolbarItem Text="{Binding Login}" Clicked="ToolbarItem_Clicked" >
-           
 
-        </ToolbarItem>
+<ContentPage.ToolbarItems >
+        <ToolbarItem Text="{Binding Login}" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
-    <Style TargetType="StackLayout">
+    <Style TargetType="Grid">
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -41,6 +40,21 @@
             </VisualStateGroupList>
         </Setter>
     </Style>
+        <Style TargetType="Frame">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Gray" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
@@ -49,15 +63,16 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+               
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-           
-                <CollectionView ItemsSource="{Binding Cathegories}"
-                            Margin="0,10"
-                            HeightRequest="150"
+            <Label Grid.Row="1" Text="Тестирование" TextColor="Blue" Margin="15,0,0,0"  FontSize="20" FontFamily="SansRegular" />
+
+            <CollectionView ItemsSource="{Binding Cathegories}"
+                            Margin="0,5"
+                            HeightRequest="250"
                             VerticalOptions="FillAndExpand"
                             HorizontalScrollBarVisibility="Never"
                           
@@ -65,54 +80,79 @@
                             SelectionChanged="CollectionView_SelectionChanged"
                             SelectionMode="Single"
                           
-                            ItemsLayout="HorizontalList"
                             Grid.Row="2"
+                            
                             >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"
+                                     Span="2"
+                                     />
+                </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate >
                        
                         <DataTemplate>
+                        <Grid >
                             <StackLayout>
-                                <Frame HeightRequest="125" WidthRequest="80" Margin="10" HasShadow="False" BackgroundColor="White" CornerRadius="10">
-                                <Image Source="{Binding ImageUrl}" />
-                            </Frame>
-                                <Label Text="{Binding CathegoryName}" HorizontalOptions="Center" TextColor="FloralWhite"/>
+                                <Frame HeightRequest="150" WidthRequest="80" Margin="10" HasShadow="False" BackgroundColor="White" BorderColor="Blue" CornerRadius="10">
+                                    <Image Source="{Binding ImageUrl}" />
+                                </Frame>
+                                <Label Text="{Binding CathegoryName}" FontFamily="SansRegular" HorizontalOptions="Center" Margin="0,-15,0,0"  TextColor="Blue" />
                             </StackLayout>
+                            
+                        </Grid>
+                                
+                            
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
 
                 </CollectionView>
-            <Label Grid.Row="3" Text="Latest tests" TextColor="#feeee8" Margin="10" FontSize="25" FontAttributes="Bold" />
-            <CollectionView  ItemsSource="{Binding LatestItems}"
-                             Margin="0,20,10,0" VerticalOptions="Start"
-                             VerticalScrollBarVisibility="Never"
-                             Grid.Row="4">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Margin="0,15">
-                            <Grid>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
-                                    <pancake:PancakeView Grid.Row="0" CornerRadius="20"  HeightRequest="220" BackgroundColor="White" >
-                                        <Image Source="star" BackgroundColor="White"/>
-                                    </pancake:PancakeView>
-                                    <Label Margin="10" Text="{Binding Name}"
-                                           FontSize="Medium" FontAttributes="Bold" TextColor="Gray" 
-                                           HeightRequest="10"/>
-                                  
+            <Label Grid.Row="3" Text="Учебный материал" TextColor="Blue" Margin="10,0,0,0"  FontSize="20" FontFamily="SansRegular" />
+          
+           
+                <Frame Grid.Row="4" BackgroundColor="White" 
+                          BorderColor="Blue" CornerRadius="10">
+                <StackLayout Orientation="Horizontal">
+                    <Image  Source="https://cdn3.iconfinder.com/data/icons/education-and-school-8/48/Book-256.png" Margin="-20,-10,-10,0" HeightRequest="50" VerticalOptions="Start"   />
+                    <StackLayout>
 
+                        <Picker  Title="Выберите категорию"
+                                 TitleColor="Blue"
+                                 FontFamily="SansRegular"
+                                 WidthRequest="380"
+                                 HorizontalTextAlignment="Center" 
+                                 BackgroundColor="Transparent"
+                                 Opacity="0.8"
+                                 ItemsSource="{Binding lerningCategories}"
+                                 ItemDisplayBinding="{Binding NameLernCategory}"
+                                 SelectedItem="{Binding SelectedLearningCategory}"
+                                >
 
+                        </Picker>
+                        <ListView ItemsSource="{Binding itemofLerningCategory}" 
+                                  SelectionMode="Single"
+                                  ItemSelected="ListView_ItemSelected"
+                                  SelectedItem="{Binding SelectedItemLearningCategory}"
+                                  >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image Source="{Binding ImageUrlItem}"  />
+                                            <Label Text="{Binding NameItemLearn}" TextColor="Black" FontSize="15" FontFamily="SansRegular"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            
 
-                                </Grid>
-                            </Grid>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                        </ListView>
+                    </StackLayout>
+                   
+                </StackLayout>
 
+            </Frame>
+          
+          
 
 
         </Grid>

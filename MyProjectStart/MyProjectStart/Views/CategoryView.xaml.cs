@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -37,6 +37,7 @@ namespace MyProjectStart.Views
              return;
             await Shell.Current.Navigation.PushAsync(new TestView(selectedTest, cathegory1));
             ((CollectionView)sender).SelectedItem = null;
+           
         }
 
         private void Button_Clicked(object sender, EventArgs e)

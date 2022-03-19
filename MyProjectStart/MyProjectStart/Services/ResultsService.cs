@@ -41,7 +41,8 @@ namespace MyProjectStart.Services
                 CathegoryId = f.Object.CathegoryId,
                 NameTestDone = f.Object.NameTestDone,
                 Scoreprecennt = f.Object.Scoreprecennt,
-                LearningUrlTestDone = f.Object.LearningUrlTestDone
+                LearningUrlTestDone = f.Object.LearningUrlTestDone,
+                User_login = f.Object.User_login
 
             }).ToList();
             return tests;
@@ -81,10 +82,10 @@ namespace MyProjectStart.Services
 
             }
         }
-        public async Task<ObservableCollection<Results>> GetTestResultByCathegoryAsync(int categoryID)
+        public async Task<ObservableCollection<Results>> GetTestResultByCathegoryAsync(int categoryID, string userlogin)
         {
             var TestItemsByCathegoryResult = new ObservableCollection<Results>();
-            var items = (await GetTestsResultsModelsAsync()).Where(p => p.CathegoryId == categoryID).ToList();
+            var items = (await GetTestsResultsModelsAsync()).Where(p => p.CathegoryId == categoryID && p.User_login == userlogin).ToList();
             foreach (var item in items)
             {
                 TestItemsByCathegoryResult.Add(item);

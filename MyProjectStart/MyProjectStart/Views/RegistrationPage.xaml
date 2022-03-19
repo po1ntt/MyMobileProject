@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyProjectStart.Views.RegistrationPage"
              xmlns:vm="clr-namespace:MyProjectStart.ViewsModel"
-             BackgroundColor="Transparent">
+             BackgroundColor="Transparent"
+                          xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
     
     <ContentPage.BindingContext>
         <vm:RegisterPageVm/>
@@ -11,20 +12,21 @@
     <ContentPage.Content>
         <Grid>
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
-                <Frame BackgroundColor="#484848" CornerRadius="10"   >
+                <pancake:PancakeView BackgroundColor="White" CornerRadius="30" Border="{pancake:BorderMarkup Color=Blue, Thickness=5}" >
+                    <pancake:PancakeView.Shadow>
+                        <pancake:DropShadow Color="Blue" Offset="10,10" />
+                    </pancake:PancakeView.Shadow>
                     <StackLayout Padding="80">
-                        <Label Text="Регистрация" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" Margin="10" FontSize="30"/>
-                        <Entry Placeholder="Придумайте логин" HorizontalTextAlignment="Center" FontSize="15" TextColor="White" PlaceholderColor="FloralWhite" Text="{Binding Login}"/>
-                        <Entry Placeholder="Пароль" HorizontalTextAlignment="Center" FontSize="15" TextColor="White" PlaceholderColor="FloralWhite" Text="{Binding Password}"/>
-                        <Entry Placeholder="Повторите пароль" IsPassword="True" HorizontalTextAlignment="Center" FontSize="15" TextColor="White" PlaceholderColor="FloralWhite"/>
-                        <Label Text="Null"/>
-                        <ProgressBar HeightRequest="5" BackgroundColor="Gray" ProgressColor="Green" Progress="0.1" />
-                        <Entry Placeholder="E-mail" HorizontalTextAlignment="Center" FontSize="15" TextColor="White" PlaceholderColor="FloralWhite" Text="{Binding Email}"/>
-                        <Label Text="Дата рождения" FontSize="15" Margin="0,0,0, 4" TextColor="White" />
-                        <DatePicker MinimumDate="01/01/1970" MaximumDate="11/03/2022" FontSize="15" TextColor="White"/>
-                        <Button CornerRadius="50" Text="Завершить регистрацию" BackgroundColor="FloralWhite" Command="{Binding RegCommand}"/>
+                        <Label Text="Регистрация" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Center" Margin="10" FontSize="30" FontFamily="SansRegular"/>
+                        <Entry Placeholder="Придумайте логин" HorizontalTextAlignment="Center" FontSize="15" TextColor="Black" PlaceholderColor="Gray" Text="{Binding Login}"/>
+                        <Entry Placeholder="Пароль" HorizontalTextAlignment="Center" FontSize="15" TextColor="Black" PlaceholderColor="Gray" Text="{Binding Password}"/>
+                        <Entry Placeholder="Повторите пароль" IsPassword="True" HorizontalTextAlignment="Center" FontSize="15" TextColor="Black" PlaceholderColor="Gray"/>
+                        <Entry Placeholder="E-mail" HorizontalTextAlignment="Center" FontSize="15" TextColor="Black" PlaceholderColor="Gray" Text="{Binding Email}"/>
+                        <Label Text="Дата рождения" FontSize="15" Margin="0,0,0, 4" TextColor="Blue"  FontFamily="SansRegular"/>
+                        <DatePicker MinimumDate="01/01/1970" MaximumDate="11/03/2022" FontSize="15" TextColor="Black"/>
+                        <Button CornerRadius="50" Text="Завершить регистрацию" BackgroundColor="Transparent" TextColor="Blue" FontFamily="SansRegular" BorderColor="Blue" BorderWidth="2" Command="{Binding RegCommand}"/>
                     </StackLayout>
-                </Frame>
+                </pancake:PancakeView>
 
             </StackLayout>
         </Grid>
