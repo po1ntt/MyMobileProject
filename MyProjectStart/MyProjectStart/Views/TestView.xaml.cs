@@ -33,6 +33,7 @@ namespace MyProjectStart.Views
             InitializeComponent();
             this.BindingContext = cvm;
             currentPos = 0;
+            Test = null;
             Test = tests;
             score = 0;
             FirstAnswer.BorderColor = Color.Blue;
@@ -299,6 +300,7 @@ namespace MyProjectStart.Views
             SeconAnswer.BorderColor = Color.Blue;
             ThirdAnswer.BorderColor = Color.Blue;
             FourButton.BorderColor = Color.Blue;
+            Test = null;
         }
     }
 }   

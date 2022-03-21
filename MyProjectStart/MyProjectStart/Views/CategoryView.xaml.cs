@@ -55,5 +55,15 @@ namespace MyProjectStart.Views
                 ((Button)sender).Text = "Показать завершенные тесты";
             }
         }
+        async void ResultTest_Clicked(object sender, EventArgs e)
+        {
+            Services.TestItemServices itemServices = new Services.TestItemServices();
+            int TestId = Convert.ToInt32(((Button)sender).ClassId);
+            var Test = itemServices.GetTestById(TestId);
+            if (Test == null)
+                return;
+            await Shell.Current.Navigation.PushAsync(new TestView(await Test, cathegory1));
+            
+        }
     }
 }

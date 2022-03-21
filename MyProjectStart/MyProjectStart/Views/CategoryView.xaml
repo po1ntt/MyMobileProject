@@ -25,35 +25,37 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto"/>
-        
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" Orientation="Horizontal">
-                <Label Text="Выберите тест" HorizontalOptions="Start" TextColor="Blue" FontFamily="SansRegular" Margin="20"  FontAttributes="Bold" FontSize="25" />
-            </StackLayout>
+        <RefreshView RefreshColor="Black"
+                     >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto"/>
 
-            <pancake:PancakeView Grid.Row="2" CornerRadius="30, 30, 0, 00"  Margin="0,-20" BackgroundGradientStartPoint="0,0000" Border="{pancake:BorderMarkup Color=Blue, Thickness=5}" BackgroundGradientEndPoint="0,1" >
-              
-               
-                <Grid Padding="25,30">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0"  Text="{Binding TotalTest, StringFormat='{0} Total tests '}" FontAttributes="Bold" TextColor="Blue" FontFamily="SansRegular" FontSize="18" Margin="0,10,0,15"/>
-                    <Button Grid.Row="0" Text="Показать завершенные тесты" Command="{Binding getResults}" FontSize="12"  HorizontalOptions="EndAndExpand" TextColor="Black" FontFamily="SansRegular" Margin="-5,0,0,0" BackgroundColor="Transparent"  BorderColor="Blue" BorderWidth="1" HeightRequest="20" CornerRadius="50" Clicked="Button_Clicked"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Horizontal">
+                    <Label Text="Выберите тест" HorizontalOptions="Start" TextColor="Blue" FontFamily="SansRegular" Margin="20"  FontAttributes="Bold" FontSize="25" />
+                </StackLayout>
+
+                <pancake:PancakeView Grid.Row="2" CornerRadius="30, 30, 0, 00"  Margin="0,-20" BackgroundGradientStartPoint="0,0000" Border="{pancake:BorderMarkup Color=Blue, Thickness=5}" BackgroundGradientEndPoint="0,1" >
 
 
-                    <CollectionView ItemsSource="{Binding TestByCathegory}"
+                    <Grid Padding="25,30">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0"  Text="{Binding TotalTest, StringFormat='{0} Total tests '}" FontAttributes="Bold" TextColor="Blue" FontFamily="SansRegular" FontSize="18" Margin="0,10,0,15"/>
+                        <Button Grid.Row="0" Text="Показать завершенные тесты" Command="{Binding getResults}" FontSize="12"  HorizontalOptions="EndAndExpand" TextColor="Black" FontFamily="SansRegular" Margin="-5,0,0,0" BackgroundColor="Transparent"  BorderColor="Blue" BorderWidth="1" HeightRequest="20" CornerRadius="50" Clicked="Button_Clicked"/>
+
+
+                        <CollectionView ItemsSource="{Binding TestByCathegory}"
                                     VerticalOptions="Start"
                                     VerticalScrollBarVisibility="Never"
                                     Grid.Row="1"
@@ -63,39 +65,39 @@
                                     SelectionChanged="CollectionView_SelectionChanged"
                                     BackgroundColor="Transparent"
                                     x:Name="TestNotDone">
-                     
 
-                        <CollectionView.ItemTemplate>
-                            
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Frame HasShadow="True" x:Name="TestFrame" BackgroundColor="Transparent" BorderColor="Blue" HeightRequest="90" CornerRadius="20" Margin="0,10">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
 
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
+                            <CollectionView.ItemTemplate>
 
-                                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Frame HasShadow="True" x:Name="TestFrame" BackgroundColor="Transparent" BorderColor="Blue" HeightRequest="90" CornerRadius="20" Margin="0,10">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="auto"/>
+
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
                                                    Text="{Binding Name}" FontSize="20" FontAttributes="Bold" TextColor="Black" Margin="0,-10,0,0"/>
-                                            <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Description}" FontSize="15" TextColor="Gray" />
-                                            <Label  Grid.Row="1" Grid.Column="2" Text="{Binding TotalTest}" FontSize="15" TextColor="Gray" />
+                                                <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Description}" FontSize="15" TextColor="Gray" />
 
-                                        </Grid>
-                                    </Frame>
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                        
-                    </CollectionView>
-                    <CollectionView ItemsSource="{Binding AlreadyDone}"
+
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+                        <CollectionView ItemsSource="{Binding AlreadyDone}"
                                     VerticalOptions="Start"
                                     VerticalScrollBarVisibility="Never"
                                     Grid.Row="1"
@@ -108,41 +110,43 @@
                                     BackgroundColor="Transparent">
 
 
-                        <CollectionView.ItemTemplate>
+                            <CollectionView.ItemTemplate>
 
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Frame HasShadow="True"  BackgroundColor="Green" HeightRequest="90" CornerRadius="20" Margin="0,10">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Frame HasShadow="True"  BackgroundColor="Green" HeightRequest="90" CornerRadius="20" Margin="0,10">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="auto"/>
 
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
 
-                                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                                                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
                                                    Text="{Binding NameTestDone}" FontSize="20" FontAttributes="Bold" TextColor="White" Margin="0,-10,0,0"/>
-                                            <Button Text="Пройти снова" x:Name="{Binding NameTestDone}" Grid.Row="1" Margin="-5,0,0,10" FontSize="14" BackgroundColor="Yellow" CornerRadius="50" TextColor="Black"  Grid.RowSpan="2" Grid.Column="1"  HorizontalOptions="StartAndExpand" HeightRequest="60" WidthRequest="200"/>
-                                            <Label  Grid.Row="1" Grid.Column="2" Text="{Binding Scoreprecennt, StringFormat='{0}%'}" FontSize="20" TextColor="White" />
+                                                <Button Text="Пройти снова" Clicked="ResultTest_Clicked" ClassId="{Binding TestId}" Grid.Row="1" Margin="-5,0,0,10" FontSize="14" BackgroundColor="Yellow" CornerRadius="50" TextColor="Black"  Grid.RowSpan="2" Grid.Column="1"  HorizontalOptions="StartAndExpand" HeightRequest="60" WidthRequest="200"/>
+                                                <Label  Grid.Row="1" Grid.Column="2" Text="{Binding Scoreprecennt, StringFormat='{0}%'}" FontSize="20" TextColor="White" />
 
 
-                                        </Grid>
-                                    </Frame>
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
 
-                    </CollectionView>
+                        </CollectionView>
 
-                </Grid>
-            </pancake:PancakeView>
+                    </Grid>
+                </pancake:PancakeView>
 
-        </Grid>
+            </Grid>
+        </RefreshView>
+       
     </ContentPage.Content>
 </ContentPage>

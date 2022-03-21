@@ -17,6 +17,12 @@ namespace MyProjectStart.Services
         {
             client = new FirebaseClient("https://victorinaproject-default-rtdb.firebaseio.com/");
         }
+        public static double TestScore { get; set; }
+        public Results GetResultsForTest(string nametest, string userlogin, int CathegoryId)
+        {
+           var collection = client.Child("Results").AsObservable<Results>().AsObservableCollection().Where(p => p.NameTestDone == nametest && p.User_login == userlogin && p.CathegoryId == CathegoryId) as Results;
+           return collection;
+        }
         public async Task<List<Results>> GetQuestionsAsync()
         {
             var results = (await client.Child("Results").OnceAsync<Results>()).Select(f => new Results
@@ -39,6 +45,7 @@ namespace MyProjectStart.Services
             var tests = (await client.Child("Results").OnceAsync<Results>()).Select(f => new Results
             {
                 CathegoryId = f.Object.CathegoryId,
+                TestId = f.Object.TestId,
                 NameTestDone = f.Object.NameTestDone,
                 Scoreprecennt = f.Object.Scoreprecennt,
                 LearningUrlTestDone = f.Object.LearningUrlTestDone,
@@ -92,5 +99,34 @@ namespace MyProjectStart.Services
             }
             return TestItemsByCathegoryResult;
         }
+        public async Task<bool> UpdateResult(string nametest,int cathegory_id, string user_login, double scorepercent, int test_id)
+        {
+            var toUpdateResult = (await client.Child("Results")
+                .OnceAsync<Results>())
+                .FirstOrDefault
+                (a => a.Object.NameTestDone == nametest && a.Object.CathegoryId == cathegory_id && a.Object.User_login == user_login);
+            if(toUpdateResult.Object.Scoreprecennt < scorepercent)
+            {
+                Results s = new Results() { Scoreprecennt = scorepercent, NameTestDone = nametest, CathegoryId = cathegory_id, User_login = user_login, TestId = test_id };
+                await client.Child("Results")
+                    .Child(toUpdateResult.Key)
+                    .PutAsync(s);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+           
+        }
+        public async void GetTestResult(string nametest, int cathegory_id, string userlogin)
+        {
+            var toUpdateResult = (await client.Child("Results")
+               .OnceAsync<Results>())
+               .FirstOrDefault
+               (a => a.Object.NameTestDone == nametest && a.Object.CathegoryId == cathegory_id && a.Object.User_login == userlogin);
+           
+        }
+      
     }
 }

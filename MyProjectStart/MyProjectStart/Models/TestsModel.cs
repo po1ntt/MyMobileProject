@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Threading.Tasks;
 using Firebase.Database;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace MyProjectStart.Models
 {
@@ -21,8 +22,10 @@ namespace MyProjectStart.Models
 
         public string LearningUrl { get; set; }
         public int CategoryId { get; set; }
+        
     
-
+      
+            
 
 
     }

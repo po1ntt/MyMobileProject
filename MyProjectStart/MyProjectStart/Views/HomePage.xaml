@@ -98,11 +98,8 @@
                                 </Frame>
                                 <Label Text="{Binding CathegoryName}" FontFamily="SansRegular" HorizontalOptions="Center" Margin="0,-15,0,0"  TextColor="Blue" />
                             </StackLayout>
-                            
                         </Grid>
-                                
-                            
-                        </DataTemplate>
+                    </DataTemplate>
                     </CollectionView.ItemTemplate>
 
                 </CollectionView>

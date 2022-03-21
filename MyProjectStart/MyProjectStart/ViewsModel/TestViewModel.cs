@@ -214,6 +214,7 @@ namespace MyProjectStart.ViewsModel
         public Command RegisterResultCommand { get; private set; }
         public TestViewModel(TestsModel tests,Cathegory cathegory)
         {
+            questions = null;
             SelectedTest = tests;
             SelectedCathegory = cathegory;
             QestionsByTest = new ObservableCollection<Questions>();
@@ -235,20 +236,29 @@ namespace MyProjectStart.ViewsModel
                 var resultservice = new ResultsService();
                 var login = Preferences.Get("Login", string.Empty);
                 string Login = login;
-                double ScorePercent = TestView.score  / QestionsByTest.Count * 100;
-                Result = await resultservice.RegisterResult(SelectedTest.Name, Login, SelectedTest.CategoryId,ScorePercent,SelectedTest.TestId);
+                
+                Result = await resultservice.RegisterResult(SelectedTest.Name, Login, SelectedTest.CategoryId,TestView.scorepercent,SelectedTest.TestId);
                 if (Result)
                 {
                     
-                    await Shell.Current.DisplayAlert("Успешно,Тест пройден", "Новый результат сохранен!" + "\n" + TestView.scorepercent + "%", "OK");
+                    await Shell.Current.DisplayAlert("Тест пройден", "Новый результат сохранен!" + "\n" + TestView.scorepercent + "%", "OK");
                     await Shell.Current.Navigation.PopAsync();
 
                 }
                 else
                 {
-                
-                    await Shell.Current.DisplayAlert("Успешно,Тест пройден", "Результат не сохранен, процент правильных ответов не изменился" + "\n" + TestView.scorepercent + "%", "OK");
-                    await Shell.Current.Navigation.PopAsync();
+
+                    
+                    if (await resultservice.UpdateResult(SelectedTest.Name, SelectedCathegory.CathegoryId, Login, TestView.scorepercent, SelectedTest.TestId))
+                    {
+                        await Shell.Current.DisplayAlert("Тест пройден", "Результат сохранен" + "\n" + TestView.scorepercent + "%", "OK");
+                        await Shell.Current.GoToAsync("..");
+                    }
+                    else
+                    {
+                        await Shell.Current.DisplayAlert("Тест пройден", "Результат не сохранен, процент правильных ответов не изменился" + "\n" + TestView.scorepercent + "%", "OK");
+                        await Shell.Current.GoToAsync("..");
+                    }
 
                 }
             }
@@ -280,6 +290,7 @@ namespace MyProjectStart.ViewsModel
             QuestionService questionService = new QuestionService();
             if(questions == null)
             {
+                CurrentQuest = null;
                 questions = (await questionService.GetQuestionsAsync()).Where(p => p.id_test == test_id).ToList();
                 foreach (var item in questions.ToList())
                 {
