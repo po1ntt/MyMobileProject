@@ -24,6 +24,7 @@ namespace MyProjectStart.Views
         public static int posforinte = 1;
         public static double score = 0;
         public static double scorepercent = 0;
+        public static string imageMedal = null;
         public List<Questions> questions;
         TestViewModel cvm;
 
@@ -295,6 +296,22 @@ namespace MyProjectStart.Views
             }
             scorepercent = 0;
             scorepercent = score / cvm.QestionsByTest.Count * 100;
+            if (scorepercent > 40 && TestView.scorepercent < 60)
+            {
+                imageMedal = "https://cdn3.iconfinder.com/data/icons/awards-achievements-2/96/Bronze-8-512.png";
+            }
+            else if (TestView.scorepercent > 60 && TestView.scorepercent < 85)
+            {
+                imageMedal = "https://cdn3.iconfinder.com/data/icons/awards-achievements-2/96/Silver-7-512.png";
+            }
+            else if (TestView.scorepercent >= 85)
+            {
+                imageMedal = "https://cdn3.iconfinder.com/data/icons/awards-achievements-2/96/Gold-8-512.png";
+            }
+            else if (TestView.scorepercent < 40)
+            {
+                imageMedal = "https://cdn4.iconfinder.com/data/icons/interactions/64/interaction_interact_preferences_preformance_medal_award_reward_bad-512.png";
+            }
             cvm.CurrentPos = posforinte + currentPos;
             FirstAnswer.BorderColor = Color.Blue;
             SeconAnswer.BorderColor = Color.Blue;

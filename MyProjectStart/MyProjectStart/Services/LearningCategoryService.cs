@@ -23,10 +23,21 @@ namespace MyProjectStart.Services
             {
                id_learncat = f.Object.id_learncat,
                ImageLearnCat = f.Object.ImageLearnCat,
-               NameLernCategory = f.Object.NameLernCategory
+               NameLernCategory = f.Object.NameLernCategory,
+               TemaID = f.Object.TemaID
 
             }).ToList();
             return lerningCategories;
+        }
+        public async Task<ObservableCollection<LerningCategories>> GetLearningCathegoryBuTema(int temaId)
+        {
+            var CathegoryBuTema = new ObservableCollection<LerningCategories>();
+            var items = (await GetCategoryLearningAsunc()).Where(p => p.TemaID == temaId).ToList();
+            foreach (var item in items)
+            {
+                CathegoryBuTema.Add(item);
+            }
+            return CathegoryBuTema;
         }
     }
 }

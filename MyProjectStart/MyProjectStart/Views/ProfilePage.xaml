@@ -1,12 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyProjectStart.Views.ProfilePage">
+             x:Class="MyProjectStart.Views.ProfilePage"
+             Title="Профиль"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:vm="clr-namespace:MyProjectStart.ViewsModel"
+             xmlns:jarvis="clr-namespace:Jarvis.Components.Xamarin.Forms.Views;assembly=Jarvis.Components.Xamarin.Forms">
+   
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <pancake:PancakeView Margin="0,10,0,10" WidthRequest="500" CornerRadius="40" Border="{pancake:BorderMarkup Color=Blue, Thickness=5}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                   
+                   
+                    <Label Text="Информация об аккаунте" TextColor="Blue" FontFamily="SansRegular" HorizontalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="0" FontSize="20" />
+                    <StackLayout Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                             <StackLayout Grid.Column="0" WidthRequest="150">
+                                <pancake:PancakeView WidthRequest="150" Grid.Column="0" Border="{pancake:BorderMarkup Color=Blue, Thickness=1}" CornerRadius="10" Margin="10">
+                                    <jarvis:MaterialEntry Placeholder="Имя" TextColor="Blue" PlaceholderColor="DarkBlue"  />
+                                </pancake:PancakeView>
+                                <pancake:PancakeView WidthRequest="150" Grid.Column="0" Border="{pancake:BorderMarkup Color=Blue, Thickness=1}" CornerRadius="10" Margin="10">
+                                    <jarvis:MaterialEntry Placeholder="Дата рождения"  TextColor="Blue" PlaceholderColor="DarkBlue"  />
+                                </pancake:PancakeView>
+                                <pancake:PancakeView WidthRequest="150" Grid.Column="0" Border="{pancake:BorderMarkup Color=Blue, Thickness=1}" CornerRadius="10" Margin="10">
+                                    <jarvis:MaterialEntry Placeholder="Login"  TextColor="Blue" PlaceholderColor="DarkBlue"  />
+                                </pancake:PancakeView>
+                                <Button Margin="10,-8,10,0" BackgroundColor="Transparent" BorderColor="Blue" CornerRadius="50" BorderWidth="2" Text="Изменить данные"  />
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="1">
+                                <pancake:PancakeView WidthRequest="150" Grid.Column="0" Border="{pancake:BorderMarkup Color=Blue, Thickness=1}" CornerRadius="10" Margin="10">
+                                    <jarvis:MaterialEntry Placeholder="фамилия" TextColor="Blue" PlaceholderColor="DarkBlue"  />
+                                </pancake:PancakeView>
+                                <pancake:PancakeView WidthRequest="180" Grid.Column="0" Border="{pancake:BorderMarkup Color=Blue, Thickness=1}" CornerRadius="10" Margin="10">
+                                    <jarvis:MaterialEntry Placeholder="Email" TextColor="Blue" PlaceholderColor="DarkBlue"  />
+                                </pancake:PancakeView>
+                                <Button Margin="10,85,10,0" BackgroundColor="Transparent" BorderColor="Blue" CornerRadius="50" BorderWidth="2" Text="Выйти из аккаунта" TextColor="Red"  />
+                            </StackLayout>
+                        </Grid>
+                        
+                        
+                    </StackLayout>
+
+                </Grid>
+            </pancake:PancakeView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

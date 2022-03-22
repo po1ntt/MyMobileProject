@@ -9,5 +9,6 @@ namespace MyProjectStart.Models
         public int CathegoryId { get; set; }
         public string CathegoryName { get; set; }
         public string ImageUrl { get; set; }
+        public int TemaID { get; set; }
     }
 }

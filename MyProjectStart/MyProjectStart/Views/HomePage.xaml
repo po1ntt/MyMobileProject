@@ -68,9 +68,23 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="1" Text="Тестирование" TextColor="Blue" Margin="15,0,0,0"  FontSize="20" FontFamily="SansRegular" />
-
-            <CollectionView ItemsSource="{Binding Cathegories}"
+            <Picker Title="Выберите тему"
+                    HorizontalTextAlignment="Center"
+                    TitleColor="Blue" 
+                    TextColor="Black" 
+                    SelectedIndex="0"
+                    Grid.Row="0"
+                    ItemsSource="{Binding TemaList}"
+                    ItemDisplayBinding="{Binding NameTema}"
+                    SelectedItem="{Binding SelectedTema}"
+                    
+                    />
+            <pancake:PancakeView Grid.Row="2" Margin="0,-20,0,0"  >
+                <pancake:PancakeView.Border>
+                    <pancake:Border Color="Blue" Thickness="1" DrawingStyle="Centered" />
+                </pancake:PancakeView.Border>
+                <StackLayout Orientation="Vertical" Grid.Row="1" >
+                    <CollectionView ItemsSource="{Binding Cathegories}"
                             Margin="0,5"
                             HeightRequest="250"
                             VerticalOptions="FillAndExpand"
@@ -83,26 +97,31 @@
                             Grid.Row="2"
                             
                             >
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Horizontal"
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal"
                                      Span="2"
                                      />
-                </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate >
-                       
-                        <DataTemplate>
-                        <Grid >
-                            <StackLayout>
-                                <Frame HeightRequest="150" WidthRequest="80" Margin="10" HasShadow="False" BackgroundColor="White" BorderColor="Blue" CornerRadius="10">
-                                    <Image Source="{Binding ImageUrl}" />
-                                </Frame>
-                                <Label Text="{Binding CathegoryName}" FontFamily="SansRegular" HorizontalOptions="Center" Margin="0,-15,0,0"  TextColor="Blue" />
-                            </StackLayout>
-                        </Grid>
-                    </DataTemplate>
-                    </CollectionView.ItemTemplate>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate >
 
-                </CollectionView>
+                            <DataTemplate>
+                                <Grid >
+                                    <StackLayout>
+                                        <pancake:PancakeView HeightRequest="150" WidthRequest="120" BackgroundColor="Transparent"  Margin="10" Sides="8" OffsetAngle="45"  Border="{pancake:BorderMarkup Color=DarkBlue, Thickness=8}" CornerRadius="10">
+                                                <Label Text="{Binding CathegoryName}" TextColor="DarkBlue" FontFamily="SansRegular" HorizontalOptions="Center" VerticalOptions="Center" FontSize="13"  />
+                                            
+                                        </pancake:PancakeView>
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+                </StackLayout>
+
+               
+            </pancake:PancakeView>
+            
             <Label Grid.Row="3" Text="Учебный материал" TextColor="Blue" Margin="10,0,0,0"  FontSize="20" FontFamily="SansRegular" />
           
            

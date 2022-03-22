@@ -11,7 +11,7 @@ namespace MyProjectStart.Models
         public string User_login { get; set; }
         public int CathegoryId { get; set; }
         public string LearningUrlTestDone { get; set; }
-
+        public string MedalImage { get; set;}
         public double Scoreprecennt { get; set; }
     }
 }

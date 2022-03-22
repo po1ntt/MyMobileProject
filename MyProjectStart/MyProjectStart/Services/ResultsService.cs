@@ -49,7 +49,8 @@ namespace MyProjectStart.Services
                 NameTestDone = f.Object.NameTestDone,
                 Scoreprecennt = f.Object.Scoreprecennt,
                 LearningUrlTestDone = f.Object.LearningUrlTestDone,
-                User_login = f.Object.User_login
+                User_login = f.Object.User_login,
+                MedalImage = f.Object.MedalImage
 
             }).ToList();
             return tests;
@@ -64,21 +65,22 @@ namespace MyProjectStart.Services
             var result = (await client.Child("Results").OnceAsync<Results>()).Where(u => u.Object.User_login == login && u.Object.NameTestDone == NameTest && u.Object.CathegoryId == CathegoryID).FirstOrDefault();
             return (result != null);
         }
-        public async Task<bool> RegisterResult( string NameTest, string user_login, int CathegoryId, double Scorepercent, int test_id)
+        public async Task<bool> RegisterResult( string NameTest, string user_login, int CathegoryId, double Scorepercent, int test_id, string medalimage)
         {
             if (await IsResultExists(user_login,NameTest,CathegoryId) == false)
             {
-                
+
                 await client.Child("Results").PostAsync(new Results()
                 {
-                    TestId = test_id ,
+                    TestId = test_id,
                     NameTestDone = NameTest,
                     User_login = user_login,
                     CathegoryId = CathegoryId,
-                    Scoreprecennt = Scorepercent
-                    
-                    
-                });
+                    Scoreprecennt = Scorepercent,
+                    MedalImage = medalimage
+
+
+                }); ;
                 return true;
 
             }
@@ -99,7 +101,7 @@ namespace MyProjectStart.Services
             }
             return TestItemsByCathegoryResult;
         }
-        public async Task<bool> UpdateResult(string nametest,int cathegory_id, string user_login, double scorepercent, int test_id)
+        public async Task<bool> UpdateResult(string nametest,int cathegory_id, string user_login, double scorepercent, int test_id, string medalimage)
         {
             var toUpdateResult = (await client.Child("Results")
                 .OnceAsync<Results>())
@@ -107,7 +109,7 @@ namespace MyProjectStart.Services
                 (a => a.Object.NameTestDone == nametest && a.Object.CathegoryId == cathegory_id && a.Object.User_login == user_login);
             if(toUpdateResult.Object.Scoreprecennt < scorepercent)
             {
-                Results s = new Results() { Scoreprecennt = scorepercent, NameTestDone = nametest, CathegoryId = cathegory_id, User_login = user_login, TestId = test_id };
+                Results s = new Results() { Scoreprecennt = scorepercent, NameTestDone = nametest, CathegoryId = cathegory_id, User_login = user_login, TestId = test_id , MedalImage = medalimage};
                 await client.Child("Results")
                     .Child(toUpdateResult.Key)
                     .PutAsync(s);

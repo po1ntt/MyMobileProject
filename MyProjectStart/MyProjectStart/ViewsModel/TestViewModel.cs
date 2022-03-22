@@ -236,8 +236,8 @@ namespace MyProjectStart.ViewsModel
                 var resultservice = new ResultsService();
                 var login = Preferences.Get("Login", string.Empty);
                 string Login = login;
-                
-                Result = await resultservice.RegisterResult(SelectedTest.Name, Login, SelectedTest.CategoryId,TestView.scorepercent,SelectedTest.TestId);
+            
+                Result = await resultservice.RegisterResult(SelectedTest.Name, Login, SelectedTest.CategoryId,TestView.scorepercent,SelectedTest.TestId,TestView.imageMedal);
                 if (Result)
                 {
                     
@@ -249,7 +249,7 @@ namespace MyProjectStart.ViewsModel
                 {
 
                     
-                    if (await resultservice.UpdateResult(SelectedTest.Name, SelectedCathegory.CathegoryId, Login, TestView.scorepercent, SelectedTest.TestId))
+                    if (await resultservice.UpdateResult(SelectedTest.Name, SelectedCathegory.CathegoryId, Login, TestView.scorepercent, SelectedTest.TestId, TestView.imageMedal))
                     {
                         await Shell.Current.DisplayAlert("Тест пройден", "Результат сохранен" + "\n" + TestView.scorepercent + "%", "OK");
                         await Shell.Current.GoToAsync("..");

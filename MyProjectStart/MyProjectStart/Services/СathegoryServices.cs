@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Firebase.Database.Query;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace MyProjectStart.Services
 {
@@ -24,12 +25,24 @@ namespace MyProjectStart.Services
                 {
                     CathegoryId = c.Object.CathegoryId,
                     CathegoryName = c.Object.CathegoryName,
-                    ImageUrl = c.Object.ImageUrl
+                    ImageUrl = c.Object.ImageUrl,
+                    TemaID = c.Object.TemaID
                     
 
                 }).ToList();
             return categories;
                 
+        }
+        
+        public async Task<ObservableCollection<Cathegory>> GetCathegoryBuTema(int temaId)
+        {
+            var CathegoryBuTema = new ObservableCollection<Cathegory>();
+            var items = (await GetCathegoryAsync()).Where(p => p.TemaID == temaId).ToList();
+            foreach (var item in items)
+            {
+                CathegoryBuTema.Add(item);
+            }
+            return CathegoryBuTema;
         }
     }
 }

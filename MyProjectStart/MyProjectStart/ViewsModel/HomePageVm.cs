@@ -16,6 +16,21 @@ namespace MyProjectStart.ViewsModel
 {
     class HomePageVm : BaseViewModel
     {
+        private Tema _SelectedTema;
+
+        public Tema SelectedTema
+        {
+            get { return _SelectedTema; }
+            set { _SelectedTema = value;
+                if(_SelectedTema != null)
+                {
+                    GetCategories(_SelectedTema.TemaID);
+                    GetLearningCategories(_SelectedTema.TemaID);
+                }
+                OnPropertyChanged();
+            }
+        }
+
         private ItemLearnCategory _SelectedItemLearningCategory;
         public ItemLearnCategory SelectedItemLearningCategory
         {
@@ -66,6 +81,7 @@ namespace MyProjectStart.ViewsModel
         public ObservableCollection<Cathegory> Cathegories { get; set; }
         public ObservableCollection<LerningCategories> lerningCategories { get; set; }
         public ObservableCollection<ItemLearnCategory> itemofLerningCategory { get; set; }
+        public ObservableCollection<Tema> TemaList { get; set; }
 
         public ICommand LogoutCommand { get; private set; }
     
@@ -79,9 +95,10 @@ namespace MyProjectStart.ViewsModel
             itemofLerningCategory = new ObservableCollection<ItemLearnCategory>();
             Cathegories = new ObservableCollection<Cathegory>();
             lerningCategories = new ObservableCollection<LerningCategories>();
-            GetCategories();
-            GetLearningCategories();
-         
+            TemaList = new ObservableCollection<Tema>();
+            GetTemaList();
+
+
         }
 
         private async void GetItemsLearningCategory(int id_learncat)
@@ -94,10 +111,19 @@ namespace MyProjectStart.ViewsModel
                 itemofLerningCategory.Add(item);
             }
         }
-
-        private async void GetLearningCategories()
+        private async void GetTemaList()
         {
-            var data = await new Services.LearningCategoryService().GetCategoryLearningAsunc();
+            var data = await new Services.TemaServices().GetListTemaAsunc();
+            TemaList.Clear();
+            foreach(var item in data)
+            {
+                TemaList.Add(item);
+            }
+        }
+
+        private async void GetLearningCategories(int tema_id)
+        {
+            var data = await new Services.LearningCategoryService().GetLearningCathegoryBuTema(tema_id);
             lerningCategories.Clear();
             foreach(var item in data)
             {
@@ -105,9 +131,9 @@ namespace MyProjectStart.ViewsModel
             }
         }
 
-        private async void GetCategories()
+        private async void GetCategories(int tema_id)
         {
-            var data = await new Services.СathegoryServices().GetCathegoryAsync();
+            var data = await new Services.СathegoryServices().GetCathegoryBuTema(tema_id);
             Cathegories.Clear();
             foreach (var item in data)
             {
