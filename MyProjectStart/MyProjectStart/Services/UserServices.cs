@@ -6,11 +6,12 @@ using Firebase.Database;
 using MyProjectStart.Models;
 using System.Linq;
 using Firebase.Database.Query;
+using System.Collections.ObjectModel;
 
 namespace MyProjectStart.Services
 {
 
-   public class UserServices
+    public class UserServices
     {
         FirebaseClient client;
         public UserServices()
@@ -24,7 +25,7 @@ namespace MyProjectStart.Services
         }
         public async Task<bool> RegisterUser(string login, string password, string email)
         {
-            if(await IsUserExists(login) == false)
+            if (await IsUserExists(login) == false)
             {
                 await client.Child("Users").PostAsync(new UserModel()
                 {
@@ -46,6 +47,22 @@ namespace MyProjectStart.Services
                 .Where(u => u.Object.Password == password).FirstOrDefault();
             return (user != null);
         }
-        
+        public async Task<List<UserModel>> SelectUsers()
+        {
+            var users = (await client.Child("Users").OnceAsync<UserModel>())
+                .Select(c => new UserModel
+                {
+                    Login = c.Object.Login,
+                    SurName = c.Object.SurName,
+                    BirtDay = c.Object.BirtDay,
+                    Password = c.Object.Password
+
+
+                }).ToList();
+            return users;
+
+        }
+       
+
     }
 }

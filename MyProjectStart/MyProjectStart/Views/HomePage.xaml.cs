@@ -10,6 +10,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MyProjectStart.Services;
 using MyProjectStart.ViewsModel;
+using MyProjectStart.Views.Popups;
+using Rg.Plugins.Popup.Extensions;
 
 namespace MyProjectStart.Views
 {
@@ -34,10 +36,9 @@ namespace MyProjectStart.Views
             ((CollectionView)sender).SelectedItem = null;
         }
 
-        private void ToolbarItem_Clicked(object sender, EventArgs e)
+         void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Preferences.Clear();
-            Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+            Navigation.PushPopupAsync(new PopupAccount());
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

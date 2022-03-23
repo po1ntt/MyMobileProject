@@ -107,7 +107,7 @@
                             <DataTemplate>
                                 <Grid >
                                     <StackLayout>
-                                        <pancake:PancakeView HeightRequest="150" WidthRequest="120" BackgroundColor="Transparent"  Margin="10" Sides="8" OffsetAngle="45"  Border="{pancake:BorderMarkup Color=DarkBlue, Thickness=8}" CornerRadius="10">
+                                        <pancake:PancakeView HeightRequest="150" WidthRequest="120" BackgroundColor="Transparent"  Margin="10" Sides="32" OffsetAngle="45"  Border="{pancake:BorderMarkup Color=DarkBlue, Thickness=8}" CornerRadius="10">
                                                 <Label Text="{Binding CathegoryName}" TextColor="DarkBlue" FontFamily="SansRegular" HorizontalOptions="Center" VerticalOptions="Center" FontSize="13"  />
                                             
                                         </pancake:PancakeView>

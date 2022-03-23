@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage  xmlns:popup="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyProjectStart.Views.Popups.PopupAccount"
+                  CloseWhenBackgroundIsClicked="True"
+                  BackgroundClicked="PopupPage_BackgroundClicked"
+                  xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                  xmlns:vm ="clr-namespace:MyProjectStart.Views.Popups.ViewModelForPopup">
+    <popup:PopupPage.BindingContext>
+        <vm:PopupAccountVM />
+    </popup:PopupPage.BindingContext>
+    <Frame WidthRequest="330" HeightRequest="400" BackgroundColor="White" HorizontalOptions="Center"  VerticalOptions="Center" CornerRadius="30" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal" Grid.Row="0" >
+                <Label Text="Информация об аккаунте" TextColor="Blue" FontSize="25" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout Grid.Row="1" Padding="10">
+                <StackLayout Orientation="Horizontal" >
+                    <Entry Placeholder="Имя" Text="{Binding Name}" WidthRequest="100" HorizontalOptions="StartAndExpand" PlaceholderColor="DarkBlue" FontSize="18"  TextColor="Blue" />
+                    <Entry Placeholder="Фамилия" Text="{Binding SurName}" WidthRequest="140" HorizontalOptions="EndAndExpand" PlaceholderColor="DarkBlue"  FontSize="18"  TextColor="Blue" />
+                </StackLayout>
+                <Entry Placeholder="Email" Text="{Binding Email}" PlaceholderColor="DarkBlue" FontSize="18" />
+                <StackLayout>
+                    <Entry Placeholder="Login" Text="{Binding Login}" PlaceholderColor="DarkBlue" FontSize="18" TextColor="Blue" />
+                    <DatePicker Date="{Binding BirthDay}"  FontSize="18" TextColor="Blue"/>
+                </StackLayout>
+                <Button Text="Изменить пароль" CornerRadius="50" BackgroundColor="Transparent" BorderColor="Blue" BorderWidth="2" TextColor="Black" />
+                <StackLayout Orientation="Horizontal">
+                    <Button WidthRequest="150" Margin="0,-5,0,0" CornerRadius="50" HorizontalOptions="StartAndExpand" Text="Изменить данные" BackgroundColor="Transparent" TextColor="Black" BorderColor="Blue" BorderWidth="2"/>
+                    <Button  WidthRequest="150"  Margin="0,-5,0,0" CornerRadius="50" HorizontalOptions="EndAndExpand" Text="Выйти из аккаунта" BackgroundColor="Transparent" TextColor="Red" BorderColor="Blue" BorderWidth="2" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </Frame>
+</popup:PopupPage>

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MyProjectStart.Views
+namespace MyProjectStart.Views.Popups
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProfilePage : ContentPage
+    public partial class PopupPasswordAccount : ContentPage
     {
-        public ProfilePage()
+        public PopupPasswordAccount()
         {
             InitializeComponent();
         }
