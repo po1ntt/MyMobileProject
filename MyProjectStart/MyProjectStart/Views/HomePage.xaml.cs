@@ -43,6 +43,7 @@ namespace MyProjectStart.Views
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            ((ListView)sender).SelectedItem = null;
         }
 
        

@@ -149,6 +149,7 @@
                                   SelectionMode="Single"
                                   ItemSelected="ListView_ItemSelected"
                                   SelectedItem="{Binding SelectedItemLearningCategory}"
+                                  
                                   >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
