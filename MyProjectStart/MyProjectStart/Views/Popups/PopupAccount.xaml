@@ -17,6 +17,7 @@
             </Grid.RowDefinitions>
             <StackLayout Orientation="Horizontal" Grid.Row="0" >
                 <Label Text="Информация об аккаунте" TextColor="Blue" FontSize="25" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <ImageButton Source="https://cdn2.iconfinder.com/data/icons/250-perfect-vector-pictograms/48/9.4-256.png" BackgroundColor="White" HeightRequest="50" WidthRequest="50" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Grid.Row="0"/>
             </StackLayout>
             <StackLayout Grid.Row="1" Padding="10">
                 <StackLayout Orientation="Horizontal" >

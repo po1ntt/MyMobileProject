@@ -26,6 +26,7 @@ namespace MyProjectStart.Views.Popups
         {
             Preferences.Clear();
             Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+            Shell.Current.Navigation.PopPopupAsync();
         }
     }
 }

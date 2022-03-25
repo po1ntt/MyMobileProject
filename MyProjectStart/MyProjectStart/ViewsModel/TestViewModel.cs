@@ -243,8 +243,8 @@ namespace MyProjectStart.ViewsModel
                 Result = await resultservice.RegisterResult(SelectedTest.Name, Login, SelectedTest.CategoryId,TestView.scorepercent,SelectedTest.TestId,TestView.imageMedal);
                 if (Result)
                 {
-                    
-                    await Shell.Current.DisplayAlert("Тест пройден", "Новый результат сохранен!" + "\n" + TestView.scorepercent + "%", "OK");
+
+                    await Shell.Current.Navigation.PushPopupAsync(new PopupResult(TestView.scorepercent, TestView.imageMedal));
                     await Shell.Current.Navigation.PopAsync();
 
                 }
