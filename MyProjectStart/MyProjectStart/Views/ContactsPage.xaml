@@ -3,10 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyProjectStart.Views.ContactsPage"
              Title="Contacts"
-             Background="#2a2a2a">
+             Background="White"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
     <ContentPage.Content>
-        <StackLayout>
-           
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <pancake:PancakeView Grid.Row="0" HeightRequest="180" CornerRadius="30" Margin="10" Border="{pancake:BorderMarkup Color=Blue, Thickness=3}">
+                <StackLayout Padding="10">
+                    <Label Text="Тимур Толстов(Программист)" TextColor="Blue" FontFamily="SansRegular" FontSize="25" />
+                    <Label Text="Контакты:"  TextColor="Black" FontFamily="SansRegular" FontSize="22" />
+                    <Label Text="Github: po1ntt" TextDecorations="Underline" TextColor="Black" FontFamily="SansRegular" FontSize="20" />
+                    <Label Text="Email: tima.tolstow@mail.ru" TextDecorations="Underline" TextColor="Black" FontFamily="SansRegular" FontSize="20" />
+                </StackLayout>
+            </pancake:PancakeView>
+            <pancake:PancakeView Grid.Row="1" HeightRequest="180" CornerRadius="30" Margin="10" Border="{pancake:BorderMarkup Color=Blue, Thickness=3}">
+                <StackLayout Padding="10">
+                    <Label Text="Никита Шаханов(Дизайнер)" TextColor="Blue" FontFamily="SansRegular" FontSize="25" />
+                    <Label Text="Контакты:"  TextColor="Black" FontFamily="SansRegular" FontSize="22" />
+                    <Label Text="Github: po1ntt" TextDecorations="Underline" TextColor="Black" FontFamily="SansRegular" FontSize="20" />
+                    <Label Text="Email: Shahanov.2021@mail.ru" TextDecorations="Underline" TextColor="Black" FontFamily="SansRegular" FontSize="20" />
+                </StackLayout>
+            </pancake:PancakeView>
+            <pancake:PancakeView Grid.Row="2" HeightRequest="180" CornerRadius="30" Margin="10" Border="{pancake:BorderMarkup Color=Blue, Thickness=3}">
+                <StackLayout Padding="10">
+                    <Label Text="Мария Смирнова(Аналитик)" TextColor="Blue" FontFamily="SansRegular" FontSize="25" />
+                    <Label Text="Контакты:"  TextColor="Black" FontFamily="SansRegular" FontSize="22" />
+                    <Label Text="Github: po1ntt" TextDecorations="Underline" TextColor="Black" FontFamily="SansRegular" FontSize="20" />
+                    <Label Text="Email: tima.tolstow@mail.ru" TextDecorations="Underline" TextColor="Black" FontFamily="SansRegular" FontSize="20" />
+                </StackLayout>
+            </pancake:PancakeView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

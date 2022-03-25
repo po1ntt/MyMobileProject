@@ -30,8 +30,8 @@
                 </StackLayout>
                 <Button Text="Изменить пароль" CornerRadius="50" BackgroundColor="Transparent" BorderColor="Blue" BorderWidth="2" TextColor="Black" />
                 <StackLayout Orientation="Horizontal">
-                    <Button WidthRequest="150" Margin="0,-5,0,0" CornerRadius="50" HorizontalOptions="StartAndExpand" Text="Изменить данные" BackgroundColor="Transparent" TextColor="Black" BorderColor="Blue" BorderWidth="2"/>
-                    <Button  WidthRequest="150"  Margin="0,-5,0,0" CornerRadius="50" HorizontalOptions="EndAndExpand" Text="Выйти из аккаунта" BackgroundColor="Transparent" TextColor="Red" BorderColor="Blue" BorderWidth="2" />
+                    <Button WidthRequest="150" Margin="0,-5,0,0" Command="{Binding UpdateUser}" CornerRadius="50" HorizontalOptions="StartAndExpand" Text="Изменить данные" BackgroundColor="Transparent" TextColor="Black" BorderColor="Blue" BorderWidth="2"/>
+                    <Button  WidthRequest="150" Clicked="OutButton_Clicked"  Margin="0,-5,0,0" CornerRadius="50" HorizontalOptions="EndAndExpand" Text="Выйти из аккаунта" BackgroundColor="Transparent" TextColor="Red" BorderColor="Blue" BorderWidth="2" />
                 </StackLayout>
             </StackLayout>
         </Grid>

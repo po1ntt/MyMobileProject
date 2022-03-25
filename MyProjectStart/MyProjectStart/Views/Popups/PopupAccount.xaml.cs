@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,6 +20,12 @@ namespace MyProjectStart.Views.Popups
         private void PopupPage_BackgroundClicked(object sender, EventArgs e)
         {
             Navigation.PopPopupAsync();
+        }
+
+        private void OutButton_Clicked(object sender, EventArgs e)
+        {
+            Preferences.Clear();
+            Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
     }
 }

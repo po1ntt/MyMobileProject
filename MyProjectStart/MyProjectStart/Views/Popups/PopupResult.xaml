@@ -1,12 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:popup="http://rotorgames.com"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyProjectStart.Views.Popups.PopupResult">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+             x:Class="MyProjectStart.Views.Popups.PopupResult"
+             xmlns:vm ="clr-namespace:MyProjectStart.Views.Popups.ViewModelForPopup">
+    <Frame WidthRequest="330" HeightRequest="400" BackgroundColor="White"  HorizontalOptions="Center"  VerticalOptions="Center" CornerRadius="30">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            <Label Text="Тест пройден" TextColor="Blue" FontFamily="SansRegular" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" />
+            <Label x:Name="ScorePercenLabel" Text="Процент правильных ответов: 100%" FontSize="20" TextColor="Black" HorizontalOptions="Center" Grid.Row="1" Margin="10"/>
+            <Image x:Name="ImageMedal"  Source="https://cdn3.iconfinder.com/data/icons/awards-achievements-2/96/Gold-8-512.png" HeightRequest="100" WidthRequest="100" Margin="-20,0,0,0" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" />
+        </Grid>
+    </Frame>
+    
+</popup:PopupPage>
+   

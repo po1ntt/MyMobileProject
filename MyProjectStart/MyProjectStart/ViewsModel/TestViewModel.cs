@@ -11,11 +11,14 @@ using MyProjectStart.Services;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using System.Linq;
+using Rg.Plugins.Popup.Extensions;
+using MyProjectStart.Views.Popups;
 
 namespace MyProjectStart.ViewsModel
 {
     internal class TestViewModel : BaseViewModel
     {
+        #region properties
         public int numberForCollection = 0;
         private  int _CurrentPos;
         public int CurrentPos
@@ -181,7 +184,7 @@ namespace MyProjectStart.ViewsModel
         public ObservableCollection<Questions> QestionsByTest { get; set; }
 
         private int _currentQuestionIndex = -1;
-    
+        #endregion
         public Questions NextQuest()
         {
             _currentQuestionIndex++;
@@ -251,7 +254,7 @@ namespace MyProjectStart.ViewsModel
                     
                     if (await resultservice.UpdateResult(SelectedTest.Name, SelectedCathegory.CathegoryId, Login, TestView.scorepercent, SelectedTest.TestId, TestView.imageMedal))
                     {
-                        await Shell.Current.DisplayAlert("Тест пройден", "Результат сохранен" + "\n" + TestView.scorepercent + "%", "OK");
+                        await Shell.Current.Navigation.PushPopupAsync(new PopupResult(TestView.scorepercent, TestView.imageMedal));
                         await Shell.Current.GoToAsync("..");
                     }
                     else

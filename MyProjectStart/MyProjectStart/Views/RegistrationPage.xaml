@@ -21,8 +21,19 @@
                         <StackLayout Padding="80">
                             <Label Text="Регистрация" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Center" Margin="10" FontSize="30" FontFamily="SansRegular" />
                         <Entry Placeholder="Придумайте логин" HorizontalTextAlignment="Center" FontSize="15" TextColor="Black" PlaceholderColor="Gray" Text="{Binding Login}" BackgroundColor="FloralWhite"/>
-                        <Entry Placeholder="Пароль" HorizontalTextAlignment="Center" FontSize="15" TextColor="Black" PlaceholderColor="Gray" Text="{Binding Password}" BackgroundColor="FloralWhite"/>
-                        <Entry Placeholder="Повторите пароль" IsPassword="True" HorizontalTextAlignment="Center" FontSize="15" TextColor="Black" PlaceholderColor="Gray" BackgroundColor="FloralWhite"/>
+                        <Entry Placeholder="Пароль"
+                               HorizontalTextAlignment="Center"
+                               FontSize="15"
+                               TextColor="Black"
+                               PlaceholderColor="Gray"
+                               Text="{Binding Password}" BackgroundColor="FloralWhite"/>
+                        <Entry Placeholder="Повторите пароль"
+                               IsPassword="True"
+                               HorizontalTextAlignment="Center"
+                               FontSize="15"
+                               TextColor="Black"
+                               PlaceholderColor="Gray"
+                               BackgroundColor="FloralWhite"/>
                         <Entry Placeholder="E-mail" Keyboard="Email" HorizontalTextAlignment="Center" FontSize="15" TextColor="Black" PlaceholderColor="Gray" Text="{Binding Email}" BackgroundColor="FloralWhite"/>
                         <Label Text="Дата рождения"  FontSize="15" Margin="0,0,0, 4" TextColor="Blue"  FontFamily="SansRegular"  />
                         <DatePicker MinimumDate="01/01/1970"  MaximumDate="11/03/2022" FontSize="15" TextColor="Black" BackgroundColor="FloralWhite"/>
