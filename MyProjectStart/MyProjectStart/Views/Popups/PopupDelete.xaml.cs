@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace MyProjectStart.Views.Popups
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PopupDelete : ContentPage
+    public partial class PopupDelete : Rg.Plugins.Popup.Pages.PopupPage
     {
         public PopupDelete()
         {

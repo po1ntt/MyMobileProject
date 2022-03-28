@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyProjectStart.AshellWithLogin"
              xmlns:views="clr-namespace:MyProjectStart.Views"
+       xmlns:popup="clr-namespace:MyProjectStart.Views.Popups"
       >
     <Shell.Resources>
         <ResourceDictionary>
@@ -25,9 +26,8 @@
 
         </ResourceDictionary>
     </Shell.Resources>
+
   
-
-
     <TabBar>
 
 

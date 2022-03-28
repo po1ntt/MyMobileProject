@@ -28,5 +28,10 @@ namespace MyProjectStart.Views.Popups
             Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
             Shell.Current.Navigation.PopPopupAsync();
         }
+
+        private void ChangePass_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.Navigation.PushPopupAsync(new PopupPasswordAccount());
+        }
     }
 }

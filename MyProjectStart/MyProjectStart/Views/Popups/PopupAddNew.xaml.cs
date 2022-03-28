@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace MyProjectStart.Views.Popups
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PopupAddNew : ContentPage
+    public partial class PopupAddNew : Rg.Plugins.Popup.Pages.PopupPage
     {
         public PopupAddNew()
         {
