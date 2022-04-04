@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<animations:PopupPage  xmlns:animations="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customcontrols="clr-namespace:MyProjectStart.CustomControls"
+             x:Class="MyProjectStart.Views.ViewsEditContent.PopupsAdd.PopupAddAnswersForTest">
+    
+        <Frame WidthRequest="330" HeightRequest="600" BackgroundColor="White" HorizontalOptions="Center"   VerticalOptions="Center" CornerRadius="30">
+            <StackLayout WidthRequest="300" Margin="0,0,0,200" HorizontalOptions="Center" VerticalOptions="Center">
+            <Picker Title="Выберите тему" BackgroundColor="LightBlue" TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+            <Picker Title="Выберите категорию" BackgroundColor="LightBlue"   TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+            <Picker Title="Выберите тест"  BackgroundColor="LightBlue" TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+                <customcontrols:CustomEntry Placeholder="Введите вопрос" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                 BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                                
+                                                FontFamily="SansRegular"
+                                            PlaceholderColor="Black">
+
+                </customcontrols:CustomEntry>
+                <Label Text="Введите ответы" HorizontalOptions="Center" TextColor="Black" FontSize="25" FontFamily="SansRegular" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="1" Margin="-2,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontFamily="SansRegular" TextColor="Black" />
+                    <customcontrols:CustomEntry Placeholder="Введите ответ" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                 BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                                
+                                                FontFamily="SansRegular"
+                                                WidthRequest="285"
+                                                PlaceholderColor="Black">
+
+                    </customcontrols:CustomEntry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="2" Margin="-5,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontFamily="SansRegular" TextColor="Black" />
+                    <customcontrols:CustomEntry  Placeholder="Введите ответ" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                                
+                                                FontFamily="SansRegular"
+                                                WidthRequest="285"
+                                                 PlaceholderColor="Black">
+
+                    </customcontrols:CustomEntry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="3" Margin="-5,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontFamily="SansRegular" TextColor="Black" />
+                    <customcontrols:CustomEntry Placeholder="Введите ответ" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                 BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                                
+                                                FontFamily="SansRegular"
+                                                WidthRequest="285"
+                                                PlaceholderColor="Black">
+
+                    </customcontrols:CustomEntry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="4" Margin="-5,0,0,0"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontFamily="SansRegular" TextColor="Black" />
+                    <customcontrols:CustomEntry Placeholder="Введите ответ" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                 BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                                
+                                                FontFamily="SansRegular"
+                                                WidthRequest="285"
+                                                PlaceholderColor="Black">
+
+                    </customcontrols:CustomEntry>
+                </StackLayout>
+                <customcontrols:CustomEntry Placeholder="Введите номер правильного ответа" 
+                                                FontSize="15"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                                
+                                                FontFamily="SansRegular"
+                                                WidthRequest="285"
+                                              Keyboard="Numeric"
+                                            PlaceholderColor="Black">
+
+                </customcontrols:CustomEntry>
+
+            <Button CornerRadius="50" BackgroundColor="Gray"
+                         Text="Добавить" FontFamily="SansRegular"
+                        TextColor="Black"
+                        IsEnabled="False"
+                        />
+            </StackLayout>
+        </Frame>
+  
+</animations:PopupPage>

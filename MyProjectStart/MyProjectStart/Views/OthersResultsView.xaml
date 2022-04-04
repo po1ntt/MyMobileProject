@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyProjectStart.Views.OthersResultsView"
+             Title="Выберите пользователя"
+             xmlns:vm="clr-namespace:MyProjectStart.ViewsModel" xmlns:customentry="clr-namespace:MyProjectStart.CustomControls">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Orientation="Horizontal">
+                <customentry:CustomEntry Margin="10" TextColor="Black"  WidthRequest="300" CornerRadius="20" PlaceholderColor="Black" TextChanged="CustomEntry_TextChanged" VerticalOptions="Center" Placeholder="Поиск по логину/email" IsCurvedCornersEnabled="True" BorderColor="Blue" BorderWidth="3" />
+            </StackLayout>
+
+
+                <ListView Grid.Row="1" x:Name="ListV" ItemsSource="{Binding ListUsers}" ItemSelected="ListView_ItemSelected"  SelectedItem="{Binding SelectedUser}" SelectionMode="Single" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <TableView>
+                                <TableRoot>
+                                    <TableSection>
+                                        <TextCell Height="100" TextColor="Black" DetailColor="Blue" Text="{Binding Login}" Detail="{Binding Email}"  />
+                                    </TableSection>
+                                </TableRoot>
+                            </TableView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

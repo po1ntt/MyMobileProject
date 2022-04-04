@@ -56,12 +56,23 @@ namespace MyProjectStart.Views.Popups.ViewModelForPopup
                 OnPropertyChanged();
             }
         }
+        private string _phone;
+
+        public string Phone
+        {
+            get { return _phone; }
+            set { _phone = value;
+                OnPropertyChanged();
+            }
+        }
+
         public PopupAccountVM()
         {
             getuserinfo();
 
 
         }
+        
         public async void getuserinfo()
         {
             UserServices userServices = new UserServices();
@@ -70,6 +81,10 @@ namespace MyProjectStart.Views.Popups.ViewModelForPopup
             var user = (await userServices.SelectUsers()).Find(p => p.Login == login);
             Login = user.Login;
             Email = user.Email;
+            Name = user.Name;
+            SurName = user.SurName;
+            Phone = user.Phone;
+            BirtDay = user.BirtDay;
         }
 
 

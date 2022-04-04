@@ -49,8 +49,43 @@ namespace MyProjectStart.Services
             }
             return QuestionsByTest;
         }
-        
-       
-      
+        public async Task<bool> UpdateQuestions(int id_Quest,string textquest, string questanswer1, string questanswer2, string questanswer3, string questanswer4, string questrightanswer, TestsModel tests)
+        {
+            var keyquest = (await client.Child("Questions")
+                .OnceAsync<Questions>())
+                .FirstOrDefault
+                (a => a.Object.id_quest == id_Quest);
+
+            Questions quest = new Questions() {TextQuest = textquest, id_quest = id_Quest, id_test = tests.TestId, quest_answer1 = questanswer1, quest_answer2 = questanswer2, quest_answer3 = questanswer3, quest_answer4 = questanswer4, quest_rightanswer = questrightanswer };
+            await client.Child("Questions")
+                .Child(keyquest.Key)
+                .PutAsync(quest);
+
+            return true;
+        }
+        public async Task<bool> AddQuest(string textquest, string questanswer1, string questanswer2, string questanswer3, string questanswer4, string questrightanswer, TestsModel tests)
+        {
+            var questions = await GetQuestionsAsync();
+            await client.Child("Questions").PostAsync(new Questions()
+            {
+                TextQuest = textquest,
+                id_quest = questions.Count + 1,
+                quest_answer1 = questanswer1,
+                quest_answer2 = questanswer2,
+                quest_answer3 = questanswer3,
+                quest_answer4 = questanswer4,
+                quest_rightanswer = questrightanswer,
+                id_test = tests.TestId
+            });
+            return true;
+        }
+        public async Task<bool> DeleteQuest(int Id_Quest)
+        {
+            var keytodelete = (await client.Child("Questions").OnceAsync<Questions>()).FirstOrDefault(a => a.Object.id_quest == Id_Quest);
+            await client.Child("Questions").Child(keytodelete.Key).DeleteAsync();
+            return true;
+        }
+
+
     }
 }

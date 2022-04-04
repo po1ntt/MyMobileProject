@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<animations:PopupPage  xmlns:animations="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="MyProjectStart.Views.ViewsEditContent.PopupsAdd.PopupAddCategory"
+             xmlns:yg="clr-namespace:RoundedBoxView.Forms.Plugin.Abstractions;assembly=RoundedBoxView.Forms.Plugin.Abstractions"
+                       xmlns:customcontrols="clr-namespace:MyProjectStart.CustomControls"
+                       xmlns:vm="clr-namespace:MyProjectStart.Views.ViewsEditContent">
+    <animations:PopupPage.BindingContext>
+        <vm:EditingPopupsVM />
+    </animations:PopupPage.BindingContext>
+    <Frame WidthRequest="330" HeightRequest="400" BackgroundColor="White" HorizontalOptions="Center"  VerticalOptions="Center" CornerRadius="30">
+            <StackLayout WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
+            <Picker Title="Выберите тему" BackgroundColor="LightBlue" x:Name="temapicker" SelectedIndexChanged="temapicker_SelectedIndexChanged" TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+                    <customcontrols:CustomEntry Placeholder="Введите название категории" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                                x:Name="txbNameCat"
+                                                FontFamily="SansRegular"
+                                                >
+   
+                    </customcontrols:CustomEntry>
+
+            <Button CornerRadius="50" BackgroundColor="Gray"
+                         Text="Добавить" FontFamily="SansRegular"
+                        TextColor="Black"
+                        IsEnabled="False"
+                    x:Name="addButton"
+                    Clicked="addButton_Clicked"/>
+            </StackLayout>
+        </Frame>
+    
+</animations:PopupPage>

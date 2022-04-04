@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<animations:PopupPage  xmlns:animations="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customcontrols="clr-namespace:MyProjectStart.CustomControls"
+             x:Class="MyProjectStart.Views.ViewsEditContent.PopupsEdit.PopupEditAnswers"
+                       xmlns:popuped="clr-namespace:MyProjectStart.Views.ViewsEditContent">
+    <animations:PopupPage.BindingContext>
+        <popuped:EditingPopupsVM />
+    </animations:PopupPage.BindingContext>
+        <Frame WidthRequest="330" HeightRequest="600" BackgroundColor="White" HorizontalOptions="Center"   VerticalOptions="Center" CornerRadius="30">
+            <StackLayout WidthRequest="300" Margin="0,0,0,200" HorizontalOptions="Center" VerticalOptions="Center">
+            <Picker Title="Выберите тему"   TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TemaList}" SelectedItem="{Binding SelectedTema}" ItemDisplayBinding="{Binding NameTema}" />
+            <Picker Title="Выберите категорию" TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding CathegoriesList}" SelectedItem="{Binding SelectedCategory}" ItemDisplayBinding="{Binding CathegoryName}" />
+            <Picker Title="Выберите тест" x:Name="testpicker" TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TestsList}" SelectedItem="{Binding SeletedTest}" ItemDisplayBinding="{Binding Name}" />
+            <Picker Title="Выберите вопрос" SelectedIndexChanged="Picker_SelectedIndexChanged"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding QuestionsList}" ItemDisplayBinding="{Binding TextQuest}" />
+                <customcontrols:CustomEntry Placeholder="вопрос" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                 BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                               x:Name="txbTextQuest"
+                                                FontFamily="SansRegular"
+                                            PlaceholderColor="Black">
+
+                </customcontrols:CustomEntry>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="1" Margin="-2,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontFamily="SansRegular" TextColor="Black" />
+                    <customcontrols:CustomEntry Placeholder="Введите ответ" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                 BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                                x:Name="txbFirstAnswer"
+                                                FontFamily="SansRegular"
+                                                WidthRequest="285"
+                                                PlaceholderColor="Black">
+
+                    </customcontrols:CustomEntry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="2" Margin="-5,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontFamily="SansRegular" TextColor="Black" />
+                    <customcontrols:CustomEntry  Placeholder="Введите ответ" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                                x:Name="txbSecondAnswer"
+                                                FontFamily="SansRegular"
+                                                WidthRequest="285"
+                                                 PlaceholderColor="Black">
+
+                    </customcontrols:CustomEntry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="3" Margin="-5,0,0,0" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontFamily="SansRegular" TextColor="Black" />
+                    <customcontrols:CustomEntry Placeholder="Введите ответ" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                 BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                               x:Name="txbThirdAnswer"
+                                                FontFamily="SansRegular"
+                                                WidthRequest="285"
+                                                PlaceholderColor="Black">
+
+                    </customcontrols:CustomEntry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="4" Margin="-5,0,0,0"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontFamily="SansRegular" TextColor="Black" />
+                    <customcontrols:CustomEntry Placeholder="Введите ответ" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                 BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                                x:Name="txbFourAnswer"
+                                                FontFamily="SansRegular"
+                                                WidthRequest="285"
+                                                PlaceholderColor="Black">
+
+                    </customcontrols:CustomEntry>
+                </StackLayout>
+                <customcontrols:CustomEntry Placeholder="Номер правильного ответа" 
+                                                FontSize="15"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                 BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                                x:Name="NumberRightAnswer"
+                                                FontFamily="SansRegular"
+                                                WidthRequest="285"
+                                              Keyboard="Numeric"
+                                            PlaceholderColor="Black">
+
+                </customcontrols:CustomEntry>
+
+            <Button CornerRadius="50" BackgroundColor="Gray"
+                    x:Name="SaveButton"
+                         Text="Сохранить изменения" FontFamily="SansRegular"
+                        TextColor="Black" IsEnabled="False"
+                    Clicked="Edit_Clicked"
+                        />
+            </StackLayout>
+        </Frame>
+</animations:PopupPage>

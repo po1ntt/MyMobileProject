@@ -41,8 +41,8 @@
                       
                 
             <StackLayout Grid.Row="2">
-                <Button Grid.Row="2" HeightRequest="50" Text="Следующий вопрос" x:Name="NextButton" CornerRadius="50" Margin="10" Clicked="Button_Clicked" TextColor="Black" BackgroundColor="Gray" BorderColor="Blue" BorderWidth="3" IsEnabled="False"/>
-                <Button Grid.Row="2" HeightRequest="50" Clicked="OverButton_Clicked" Text="Завершить тест" x:Name="OverButton"  CornerRadius="50" Command="{Binding RegisterResultCommand}" TextColor="Black" BorderColor="Blue" BackgroundColor="Gray" BorderWidth="3" IsEnabled="False" IsVisible="False"/>
+                <Button Grid.Row="2" HeightRequest="50" Text="Следующий вопрос" x:Name="NextButton" CornerRadius="50" Margin="10" Clicked="Button_Clicked" TextColor="Black" BackgroundColor="Gray" IsEnabled="False"/>
+                <Button Grid.Row="2" HeightRequest="50" Clicked="OverButton_Clicked" Text="Завершить тест" x:Name="OverButton"  CornerRadius="50" Command="{Binding RegisterResultCommand}" TextColor="Black"  BackgroundColor="Gray"  IsEnabled="False" IsVisible="False"/>
             </StackLayout>
            
 

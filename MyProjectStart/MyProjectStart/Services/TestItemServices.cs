@@ -67,6 +67,37 @@ namespace MyProjectStart.Services
             var test = (await GetTestsModelsAsync()).Where(p => p.TestId == TestId).FirstOrDefault() as TestsModel;
             return test;
         }
+        public async Task<bool> UpdateTest(string nametest, string description, int testid)
+        {
+            var tests12 = (await client.Child("Tests")
+                .OnceAsync<TestsModel>())
+                .FirstOrDefault
+                (a => a.Object.TestId == testid);
+
+            TestsModel tests = new TestsModel() {Name = nametest, Description = description, TestId = testid, CategoryId = tests12.Object.CategoryId  };
+            await client.Child("Tests")
+                .Child(tests12.Key)
+                .PutAsync(tests);
+
+            return true;
+        }
+        public async Task<bool> AddTest(string nametest,string description , Cathegory cathegory)
+        {
+            var cathegories = await GetTestsModelsAsync();
+            await client.Child("Tests").PostAsync(new TestsModel()
+            {
+                Name = nametest,
+                CategoryId = cathegory.CathegoryId,
+                Description = description
+            });
+            return true;
+        }
+        public async Task<bool> DeleteTest(int testid)
+        {
+            var keytodelete = (await client.Child("Tests").OnceAsync<TestsModel>()).FirstOrDefault(a => a.Object.TestId == testid);
+            await client.Child("Tests").Child(keytodelete.Key).DeleteAsync();
+            return true;
+        }
 
     }
 }

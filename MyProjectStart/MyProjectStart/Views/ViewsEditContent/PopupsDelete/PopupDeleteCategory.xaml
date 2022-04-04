@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<animations:PopupPage  xmlns:animations="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:MyProjectStart.Views.ViewsEditContent"
+                       x:Class="MyProjectStart.Views.ViewsEditContent.PopupsDelete.PopupDeleteCategory">
+    <animations:PopupPage.BindingContext>
+        <vm:EditingPopupsVM />
+    </animations:PopupPage.BindingContext>
+    <Frame WidthRequest="330" HeightRequest="400" BackgroundColor="White" HorizontalOptions="Center"  VerticalOptions="Center" CornerRadius="30">
+            <StackLayout WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
+            <Picker Title="Выберите тему"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+            <Picker Title="Выберите категорию" TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+            <Button CornerRadius="50" BackgroundColor="Gray"
+                        BorderWidth="2" Text="Удалить" FontFamily="SansRegular"
+                        TextColor="Black"
+                    IsEnabled="False"
+                       />
+            </StackLayout>
+        </Frame>
+</animations:PopupPage>

@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Extensions;
+﻿using MyProjectStart.Services;
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,17 @@ namespace MyProjectStart.Views.Popups
         private void ChangePass_Clicked(object sender, EventArgs e)
         {
             Shell.Current.Navigation.PushPopupAsync(new PopupPasswordAccount());
+        }
+
+        private async void InfoChange_Clicked(object sender, EventArgs e)
+        {
+            string login = Preferences.Get("Login", string.Empty);
+
+            UserServices userServices = new UserServices();
+            var user = (await userServices.SelectUsers()).Where(p => p.Login == login).FirstOrDefault();
+            await userServices.UpdateUser(txbName.Text, user.RoleId, txbLogin.Text, txbDate.Date.ToString(), txbSurName.Text, txbPhone.Text, txbEmail.Text, user.Password);
+            Preferences.Set("Login", txbLogin.Text);
+            await Shell.Current.DisplayAlert("Данные обновлены", "Личные данные успешно обновлены", "Ок");
         }
     }
 }

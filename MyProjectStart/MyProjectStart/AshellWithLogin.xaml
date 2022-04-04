@@ -4,6 +4,9 @@
              x:Class="MyProjectStart.AshellWithLogin"
              xmlns:views="clr-namespace:MyProjectStart.Views"
        xmlns:popup="clr-namespace:MyProjectStart.Views.Popups"
+       xmlns:addpopup ="clr-namespace:MyProjectStart.Views.ViewsEditContent.PopupsAdd"
+              xmlns:editpopup ="clr-namespace:MyProjectStart.Views.ViewsEditContent.PopupsEdit"
+
       >
     <Shell.Resources>
         <ResourceDictionary>
@@ -27,7 +30,7 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-  
+    
     <TabBar>
 
 

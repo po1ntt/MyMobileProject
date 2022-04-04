@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<animations:PopupPage  xmlns:animations="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customcontrols="clr-namespace:MyProjectStart.CustomControls" xmlns:vm="clr-namespace:MyProjectStart.Views.ViewsEditContent"
+                       x:Class="MyProjectStart.Views.ViewsEditContent.PopupsAdd.PopupAddTest">
+    <animations:PopupPage.BindingContext>
+        <vm:EditingPopupsVM />
+    </animations:PopupPage.BindingContext>
+    <Frame WidthRequest="330" HeightRequest="400" BackgroundColor="White" HorizontalOptions="Center"  VerticalOptions="Center" CornerRadius="30">
+            <StackLayout WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
+            <Picker Title="Выберите тему" BackgroundColor="LightBlue" TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+            <Picker Title="Выберите категорию" BackgroundColor="LightBlue" x:Name="catpicker" TextColor="Black" SelectedIndexChanged="catpicker_SelectedIndexChanged"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+                <customcontrols:CustomEntry Placeholder="Введите название теста" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                BorderColor="Blue"
+                                                BorderWidth="5"
+                                            x:Name="TxbNameTest"
+                                                IsCurvedCornersEnabled="True"
+                                                IsEnabled="False"
+                                                FontFamily="SansRegular"
+                                            PlaceholderColor="Black">
+
+                </customcontrols:CustomEntry>
+                <customcontrols:CustomEntry Placeholder="Введите описание" 
+                                                FontSize="18"
+                                                CornerRadius="50"
+                                                TextColor="Black"
+                                                BorderColor="Blue"
+                                                BorderWidth="5"
+                                                IsCurvedCornersEnabled="True"
+                                               
+                                                FontFamily="SansRegular"
+                                            PlaceholderColor="Black"
+                                            x:Name="txbDescription">
+
+                </customcontrols:CustomEntry>
+
+            <Button CornerRadius="50" BackgroundColor="Gray"
+                         Text="Добавить" FontFamily="SansRegular"
+                        TextColor="Black"
+                        IsEnabled="False"
+                    x:Name="AddTest"
+                    Clicked="AddTest_Clicked"/>
+            </StackLayout>
+        </Frame>
+
+</animations:PopupPage>

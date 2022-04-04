@@ -11,27 +11,32 @@
 
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" Orientation="Horizontal">
-                <Label Grid.Row="0" HorizontalOptions="Center" Margin="20,-2,0,0" VerticalOptions="Start" Text="Добавление нового материала" TextColor="Blue" FontFamily="SansRegular" FontSize="18"/>
-                <ImageButton Margin="18,0,0,0"
-                                 Source="https://cdn2.iconfinder.com/data/icons/250-perfect-vector-pictograms/48/9.4-256.png"
-                                 Grid.Row="0"
-                                 HorizontalOptions="End"
-                                 BackgroundColor="White" 
-                                 HeightRequest="25"
-                                 WidthRequest="25"
-                                 VerticalOptions="Start" />
+                <Label Grid.Row="0" HorizontalOptions="Center" Margin="20,-2,0,0" VerticalOptions="Start" Text="Редактирование" TextColor="Blue" FontFamily="SansRegular" FontSize="18"/>
+               
             </StackLayout>
             <StackLayout Grid.Row="1" >
-                <Frame BorderColor="Blue"  CornerRadius="50">
-                    <Label Text="редактировать тему" TextColor="Blue" FontSize="18" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+                <Frame BorderColor="Blue"  CornerRadius="50" ClassId="EditTema">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClickOnFrame_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <Label Text="Редактировать тему" TextColor="Blue" FontSize="18" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
                 </Frame>
-                <Frame BorderColor="Blue"  CornerRadius="50">
-                    <Label Text="редактировать категорию" TextColor="Blue" FontSize="18" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+                <Frame BorderColor="Blue"  CornerRadius="50" ClassId="EditCategory">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClickOnFrame_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <Label Text="Редактировать категорию" TextColor="Blue" FontSize="18" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
                 </Frame>
-                <Frame BorderColor="Blue"  CornerRadius="50">
+                <Frame BorderColor="Blue"  CornerRadius="50" ClassId="EditTest">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClickOnFrame_Tapped" />
+                    </Frame.GestureRecognizers>
                     <Label Text="Редактировать тест" TextColor="Blue" FontSize="18" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
                 </Frame>
-                <Frame BorderColor="Blue"  CornerRadius="50">
+                <Frame BorderColor="Blue"  CornerRadius="50" ClassId="EditQuestion">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClickOnFrame_Tapped" />
+                    </Frame.GestureRecognizers>
                     <Label Text="Редактировать вопросы существующего теста" TextColor="Blue" FontSize="18" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
                 </Frame>
             </StackLayout>

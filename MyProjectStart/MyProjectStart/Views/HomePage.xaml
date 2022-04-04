@@ -13,6 +13,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
              Title="Главная страница"
+             Appearing="ContentPage_Appearing"
            >
 
     <!--Pages can be added as references or inline-->
@@ -21,8 +22,10 @@
         <vm:HomePageVm/>
     </ContentPage.BindingContext>
 
-<ContentPage.ToolbarItems >
+<ContentPage.ToolbarItems  >
+      
         <ToolbarItem Text="{Binding Login}" Clicked="ToolbarItem_Clicked" />
+     
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
     <Style TargetType="Grid">

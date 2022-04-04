@@ -38,9 +38,13 @@ namespace MyProjectStart.Views
             Test = tests;
             score = 0;
             FirstAnswer.BorderColor = Color.Blue;
+            FirstAnswer.BackgroundColor = Color.Transparent;
             SeconAnswer.BorderColor = Color.Blue;
+            SeconAnswer.BackgroundColor = Color.Transparent;
             ThirdAnswer.BorderColor = Color.Blue;
+            ThirdAnswer.BackgroundColor = Color.Transparent;
             FourButton.BorderColor = Color.Blue;
+            FourButton.BackgroundColor = Color.Transparent;
             questions = TestViewModel.questions;
             lenghtCarousel = cvm.QestionsByTest.Count;
             cvm.CurrentPos = posforinte;
@@ -52,9 +56,13 @@ namespace MyProjectStart.Views
             {
                
                 FirstAnswer.BorderColor = Color.Yellow;
+                FirstAnswer.BackgroundColor = Color.Yellow;
                 SeconAnswer.BorderColor = Color.Blue;
+                SeconAnswer.BackgroundColor = Color.Transparent;
                 ThirdAnswer.BorderColor = Color.Blue;
+                ThirdAnswer.BackgroundColor = Color.Transparent;
                 FourButton.BorderColor = Color.Blue;
+                FourButton.BackgroundColor = Color.Transparent;
                 NextButton.IsEnabled = true;
                 OverButton.IsEnabled = true;
                 OverButton.BackgroundColor = Color.Yellow;
@@ -66,9 +74,13 @@ namespace MyProjectStart.Views
             {
                
                 SeconAnswer.BorderColor = Color.Yellow;
+                SeconAnswer.BackgroundColor = Color.Yellow;
                 ThirdAnswer.BorderColor = Color.Blue;
+                ThirdAnswer.BackgroundColor = Color.Transparent;
                 FourButton.BorderColor = Color.Blue;
+                FourButton.BackgroundColor = Color.Transparent;
                 FirstAnswer.BorderColor = Color.Blue;
+                FirstAnswer.BackgroundColor = Color.Transparent;
                 NextButton.IsEnabled = true;
                 OverButton.IsEnabled = true;
                 OverButton.BackgroundColor = Color.Yellow;
@@ -79,9 +91,13 @@ namespace MyProjectStart.Views
             {
                
                 ThirdAnswer.BorderColor = Color.Yellow;
+                ThirdAnswer.BackgroundColor = Color.Yellow;
                 FourButton.BorderColor = Color.Blue;
+                FourButton.BackgroundColor = Color.Transparent;
                 FirstAnswer.BorderColor = Color.Blue;
+                FirstAnswer.BackgroundColor = Color.Transparent;
                 SeconAnswer.BorderColor = Color.Blue;
+                SeconAnswer.BackgroundColor = Color.Transparent;
                 NextButton.IsEnabled = true;
                 OverButton.IsEnabled = true;
                 OverButton.BackgroundColor = Color.Yellow;
@@ -92,10 +108,14 @@ namespace MyProjectStart.Views
             else if(((Button)sender).Text == FourButton.Text)
             {
                 
+                FourButton.BorderColor = Color.Yellow;
                 FourButton.BackgroundColor = Color.Yellow;
                 FirstAnswer.BorderColor = Color.Blue;
+                FirstAnswer.BackgroundColor = Color.Transparent;
                 SeconAnswer.BorderColor = Color.Blue;
+                SeconAnswer.BackgroundColor = Color.Transparent;
                 ThirdAnswer.BorderColor = Color.Blue;
+                ThirdAnswer.BackgroundColor = Color.Transparent;
                 NextButton.IsEnabled = true;
                 OverButton.IsEnabled = true;
                 OverButton.BackgroundColor = Color.Yellow;
@@ -170,9 +190,13 @@ namespace MyProjectStart.Views
                 }
                 cvm.CurrentPos = posforinte + currentPos;
                 FirstAnswer.BorderColor = Color.Blue;
+                FirstAnswer.BackgroundColor = Color.Transparent;
                 SeconAnswer.BorderColor = Color.Blue;
+                SeconAnswer.BackgroundColor = Color.Transparent;
                 ThirdAnswer.BorderColor = Color.Blue;
+                ThirdAnswer.BackgroundColor = Color.Transparent;
                 FourButton.BorderColor = Color.Blue;
+                FourButton.BackgroundColor = Color.Transparent;
             }
             else if (lenghtCarousel - 2 == currentPos)
             {
@@ -232,9 +256,13 @@ namespace MyProjectStart.Views
                 NextButton.IsEnabled = false;
                 OverButton.IsEnabled = false;
                 FirstAnswer.BorderColor = Color.Blue;
+                FirstAnswer.BackgroundColor = Color.Transparent;
                 SeconAnswer.BorderColor = Color.Blue;
+                SeconAnswer.BackgroundColor = Color.Transparent;
                 ThirdAnswer.BorderColor = Color.Blue;
+                ThirdAnswer.BackgroundColor = Color.Transparent;
                 FourButton.BorderColor = Color.Blue;
+                FourButton.BackgroundColor = Color.Transparent;
                 NextButton.BackgroundColor = Color.Gray;
                 OverButton.BackgroundColor = Color.Gray;
                 OverButton.IsVisible = true;
@@ -314,9 +342,13 @@ namespace MyProjectStart.Views
             }
             cvm.CurrentPos = posforinte + currentPos;
             FirstAnswer.BorderColor = Color.Blue;
+            FirstAnswer.BackgroundColor = Color.Transparent;
             SeconAnswer.BorderColor = Color.Blue;
+            SeconAnswer.BackgroundColor = Color.Transparent;
             ThirdAnswer.BorderColor = Color.Blue;
+            ThirdAnswer.BackgroundColor = Color.Transparent;
             FourButton.BorderColor = Color.Blue;
+            FourButton.BackgroundColor = Color.Transparent;
             Test = null;
         }
     }

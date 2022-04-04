@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customcontrols="clr-namespace:MyProjectStart.CustomControls"
+             x:Class="MyProjectStart.Views.Popups.PopupRegistration">
+    <ContentPage.Content>
+        <Frame WidthRequest="330" HeightRequest="500" BackgroundColor="White"  HorizontalOptions="Center"  VerticalOptions="Center" CornerRadius="30">
+            <Grid VerticalOptions="Start">
+                <StackLayout >
+                    <Label Text="Регистрация" TextColor="Blue" FontFamily="SansRegular" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" />
+                    <customcontrols:CustomEntry x:Name="txbLogin" PlaceholderColor="Black" BorderColor="Blue" BorderWidth="2" IsCurvedCornersEnabled="True" Placeholder="Придумайте логин" TextColor="Black"  />
+                    <customcontrols:CustomEntry x:Name="txbName"  PlaceholderColor="Black" BorderColor="Blue" BorderWidth="2" IsCurvedCornersEnabled="True" Placeholder="Имя" TextColor="Black"  />
+                    <customcontrols:CustomEntry x:Name="txbSurName" PlaceholderColor="Black"  BorderColor="Blue" BorderWidth="2" IsCurvedCornersEnabled="True" Placeholder="Фамилия"  TextColor="Black"  />
+                    <customcontrols:CustomEntry x:Name="txbPhone"  PlaceholderColor="Black" BorderColor="Blue" BorderWidth="2" IsCurvedCornersEnabled="True" Placeholder="Телефон" Keyboard="Numeric" TextColor="Black"  />
+                    <customcontrols:CustomEntry x:Name="txbEmail" PlaceholderColor="Black"  BorderColor="Blue" BorderWidth="2" IsCurvedCornersEnabled="True" Placeholder="Почта" Keyboard="Email" TextColor="Black"  />
+                    <customcontrols:CustomEntry x:Name="txbPass1" PlaceholderColor="Black"  BorderColor="Blue" BorderWidth="2" IsCurvedCornersEnabled="True" Placeholder="Пароль" TextColor="Black"  />
+                    <customcontrols:CustomEntry x:Name="txbPass2" PlaceholderColor="Black"  BorderColor="Blue" BorderWidth="2" IsCurvedCornersEnabled="True" Placeholder="Повторите пароль" IsPassword="True" TextColor="Black"  />
+                    <Button CornerRadius="50" BackgroundColor="Transparent" BorderColor="Gray" BorderWidth="2" Text="Зарегистрироваться" IsEnabled="False" />
+                </StackLayout>
+             
+            </Grid>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

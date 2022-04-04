@@ -94,16 +94,7 @@ namespace MyProjectStart.ViewsModel
             {
                 Isbusy = true;
                 var userServices = new UserServices();
-                Result = await userServices.RegisterUser(Login, Password, Email);
-                if (Result)
-                {
-                    await Shell.Current.DisplayAlert("Успешно", "Пользователь создан!", "OK");
-                    await Shell.Current.GoToAsync("..");
-                }
-                else
-                {
-                    await Shell.Current.DisplayAlert("Ошибка", "Пользователь уже существует", "OK");
-                }
+              
             }
             catch (Exception ex)
             {
