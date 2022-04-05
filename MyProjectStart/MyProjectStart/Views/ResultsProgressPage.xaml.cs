@@ -42,9 +42,9 @@ namespace MyProjectStart.Views
             }
         }
 
-        private void resultothers_Clicked(object sender, EventArgs e)
+        private async void resultothers_Clicked(object sender, EventArgs e)
         {
-
+            await Shell.Current.Navigation.PushAsync(new OthersResultsView());
         }
     }
 }

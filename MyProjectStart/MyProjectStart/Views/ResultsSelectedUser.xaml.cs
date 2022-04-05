@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyProjectStart.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,11 @@ namespace MyProjectStart.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ResultsSelectedUser : ContentPage
     {
-        public ResultsSelectedUser()
+        
+        public ResultsSelectedUser(UserModel user)
         {
             InitializeComponent();
+            NameSurnametxb.Text = $"{user.Name} " + user.SurName;
         }
     }
 }

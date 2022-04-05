@@ -1,4 +1,5 @@
-﻿using MyProjectStart.Services;
+﻿using MyProjectStart.Models;
+using MyProjectStart.Services;
 using MyProjectStart.ViewsModel;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,7 @@ namespace MyProjectStart.Views
             this.BindingContext = new OthersResultsVM();
         }
 
-        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-
-        }
-
+     
         private async void CustomEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             string search = ((CustomControls.CustomEntry)sender).Text;
@@ -35,8 +32,20 @@ namespace MyProjectStart.Views
             }
             else
             {
-                ListV.ItemsSource = (await userServices.SelectUsers()).Where(p => p.RoleId == 1 && p.Login.Contains(search)).ToList();
+                ListV.ItemsSource = (await userServices.SelectUsers()).Where(p => p.RoleId == 1 && p.SurName.Contains(search)).ToList();
             }
+        }
+
+       
+
+        private async void ListV_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if(ListV.SelectedItem != null)
+            {
+                await Shell.Current.Navigation.PushAsync(new ResultsSelectedUser(((ListView)sender).SelectedItem as UserModel));
+            }
+            
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }

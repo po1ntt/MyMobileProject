@@ -1,12 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyProjectStart.Views.ResultsSelectedUser">
+             x:Class="MyProjectStart.Views.ResultsSelectedUser"
+             xmlns:vm="clr-namespace:MyProjectStart.ViewsModel"
+             Title="Просмотр результатов"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentPage.BindingContext>
+        <vm:OthersResultsVM />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Transparent" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            
+            <StackLayout Grid.Row="0" >
+                <pancake:PancakeView Grid.Row="0" VerticalOptions="Start"  BackgroundColor="LightBlue" >
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
+                        <Label x:Name="NameSurnametxb" FontSize="18" FontFamily="SansRegular" HorizontalOptions="Center"  TextColor="Black"  />
+                        <Picker Title="Выберите тему" TitleColor="Blue" ItemsSource="{Binding TemaList}"
+                        ItemDisplayBinding="{Binding NameTema}"
+                        SelectedItem="{Binding SelectedTema}"
+                       
+                        HorizontalTextAlignment="Center"
+                        FontSize="18" 
+                                FontFamily="SansRegular"
+                        TextColor="Blue"
+                         />
+                        <Picker Margin="10"
+                                Title="Выберите категорию"
+                                TextColor="Blue"
+                                FontFamily="SansRegular"
+                                TitleColor="Blue"
+                                
+                                HorizontalTextAlignment="Center"
+                                FontSize="18" 
+                                ItemsSource="{Binding Cathegories}"
+                                SelectedItem="{Binding SelectedCathegory}"
+                                ItemDisplayBinding="{Binding CathegoryName}"/>
+                    </StackLayout>
+                   
+                </pancake:PancakeView>
+                <ListView  ItemsSource="{Binding CathegoriesItems}"
+                                  SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+
+                            <ViewCell>
+                                <StackLayout  Orientation="Horizontal">
+                                    <Image Source="{Binding MedalImage}" Margin="-1"/>
+                                    <Label Text="{Binding NameTestDone}" Margin="20,0,0,0" HorizontalOptions="Center" FontSize="25" TextColor="Black" VerticalOptions="Center" />
+                                    <Label Text="{Binding Scoreprecennt, StringFormat='{0}%'}" HorizontalOptions="End" Margin="160,0,0,0" FontSize="25" VerticalOptions="Center" TextColor="Black"/>
+                                </StackLayout>
+
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -3,35 +3,97 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyProjectStart.Views.OthersResultsView"
              Title="Выберите пользователя"
-             xmlns:vm="clr-namespace:MyProjectStart.ViewsModel" xmlns:customentry="clr-namespace:MyProjectStart.CustomControls">
-
+             xmlns:vm="clr-namespace:MyProjectStart.ViewsModel" xmlns:customentry="clr-namespace:MyProjectStart.CustomControls"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Transparent" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Gray" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <Style TargetType="ListView">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Transparent" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="80" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" Orientation="Horizontal">
-                <customentry:CustomEntry Margin="10" TextColor="Black"  WidthRequest="300" CornerRadius="20" PlaceholderColor="Black" TextChanged="CustomEntry_TextChanged" VerticalOptions="Center" Placeholder="Поиск по логину/email" IsCurvedCornersEnabled="True" BorderColor="Blue" BorderWidth="3" />
+                <customentry:CustomEntry Margin="10" TextColor="Black"  WidthRequest="300" CornerRadius="20" PlaceholderColor="Black" TextChanged="CustomEntry_TextChanged" VerticalOptions="Center" Placeholder="Поиск по фамилии" IsCurvedCornersEnabled="True" BorderColor="Blue" BorderWidth="3" />
             </StackLayout>
 
+            
+                <ListView Grid.Row="1" x:Name="ListV" ItemsSource="{Binding ListUsers}" ItemSelected="ListV_ItemSelected" SelectedItem="{Binding SelectedUser}" SelectionMode="Single" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                            <pancake:PancakeView   BackgroundColor="Transparent" Border="{pancake:BorderMarkup Color=Blue,Thickness=4}" CornerRadius="10">
+                                <Grid Margin="10"   >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+                                
+                                    
+                                    <Label Grid.Column="0" FontSize="18" FontFamily="SansRegular"  Text="{Binding Name}" TextColor="Black"/>
+                                    <Label Grid.Column="1"  FontSize="18" FontFamily="SansRegular"  Text="{Binding SurName}" TextColor="Black" />
+                                    <Label Grid.Column="2"   FontSize="18" FontFamily="SansRegular"  Text="{Binding Email}" TextColor="Black" />
+                              
+                                
+                                 </Grid>
+                              </pancake:PancakeView>
+                                   
 
-                <ListView Grid.Row="1" x:Name="ListV" ItemsSource="{Binding ListUsers}" ItemSelected="ListView_ItemSelected"  SelectedItem="{Binding SelectedUser}" SelectionMode="Single" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <TableView>
-                                <TableRoot>
-                                    <TableSection>
-                                        <TextCell Height="100" TextColor="Black" DetailColor="Blue" Text="{Binding Login}" Detail="{Binding Email}"  />
-                                    </TableSection>
-                                </TableRoot>
-                            </TableView>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+                            
 
-            </ListView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            
+                
         </Grid>
         
     </ContentPage.Content>
