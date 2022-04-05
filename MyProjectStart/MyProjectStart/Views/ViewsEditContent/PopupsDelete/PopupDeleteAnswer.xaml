@@ -7,14 +7,15 @@
     </animations:PopupPage.BindingContext>
     <Frame WidthRequest="330" HeightRequest="400" BackgroundColor="White" HorizontalOptions="Center"  VerticalOptions="Center" CornerRadius="30">
             <StackLayout WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
-            <Picker Title="Выберите тему" TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
-            <Picker Title="Выберите категорию"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
-            <Picker Title="Выберите тест"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
-            <Picker Title="Выберите вопрос" TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+            <Picker Title="Выберите тему" TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular"  ItemsSource="{Binding TemaList}" SelectedItem="{Binding SelectedTema}" ItemDisplayBinding="{Binding NameTema}" />
+            <Picker Title="Выберите категорию"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular"  ItemsSource="{Binding CathegoriesList}" SelectedItem="{Binding SelectedCategory}" ItemDisplayBinding="{Binding CathegoryName}" />
+            <Picker Title="Выберите тест"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TestsList}" SelectedItem="{Binding SeletedTest}" ItemDisplayBinding="{Binding Name}" />
+            <Picker Title="Выберите вопрос" TextColor="Black"  x:Name="selectedQuestion"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding QuestionsList}" ItemDisplayBinding="{Binding TextQuest}" />
             <Button CornerRadius="50" BackgroundColor="Gray"
                         BorderWidth="2" Text="Удалить" FontFamily="SansRegular"
                         TextColor="Black"
-                       IsEnabled="False"/>
+                       IsEnabled="False"
+                    Clicked="Button_Clicked"/>
             </StackLayout>
         </Frame>
 </animations:PopupPage>

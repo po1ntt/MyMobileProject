@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyProjectStart.Models;
+using MyProjectStart.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,13 @@ namespace MyProjectStart.Views.ViewsEditContent.PopupsDelete
         public PopupDeleteAnswer()
         {
             InitializeComponent();
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            var selectequest = selectedQuestion.SelectedItem as Questions;
+            QuestionService questionService = new QuestionService();
+            await questionService.DeleteQuest(selectequest.id_quest);
         }
     }
 }

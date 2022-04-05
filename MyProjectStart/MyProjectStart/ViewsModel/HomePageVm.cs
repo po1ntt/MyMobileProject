@@ -111,7 +111,7 @@ namespace MyProjectStart.ViewsModel
                 itemofLerningCategory.Add(item);
             }
         }
-        private async void GetTemaList()
+        public async void GetTemaList()
         {
             var data = await new Services.TemaServices().GetListTemaAsunc();
             TemaList.Clear();

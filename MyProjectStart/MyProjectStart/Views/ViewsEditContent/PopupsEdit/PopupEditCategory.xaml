@@ -7,8 +7,8 @@
     </animations:PopupPage.BindingContext>
     <Frame WidthRequest="330" HeightRequest="400" BackgroundColor="White" HorizontalOptions="Center"  VerticalOptions="Center" CornerRadius="30">
             <StackLayout WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
-            <Picker Title="Выберите тему" BackgroundColor="LightBlue" x:Name="temapicker"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
-            <Picker Title="Выберите категорию"  BackgroundColor="LightBlue" x:Name="catpicker" TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
+            <Picker Title="Выберите тему" BackgroundColor="LightBlue" x:Name="temapicker"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TemaList}" SelectedItem="{Binding SelectedTema}" ItemDisplayBinding="{Binding NameTema}" />
+            <Picker Title="Выберите категорию"  BackgroundColor="LightBlue" SelectedIndexChanged="catpicker_SelectedIndexChanged" x:Name="catpicker" TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding CathegoriesList}" SelectedItem="{Binding SelectedCategory}" ItemDisplayBinding="{Binding CathegoryName}" />
             <customcontrols:CustomEntry Placeholder="Название категории" 
                                                 FontSize="18"
                                                 CornerRadius="50"
@@ -16,7 +16,7 @@
                                                  BorderColor="Blue"
                                                 BorderWidth="5"
                                                 IsCurvedCornersEnabled="True"
-                                                
+                                                x:Name="txbNameCat"
                                                 FontFamily="SansRegular"
                                             PlaceholderColor="Black">
 
@@ -24,7 +24,9 @@
             <Button CornerRadius="50" BackgroundColor="Gray"
                         Text="Сохранить изменения" FontFamily="SansRegular"
                         TextColor="Black"
-                        IsEnabled="False"/>
+                        IsEnabled="False"
+                    x:Name="SaveButton"
+                    Clicked="SaveButton_Clicked"/>
             </StackLayout>
         </Frame>
 </animations:PopupPage>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyProjectStart.Models;
+using MyProjectStart.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,13 @@ namespace MyProjectStart.Views.ViewsEditContent.PopupsDelete
         public PopupDeleteTest()
         {
             InitializeComponent();
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            var selectedtest = SelectedTest.SelectedItem as TestsModel;
+             TestItemServices testService = new TestItemServices();
+            await testService.DeleteTest(selectedtest.TestId);
         }
     }
 }
