@@ -8,45 +8,53 @@
              Shell.NavBarIsVisible="False"
              Shell.FlyoutBehavior="Disabled"
              Visual="Material"
-             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             >
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:CustomEntry="clr-namespace:MyProjectStart.CustomControls">
     
         <ContentPage.BindingContext>
         <vm:LoginPageVm/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout  VerticalOptions="StartAndExpand" Margin="0,100,0,0" Padding="30" HorizontalOptions="FillAndExpand">
-            <Image Source="https://cdn0.iconfinder.com/data/icons/website-15/512/web-online-19-256.png" WidthRequest="180" HeightRequest="180"  />
-            <pancake:PancakeView BackgroundColor="Blue" CornerRadius="25, 10 , 10, 25" Margin="0,10,0,20" WidthRequest="200" HeightRequest="115" >
-                <pancake:PancakeView.Shadow>
-                    <pancake:DropShadow Offset="10,10" Color="Blue" />
-                </pancake:PancakeView.Shadow>
-                <StackLayout Padding="10">
-                    <Entry  Placeholder="Login" TextColor="Black" BackgroundColor="White"  Text="{Binding Login}"  PlaceholderColor="Gray" />
+        <StackLayout>
+            <Image Source="Loading_4.gif" IsAnimationPlaying="True" Margin="0,0,0,-156" HeightRequest="150" WidthRequest="150" IsVisible="{Binding IsVisible}" x:Name="LoadingImage"  />
+            <StackLayout  VerticalOptions="StartAndExpand" Margin="0,100,0,0" Padding="30" HorizontalOptions="FillAndExpand">
+            
+                <Image Source="https://cdn0.iconfinder.com/data/icons/website-15/512/web-online-19-256.png" WidthRequest="180" HeightRequest="180"   />
+                <pancake:PancakeView BackgroundColor="Blue" CornerRadius="25, 10 , 10, 25" Margin="0,10,0,20" WidthRequest="200" HeightRequest="115" >
+                    <pancake:PancakeView.Shadow>
+                        <pancake:DropShadow Offset="10,10" Color="Blue" />
+                    </pancake:PancakeView.Shadow>
+                    <StackLayout Padding="10">
+                        <Entry BackgroundColor="White"  Placeholder="Login" TextColor="Black"  Text="{Binding Login}"  PlaceholderColor="Gray" />
 
-                    <Entry  Placeholder="Password" IsPassword="True" BackgroundColor="White" TextColor="Black" PlaceholderColor="Gray" Text="{Binding Password}" />
+                        <Entry  Placeholder="Password" IsPassword="True" BackgroundColor="White" TextColor="Black" PlaceholderColor="Gray" Text="{Binding Password}" />
+
+                    </StackLayout>
+
+                </pancake:PancakeView>
+
+
+
+
+                <StackLayout Orientation="Vertical" >
+
+                    <Button Text="Авторизация" Background="Transparent" x:Name="LogButton"  CornerRadius="50" BorderColor="Blue" BorderWidth="1.5" TextColor="Blue" Command="{Binding LoginCommand}"></Button>
+                    <Label HorizontalOptions="Center" Margin="10" FontSize="15">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Нет аккаунта? " TextColor="Black"/>
+                                <Span Text="Регистрация" TextColor="Black" FontAttributes="Bold" TextDecorations="Underline" FontSize="15"/>
+                            </FormattedString>
+
+                        </Label.FormattedText>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToRegistration}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
                 </StackLayout>
-              
-            </pancake:PancakeView>
-           
 
-
-
-            <StackLayout Orientation="Vertical" >
-                <Button Text="Авторизация" Background="Transparent" x:Name="LogButton"  CornerRadius="50" BorderColor="Blue" BorderWidth="1.5" TextColor="Blue" Command="{Binding LoginCommand}"></Button>
-                <Label HorizontalOptions="Center" Margin="10" FontSize="15">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Нет аккаунта? " TextColor="Black"/>
-                            <Span Text="Регистрация" TextColor="Black" FontAttributes="Bold" TextDecorations="Underline" FontSize="15"/>
-                        </FormattedString>
-                    
-                    </Label.FormattedText>
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToRegistration}"/>
-                    </Label.GestureRecognizers>
-                </Label>
             </StackLayout>
         </StackLayout>
+       
     </ContentPage.Content>
 </ContentPage>

@@ -65,14 +65,26 @@ namespace MyProjectStart.ViewsModel
             }
         }
 
+        private  bool _IsVisible;
+
+        public  bool IsVisible
+        {
+            get { return _IsVisible; }
+            set {
+                _IsVisible = value;
+                OnPropertyChanged();
+            }
+        }
 
         public Command LoginCommand { get; private set; }
+        
         public Command GoToRegistration { get; private set; }
         public LoginPageVm()
         {
             LoginCommand = new Command(async () => await LoginCommandAsync());
 
             GoToRegistration = new Command(async () => await GoToRegistrationAsync());
+            IsVisible = false;
         }
 
         private async Task GoToRegistrationAsync()
@@ -102,16 +114,21 @@ namespace MyProjectStart.ViewsModel
             try
             {
                 Isbusy = true;
+                IsVisible = true;
+                LoginPage loginPage = new LoginPage();
+               
                 var userservices = new UserServices();
                 Result = await userservices.LoginUser(Login, Password);
                 if(Result)
                 {
                     Preferences.Set("Login", Login);
                     await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+                    IsVisible = false;
                 }
                 else
                 {
                     await Shell.Current.DisplayAlert("Error", "Invalid Login or Password", "OK");
+                    IsVisible = false;
                 }
             }
             catch (Exception ex)

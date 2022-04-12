@@ -27,7 +27,6 @@
         <ShellContent  ContentTemplate="{DataTemplate views:LoginPage}" /> 
     </ShellItem>
     
-
     <TabBar>
         
 
