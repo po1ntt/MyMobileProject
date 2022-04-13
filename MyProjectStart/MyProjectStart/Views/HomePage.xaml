@@ -71,17 +71,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Picker Title="Выберите тему"
-                    HorizontalTextAlignment="Center"
-                    TitleColor="Blue" 
-                    TextColor="Black" 
-                    SelectedIndex="0"
-                    Grid.Row="0"
-                    ItemsSource="{Binding TemaList}"
-                    ItemDisplayBinding="{Binding NameTema}"
-                    SelectedItem="{Binding SelectedTema}"
-                    
-                    />
+           
             <pancake:PancakeView Grid.Row="2" Margin="0,-20,0,0"  >
                 <pancake:PancakeView.Border>
                     <pancake:Border Color="Blue" Thickness="1" DrawingStyle="Centered" />
@@ -89,7 +79,7 @@
                 <StackLayout Orientation="Vertical" Grid.Row="1" >
                     <CollectionView ItemsSource="{Binding Cathegories}"
                             Margin="0,5"
-                            HeightRequest="250"
+                            HeightRequest="300"
                             VerticalOptions="FillAndExpand"
                             HorizontalScrollBarVisibility="Never"
                           
@@ -109,11 +99,13 @@
 
                             <DataTemplate>
                                 <Grid >
+                              
                                     <StackLayout>
                                         <pancake:PancakeView HeightRequest="150" WidthRequest="120" BackgroundColor="Transparent"  Margin="10" Sides="4" OffsetAngle="45"  Border="{pancake:BorderMarkup Color=DarkBlue, Thickness=4}" CornerRadius="10">
-                                                <Label Text="{Binding CathegoryName}" TextColor="DarkBlue" FontFamily="SansRegular" HorizontalOptions="Center" VerticalOptions="Center" FontSize="13"  />
-                                            
+                                            <Image Source="{Binding ImageUrl}" HeightRequest="90" WidthRequest="90" HorizontalOptions="Center" VerticalOptions="Center" />
                                         </pancake:PancakeView>
+                                        <Label Text="{Binding CathegoryName}" Margin="0,-20,0,10" TextColor="DarkBlue" FontFamily="SansRegular" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18"  />
+
                                     </StackLayout>
                                 </Grid>
                             </DataTemplate>

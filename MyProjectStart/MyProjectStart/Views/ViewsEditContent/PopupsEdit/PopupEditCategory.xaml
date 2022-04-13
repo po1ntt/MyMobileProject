@@ -7,7 +7,6 @@
     </animations:PopupPage.BindingContext>
     <Frame WidthRequest="330" HeightRequest="400" BackgroundColor="White" HorizontalOptions="Center"  VerticalOptions="Center" CornerRadius="30">
             <StackLayout WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
-            <Picker Title="Выберите тему" BackgroundColor="LightBlue" x:Name="temapicker"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TemaList}" SelectedItem="{Binding SelectedTema}" ItemDisplayBinding="{Binding NameTema}" />
             <Picker Title="Выберите категорию"  BackgroundColor="LightBlue" SelectedIndexChanged="catpicker_SelectedIndexChanged" x:Name="catpicker" TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding CathegoriesList}" SelectedItem="{Binding SelectedCategory}" ItemDisplayBinding="{Binding CathegoryName}" />
             <customcontrols:CustomEntry Placeholder="Название категории" 
                                                 FontSize="18"

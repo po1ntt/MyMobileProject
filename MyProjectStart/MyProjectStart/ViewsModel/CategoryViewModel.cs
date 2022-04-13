@@ -71,12 +71,11 @@ namespace MyProjectStart.ViewsModel
             TestByCathegory = new ObservableCollection<TestsModel>();
             AlreadyDone = new ObservableCollection<Results>();
             int idcat = cathegory.CathegoryId;
-            GetTestsItems(SelectedCateg.CathegoryId);
-            GetTestsItemsResult(SelectedCateg.CathegoryId,login);
+           
             Color_test = "Green";
         }
 
-        private async void GetTestsItems(int cathegoryId)
+        public async void GetTestsItems(int cathegoryId)
         {
             var data = await new Services.TestItemServices().GetTestByCathegoryAsync(cathegoryId);
             TestByCathegory.Clear();
@@ -92,7 +91,7 @@ namespace MyProjectStart.ViewsModel
             }
             TotalTest = TestByCathegory.Count;
         }
-        private async void GetTestsItemsResult(int cathegoryId, string login)
+        public async void GetTestsItemsResult(int cathegoryId, string login)
         {
 
             var data = await new Services.ResultsService().GetTestResultByCathegoryAsync(cathegoryId,login);

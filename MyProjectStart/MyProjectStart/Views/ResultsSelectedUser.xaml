@@ -33,15 +33,6 @@
                 <pancake:PancakeView Grid.Row="0" VerticalOptions="Start"  BackgroundColor="LightBlue" >
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
                         <Label x:Name="NameSurnametxb" FontSize="18" FontFamily="SansRegular" HorizontalOptions="Center"  TextColor="Black"  />
-                        <Picker Title="Выберите тему" TitleColor="Blue" ItemsSource="{Binding TemaList}"
-                        ItemDisplayBinding="{Binding NameTema}"
-                        SelectedItem="{Binding SelectedTema}"
-                       
-                        HorizontalTextAlignment="Center"
-                        FontSize="18" 
-                                FontFamily="SansRegular"
-                        TextColor="Blue"
-                         />
                         <Picker Margin="10"
                                 Title="Выберите категорию"
                                 TextColor="Blue"
@@ -63,9 +54,16 @@
 
                             <ViewCell>
                                 <StackLayout  Orientation="Horizontal">
-                                    <Image Source="{Binding MedalImage}" Margin="-1"/>
-                                    <Label Text="{Binding NameTestDone}" Margin="20,0,0,0" HorizontalOptions="Center" FontSize="25" TextColor="Black" VerticalOptions="Center" />
-                                    <Label Text="{Binding Scoreprecennt, StringFormat='{0}%'}" HorizontalOptions="End" Margin="160,0,0,0" FontSize="25" VerticalOptions="Center" TextColor="Black"/>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="250" />
+                                            <ColumnDefinition Width="100" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" Source="{Binding MedalImage}" Margin="-1"/>
+                                        <Label Grid.Column="1" Text="{Binding NameTestDone}" FontSize="14" TextColor="Black" VerticalOptions="Center" />
+                                        <Label Grid.Column="2" Text="{Binding Scoreprecennt, StringFormat='{0}%'}" HorizontalOptions="End"  TextColor="YellowGreen"  FontSize="25" VerticalOptions="Center" />
+                                    </Grid>
                                 </StackLayout>
 
                             </ViewCell>

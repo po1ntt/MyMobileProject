@@ -14,13 +14,8 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-      
-
-
-
-
-            <StackLayout Grid.Row="1">
-                <Label  x:Name="TestStep" HorizontalOptions="CenterAndExpand" TextColor="Black" VerticalOptions="Start" FontSize="25" Margin="20,10,30,40" >
+            <StackLayout Grid.Row="0" HeightRequest="110">
+                <Label Grid.Row="0"  x:Name="TestStep" HorizontalOptions="CenterAndExpand" TextColor="Black" VerticalOptions="Start" FontSize="25" Margin="20,10,30,50" >
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{Binding CurrentPos, StringFormat='{0}/{1}'}" />
@@ -29,13 +24,15 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Image Source="https://cdn2.iconfinder.com/data/icons/lovely-line-package/44/_-23-256.png" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Start" Margin="10,-60,30,10" />
+                <Label Grid.Row="0"  HorizontalTextAlignment="Center" Text="{Binding CurrentQuest.TextQuest}" x:Name="TestNamegdf" HorizontalOptions="Center"  BackgroundColor="Transparent"  VerticalOptions="Start" Margin="0,-50,20,0" FontSize="20" TextColor="Black" />
+            </StackLayout>
+            <StackLayout Grid.Row="1" HeightRequest="430">
+              
                 <StackLayout Padding="20">
-                    <Label  Text="{Binding CurrentQuest.TextQuest}" x:Name="TestNamegdf" HorizontalOptions="Center"  BackgroundColor="Transparent"  VerticalOptions="Start" Margin="0,-50,20,0" FontSize="20" TextColor="Black" />
-                    <Button Text="{Binding CurrentQuest.quest_answer1}" x:Name="FirstAnswer" BorderColor="Blue" BorderWidth="4"  CornerRadius="50" Margin="10"   BackgroundColor="Transparent" HeightRequest="60"  TextColor="Black" Clicked="Button_test_clicked" />
-                    <Button Text="{Binding CurrentQuest.quest_answer2}"  x:Name="SeconAnswer"  BorderColor="Blue" BorderWidth="4"   CornerRadius="50" Margin="10" BackgroundColor="Transparent"  HeightRequest="60"  TextColor="Black"  Clicked="Button_test_clicked" AutomationProperties.Name="YES"/>
-                    <Button Text="{Binding CurrentQuest.quest_answer3}" x:Name ="ThirdAnswer" BorderColor="Blue" BorderWidth="4"  CornerRadius="50" Margin="10" BackgroundColor="Transparent" HeightRequest="60"  TextColor="Black" Clicked="Button_test_clicked" />
-                    <Button Text="{Binding CurrentQuest.quest_answer4}" x:Name="FourButton" BorderColor="Blue" BorderWidth="4"  CornerRadius="50" Margin="10" HeightRequest="60"  BackgroundColor="Transparent" TextColor="Black" Clicked="Button_test_clicked" />
+                    <Button Text="{Binding CurrentQuest.quest_answer1}" x:Name="FirstAnswer" BorderColor="Blue" BorderWidth="4"  CornerRadius="50" Margin="10"   BackgroundColor="Transparent" HeightRequest="80"  TextColor="Black" Clicked="Button_test_clicked" />
+                    <Button Text="{Binding CurrentQuest.quest_answer2}"  x:Name="SeconAnswer"  BorderColor="Blue" BorderWidth="4"   CornerRadius="50" Margin="10" BackgroundColor="Transparent"  HeightRequest="80"  TextColor="Black"  Clicked="Button_test_clicked" AutomationProperties.Name="YES"/>
+                    <Button Text="{Binding CurrentQuest.quest_answer3}" x:Name ="ThirdAnswer" BorderColor="Blue" BorderWidth="4"  CornerRadius="50" Margin="10" BackgroundColor="Transparent" HeightRequest="80"  TextColor="Black" Clicked="Button_test_clicked" />
+                    <Button Text="{Binding CurrentQuest.quest_answer4}" x:Name="FourButton" BorderColor="Blue" BorderWidth="4"  CornerRadius="50" Margin="10" HeightRequest="80"  BackgroundColor="Transparent" TextColor="Black" Clicked="Button_test_clicked" />
                 </StackLayout>
             </StackLayout>
                       

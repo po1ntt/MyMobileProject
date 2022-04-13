@@ -7,7 +7,6 @@
     </animations:PopupPage.BindingContext>
     <Frame WidthRequest="330" HeightRequest="400" BackgroundColor="White" HorizontalOptions="Center"  VerticalOptions="Center" CornerRadius="30">
             <StackLayout WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
-            <Picker Title="Выберите тему"  TextColor="Black"  BackgroundColor="LightBlue" TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TemaList}" SelectedItem="{Binding SelectedTema}" ItemDisplayBinding="{Binding NameTema}" />
             <Picker Title="Выберите категорию"  TextColor="Black" x:Name="catpicker" BackgroundColor="LightBlue"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding CathegoriesList}" SelectedItem="{Binding SelectedCategory}" ItemDisplayBinding="{Binding CathegoryName}" />
             <Picker Title="Выберите тест" TextColor="Black" x:Name="TestPicker" SelectedIndexChanged="TestPicker_SelectedIndexChanged" BackgroundColor="LightBlue" TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TestsList}" SelectedItem="{Binding SeletedTest}" ItemDisplayBinding="{Binding Name}"/>
                 <customcontrols:CustomEntry Placeholder="Название теста" 

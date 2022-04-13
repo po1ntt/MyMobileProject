@@ -65,5 +65,15 @@ namespace MyProjectStart.Views
             await Shell.Current.Navigation.PushAsync(new TestView(await Test, cathegory1));
             
         }
+
+        private void ContentPage_Appearing(object sender, EventArgs e)
+        {
+            if(cvm.TestByCathegory != null)
+            {
+                cvm.GetTestsItems(cathegory1.CathegoryId);
+                cvm.GetTestsItemsResult(cathegory1.CathegoryId, Preferences.Get("Login", string.Empty));
+            }
+           
+        }
     }
 }

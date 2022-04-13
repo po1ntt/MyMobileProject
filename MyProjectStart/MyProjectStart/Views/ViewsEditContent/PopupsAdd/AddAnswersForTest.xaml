@@ -9,7 +9,6 @@
     <ContentPage.Content>
         
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
-            <Picker Title="Выберите тему" BackgroundColor="LightBlue"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TemaList}" SelectedItem="{Binding SelectedTema}" ItemDisplayBinding="{Binding NameTema}" />
             <Picker Title="Выберите категорию" BackgroundColor="LightBlue" x:Name="catpicker" TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular"  ItemsSource="{Binding CathegoriesList}" SelectedItem="{Binding SelectedCategory}" ItemDisplayBinding="{Binding CathegoryName}"/>
             <Picker Title="Выберите тест" BackgroundColor="LightBlue" x:Name="testpicker" SelectedIndexChanged="testpicker_SelectedIndexChanged" TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TestsList}" SelectedItem="{Binding SeletedTest}" ItemDisplayBinding="{Binding Name}" />
             <customcontrols:CustomEntry Placeholder="Введите вопрос" 

@@ -19,19 +19,25 @@ namespace MyProjectStart.Views.ViewsEditContent.PopupsAdd
             InitializeComponent();
         }
 
-        private void temapicker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            addButton.IsEnabled = true;
-            addButton.BackgroundColor = Color.Yellow;
-        }
+     
 
         private async void addButton_Clicked(object sender, EventArgs e)
         {
             СathegoryServices сathegoryServices = new СathegoryServices();
-            bool result = await сathegoryServices.AddCategory(txbNameCat.Text, temapicker.SelectedItem as Tema);
+            bool result = await сathegoryServices.AddCategory(txbNameCat.Text);
             if(result == true)
             {
                 await Shell.Current.DisplayAlert("Добавление категории", "Добавление категории прошло успешно", "Ок");
+            }
+        }
+
+        private void txbNameCat_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(txbNameCat.Text != null)
+            {
+                addButton.IsEnabled = true;
+                addButton.BackgroundColor = Color.Yellow;
+
             }
         }
     }

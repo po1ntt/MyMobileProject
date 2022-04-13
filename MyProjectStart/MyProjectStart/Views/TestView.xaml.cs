@@ -11,6 +11,8 @@ using MyProjectStart.ViewsModel;
 using System.Windows.Input;
 using MyProjectStart.Services;
 using Xamarin.Essentials;
+using Rg.Plugins.Popup.Extensions;
+using MyProjectStart.Views.Popups;
 
 namespace MyProjectStart.Views
 {
@@ -133,7 +135,7 @@ namespace MyProjectStart.Views
             {
                 NextButton.IsEnabled = false;
                 NextButton.BackgroundColor = Color.Gray;
-                cvm.GetQuestInfo(Test.TestId);
+                
 
                 if (currentPos < lenghtCarousel - 2)
                 {
@@ -141,51 +143,35 @@ namespace MyProjectStart.Views
                 }
                 if (FirstAnswer.BorderColor == Color.Yellow)
                 {
-                    var data = cvm.QestionsByTest.ToList();
-                    foreach (var item in data)
+                    var data = cvm.CurrentQuest;
+                    if(FirstAnswer.Text == data.quest_rightanswer)
                     {
-                        if (item.quest_rightanswer == FirstAnswer.Text)
-                        {
-                            score++;
-                            break;
-                        }
+                        score++;
                     }
                 }
                 else if(SeconAnswer.BorderColor == Color.Yellow)
                 {
-                    var data = cvm.QestionsByTest.ToList();
-                    foreach (var item in data)
+                    var data = cvm.CurrentQuest;
+                    if (SeconAnswer.Text == data.quest_rightanswer)
                     {
-                        if (item.quest_rightanswer == SeconAnswer.Text)
-                        {
-                            score++;
-                            break;
-                        }
+                        score++;
                     }
                 }
                 else if(ThirdAnswer.BorderColor == Color.Yellow)
                 {
-                    var data = cvm.QestionsByTest.ToList();
-                    foreach (var item in data)
+                    var data = cvm.CurrentQuest;
+                    if (ThirdAnswer.Text == data.quest_rightanswer)
                     {
-                        if (item.quest_rightanswer == ThirdAnswer.Text)
-                        {
-                            score++;
-                            break;
-                        }
+                        score++;
                     }
 
                 }
                 else if(FourButton.BorderColor == Color.Yellow)
                 {
-                    var data = cvm.QestionsByTest.ToList();
-                    foreach (var item in data)
+                    var data = cvm.CurrentQuest;
+                    if (FourButton.Text == data.quest_rightanswer)
                     {
-                        if (item.quest_rightanswer == FourButton.Text)
-                        {
-                            score++;
-                            break;
-                        }
+                        score++;
                     }
                 }
                 cvm.CurrentPos = posforinte + currentPos;
@@ -197,61 +183,46 @@ namespace MyProjectStart.Views
                 ThirdAnswer.BackgroundColor = Color.Transparent;
                 FourButton.BorderColor = Color.Blue;
                 FourButton.BackgroundColor = Color.Transparent;
+                cvm.GetQuestInfo(Test.TestId);
             }
             else if (lenghtCarousel - 2 == currentPos)
             {
-                cvm.GetQuestInfo(Test.TestId);
+                
                 cvm.CurrentPos = posforinte + currentPos + 1;
                 if (FirstAnswer.BorderColor == Color.Yellow)
                 {
-                    var data = cvm.QestionsByTest.ToList();
-                    foreach (var item in data)
+                    var data = cvm.CurrentQuest;
+                    if (FirstAnswer.Text == data.quest_rightanswer)
                     {
-                        if (item.quest_rightanswer == FirstAnswer.Text)
-                        {
-                            score++;
-                            break;
-                        }
+                        score++;
                     }
                 }
                 else if (SeconAnswer.BorderColor == Color.Yellow)
                 {
-                    var data = cvm.QestionsByTest.ToList();
-                    foreach (var item in data)
+                    var data = cvm.CurrentQuest;
+                    if (SeconAnswer.Text == data.quest_rightanswer)
                     {
-                        if (item.quest_rightanswer == SeconAnswer.Text)
-                        {
-                            score++;
-                            break;
-                        }
+                        score++;
                     }
                 }
                 else if (ThirdAnswer.BorderColor == Color.Yellow)
                 {
-                    var data = cvm.QestionsByTest.ToList();
-                    foreach (var item in data)
+                    var data = cvm.CurrentQuest;
+                    if (ThirdAnswer.Text == data.quest_rightanswer)
                     {
-                        if (item.quest_rightanswer == ThirdAnswer.Text)
-                        {
-                            score++;
-                            break;
-                        }
+                        score++;
                     }
 
                 }
                 else if (FourButton.BorderColor == Color.Yellow)
                 {
-                    var data = cvm.QestionsByTest.ToList();
-                    foreach (var item in data)
+                    var data = cvm.CurrentQuest;
+                    if (FourButton.Text == data.quest_rightanswer)
                     {
-                        if (item.quest_rightanswer == FourButton.Text)
-                        {
-                            score++;
-                            break;
-                        }
+                        score++;
                     }
                 }
-                
+
                 NextButton.IsVisible = false;
                 NextButton.IsEnabled = false;
                 OverButton.IsEnabled = false;
@@ -266,60 +237,44 @@ namespace MyProjectStart.Views
                 NextButton.BackgroundColor = Color.Gray;
                 OverButton.BackgroundColor = Color.Gray;
                 OverButton.IsVisible = true;
-
+                cvm.GetQuestInfo(Test.TestId);
             }
         }
 
-        private void OverButton_Clicked(object sender, EventArgs e)
+        private async void OverButton_Clicked(object sender, EventArgs e)
         {
             cvm.CurrentPos = posforinte + currentPos + 1;
             if (FirstAnswer.BorderColor == Color.Yellow)
             {
-                var data = cvm.QestionsByTest.ToList();
-                foreach (var item in data)
+                var data = cvm.CurrentQuest;
+                if (FirstAnswer.Text == data.quest_rightanswer)
                 {
-                    if (item.quest_rightanswer == FirstAnswer.Text)
-                    {
-                        score++;
-                        break;
-                    }
+                    score++;
                 }
             }
             else if (SeconAnswer.BorderColor == Color.Yellow)
             {
-                var data = cvm.QestionsByTest.ToList();
-                foreach (var item in data)
+                var data = cvm.CurrentQuest;
+                if (SeconAnswer.Text == data.quest_rightanswer)
                 {
-                    if (item.quest_rightanswer == SeconAnswer.Text)
-                    {
-                        score++;
-                        break;
-                    }
+                    score++;
                 }
             }
             else if (ThirdAnswer.BorderColor == Color.Yellow)
             {
-                var data = cvm.QestionsByTest.ToList();
-                foreach (var item in data)
+                var data = cvm.CurrentQuest;
+                if (ThirdAnswer.Text == data.quest_rightanswer)
                 {
-                    if (item.quest_rightanswer == ThirdAnswer.Text)
-                    {
-                        score++;
-                        break;
-                    }
+                    score++;
                 }
 
             }
             else if (FourButton.BorderColor == Color.Yellow)
             {
-                var data = cvm.QestionsByTest.ToList();
-                foreach (var item in data)
+                var data = cvm.CurrentQuest;
+                if (FourButton.Text == data.quest_rightanswer)
                 {
-                    if (item.quest_rightanswer == FourButton.Text)
-                    {
-                        score++;
-                        break;
-                    }
+                    score++;
                 }
             }
             scorepercent = 0;
@@ -336,9 +291,37 @@ namespace MyProjectStart.Views
             {
                 imageMedal = "https://cdn3.iconfinder.com/data/icons/awards-achievements-2/96/Gold-8-512.png";
             }
-            else if (TestView.scorepercent < 40)
+            else if (TestView.scorepercent <= 40)
             {
                 imageMedal = "https://cdn4.iconfinder.com/data/icons/interactions/64/interaction_interact_preferences_preformance_medal_award_reward_bad-512.png";
+            }
+            var resultservice = new ResultsService();
+            var login = Preferences.Get("Login", string.Empty);
+            string Login = login;
+
+            bool Result = await resultservice.RegisterResult(cvm.SelectedTest.Name, Login, cvm.SelectedTest.CategoryId, Math.Round(TestView.scorepercent, 1), cvm.SelectedTest.TestId, TestView.imageMedal);
+            if (Result)
+            {
+
+                await Shell.Current.Navigation.PushPopupAsync(new PopupResult(TestView.scorepercent, TestView.imageMedal));
+                await Shell.Current.Navigation.PopAsync();
+
+            }
+            else
+            {
+
+
+                if (await resultservice.UpdateResult(cvm.SelectedTest.Name, cvm.SelectedCathegory.CathegoryId, Login, Math.Round(TestView.scorepercent, 1), cvm.SelectedTest.TestId, TestView.imageMedal))
+                {
+                    await Shell.Current.Navigation.PushPopupAsync(new PopupResult(Math.Round(TestView.scorepercent, 1), TestView.imageMedal));
+                    await Shell.Current.GoToAsync("..");
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Тест пройден", "Результат не сохранен, процент правильных ответов не изменился" + "\n" + Math.Round(TestView.scorepercent, 1) + "%", "OK");
+                    await Shell.Current.GoToAsync("..");
+                }
+
             }
             cvm.CurrentPos = posforinte + currentPos;
             FirstAnswer.BorderColor = Color.Blue;
@@ -350,6 +333,7 @@ namespace MyProjectStart.Views
             FourButton.BorderColor = Color.Blue;
             FourButton.BackgroundColor = Color.Transparent;
             Test = null;
+            
         }
     }
 }   

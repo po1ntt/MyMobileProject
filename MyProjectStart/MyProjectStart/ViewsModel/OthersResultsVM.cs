@@ -43,34 +43,20 @@ namespace MyProjectStart.ViewsModel
                 OnPropertyChanged();
             }
         }
-        private Tema _SelectedTema;
-
-        public Tema SelectedTema
-        {
-            get { return _SelectedTema; }
-            set
-            {
-                _SelectedTema = value;
-                if (_SelectedTema != null)
-                {
-                    GetCategories(SelectedTema.TemaID);
-                }
-                OnPropertyChanged();
-            }
-        }
+       
         public ObservableCollection<UserModel> ListUsers { get; set; }
         public ObservableCollection<Cathegory> Cathegories { get; set; }
         public ObservableCollection<Results> CathegoriesItems { get; set; }
-        public ObservableCollection<Tema> TemaList { get; set; }
+ 
 
         public OthersResultsVM()
         {
             ListUsers = new ObservableCollection<UserModel>();
             Cathegories = new ObservableCollection<Cathegory>();
             CathegoriesItems = new ObservableCollection<Results>();
-            TemaList = new ObservableCollection<Tema>();
+         
             GetUsers();
-            GetTemaList();
+            GetCategories();
         }
         public async void GetUsers()
         {
@@ -83,18 +69,10 @@ namespace MyProjectStart.ViewsModel
             }
             
         }
-        private async void GetTemaList()
+     
+        private async void GetCategories()
         {
-            var data = await new Services.TemaServices().GetListTemaAsunc();
-            TemaList.Clear();
-            foreach (var item in data)
-            {
-                TemaList.Add(item);
-            }
-        }
-        private async void GetCategories(int tema_id)
-        {
-            var data = await new Services.СathegoryServices().GetCathegoryBuTema(tema_id);
+            var data = await new Services.СathegoryServices().GetCathegoryAsync();
             Cathegories.Clear();
             foreach (var item in data)
             {

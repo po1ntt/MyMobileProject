@@ -6,7 +6,8 @@
              xmlns:vm="clr-namespace:MyProjectStart.ViewsModel"
              x:Class="MyProjectStart.Views.CategoryView"
              BackgroundColor="White"
-             Title="{Binding SelectedCateg.CathegoryName}">
+             Title="{Binding SelectedCateg.CathegoryName}"
+             Appearing="ContentPage_Appearing">
     <ContentPage.Resources>
         <Style TargetType="StackLayout">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -71,7 +72,7 @@
 
                                 <DataTemplate>
                                     <StackLayout>
-                                        <Frame HasShadow="True" x:Name="TestFrame" BackgroundColor="Transparent" BorderColor="Blue" HeightRequest="90" CornerRadius="20" Margin="0,10">
+                                        <Frame HasShadow="True" x:Name="TestFrame" BackgroundColor="Transparent" BorderColor="Blue" HeightRequest="120" CornerRadius="20" Margin="0,10">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="auto"/>
@@ -86,7 +87,7 @@
                                                 </Grid.RowDefinitions>
 
                                                 <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                                                   Text="{Binding Name}" FontSize="20" FontAttributes="Bold" TextColor="Black" Margin="0,-10,0,0"/>
+                                                   Text="{Binding Name}" FontSize="18" FontAttributes="Bold" TextColor="Black" Margin="0,-10,0,0"/>
                                                 <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Description}" FontSize="15" TextColor="Gray" />
 
 
@@ -114,7 +115,7 @@
 
                                 <DataTemplate>
                                     <StackLayout>
-                                        <Frame HasShadow="True"  BackgroundColor="Green" HeightRequest="90" CornerRadius="20" Margin="0,10">
+                                        <Frame HasShadow="True"  BackgroundColor="Green" HeightRequest="120" CornerRadius="20" Margin="0,10">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="auto"/>
@@ -129,7 +130,7 @@
                                                 </Grid.RowDefinitions>
                                                 <Image Source="{Binding MedalImage}" Grid.Row="0" Grid.ColumnSpan="2"  HorizontalOptions="Start" Margin="0,-25,0,-10" HeightRequest="50" WidthRequest="50"/>
                                                 <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                                                   Text="{Binding NameTestDone}" FontSize="20" FontAttributes="Bold" TextColor="White" Margin="40,-10,0,0"/>
+                                                   Text="{Binding NameTestDone}" FontSize="18" FontAttributes="Bold" TextColor="White" Margin="40,-10,0,0"/>
                                                 <Button Text="Пройти снова" Clicked="ResultTest_Clicked" ClassId="{Binding TestId}" Grid.Row="1" Margin="-5,0,0,10" FontSize="14" BackgroundColor="Yellow" CornerRadius="50" TextColor="Black"  Grid.RowSpan="2" Grid.Column="1"  HorizontalOptions="StartAndExpand" HeightRequest="60" WidthRequest="200"/>
                                                 <Label  Grid.Row="1" Grid.Column="2" Text="{Binding Scoreprecennt, StringFormat='{0}%'}" FontSize="20" TextColor="White" />
 

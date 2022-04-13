@@ -22,11 +22,8 @@ namespace MyProjectStart.Views.Popups
         private void ClickOnFrame_Tapped(object sender, EventArgs e)
         {
             string name = ((Frame)sender).ClassId;
-            if (name == "TemaDel")
-            {
-                Navigation.PushPopupAsync(new PopupDeleteTema());
-            }
-            else if (name == "CategoryDel")
+            
+            if (name == "CategoryDel")
             {
                 Navigation.PushPopupAsync(new PopupDeleteCategory());
 

@@ -51,21 +51,21 @@ namespace MyProjectStart.Services
                 .FirstOrDefault
                 (a => a.Object.CathegoryId == cathegoryId); 
 
-            Cathegory cathegory1 = new Cathegory() {CathegoryName = namecathegory , CathegoryId = cathegoryId, TemaID = cat.Object.TemaID };
+            Cathegory cathegory1 = new Cathegory() {CathegoryName = namecathegory , CathegoryId = cathegoryId };
             await client.Child("Cathegories")
                 .Child(cat.Key)
                 .PutAsync(cathegory1);
 
             return true;
         }
-        public async Task<bool> AddCategory(string nameCathegoy, Tema tema)
+        public async Task<bool> AddCategory(string nameCathegoy)
         {
             var cathegories = await GetCathegoryAsync();
             await client.Child("Cathegories").PostAsync(new Cathegory()
             {
                 CathegoryName = nameCathegoy,
-                CathegoryId = cathegories.Count + 1,
-                TemaID = tema.TemaID
+                CathegoryId = cathegories.Count + 1
+               
 
             });
             return true;

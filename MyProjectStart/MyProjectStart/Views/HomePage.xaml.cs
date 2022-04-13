@@ -50,7 +50,7 @@ namespace MyProjectStart.Views
         private async void ContentPage_Appearing(object sender, EventArgs e)
         {
             HomePageVm homePageVm = new HomePageVm();
-            homePageVm.GetTemaList();
+            homePageVm.GetCategories();
             if(ToolbarItems.Count < 3)
             {
                 UserServices userServices = new UserServices();

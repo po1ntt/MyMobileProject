@@ -5,7 +5,6 @@
     
         <Frame WidthRequest="330" HeightRequest="600" BackgroundColor="White" HorizontalOptions="Center"   VerticalOptions="Center" CornerRadius="30">
             <StackLayout WidthRequest="300" Margin="0,0,0,200" HorizontalOptions="Center" VerticalOptions="Center">
-            <Picker Title="Выберите тему" BackgroundColor="LightBlue" TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
             <Picker Title="Выберите категорию" BackgroundColor="LightBlue"   TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
             <Picker Title="Выберите тест"  BackgroundColor="LightBlue" TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
                 <customcontrols:CustomEntry Placeholder="Введите вопрос" 

@@ -214,6 +214,24 @@ namespace MyProjectStart.ViewsModel
 
             }
         }
+        private double _score;
+
+        public double score
+        {
+            get { return _score; }
+            set { _score = value; }
+        }
+        private double _ScorePercent;
+
+        public double ScorePercent
+        {
+            get { return _ScorePercent; }
+            set { _ScorePercent = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public Command RegisterResultCommand { get; private set; }
         public TestViewModel(TestsModel tests,Cathegory cathegory)
         {
@@ -223,7 +241,6 @@ namespace MyProjectStart.ViewsModel
             QestionsByTest = new ObservableCollection<Questions>();
             GetQuestionsBuTest(tests.TestId);
             GetQuestInfo(tests.TestId);
-           
             RegisterResultCommand = new Command(async () => await RegisterResultCommandasync());
         }
 
@@ -236,34 +253,8 @@ namespace MyProjectStart.ViewsModel
             try
             {
                 Isbusy = true;
-                var resultservice = new ResultsService();
-                var login = Preferences.Get("Login", string.Empty);
-                string Login = login;
-            
-                Result = await resultservice.RegisterResult(SelectedTest.Name, Login, SelectedTest.CategoryId,TestView.scorepercent,SelectedTest.TestId,TestView.imageMedal);
-                if (Result)
-                {
-
-                    await Shell.Current.Navigation.PushPopupAsync(new PopupResult(TestView.scorepercent, TestView.imageMedal));
-                    await Shell.Current.Navigation.PopAsync();
-
-                }
-                else
-                {
-
-                    
-                    if (await resultservice.UpdateResult(SelectedTest.Name, SelectedCathegory.CathegoryId, Login, TestView.scorepercent, SelectedTest.TestId, TestView.imageMedal))
-                    {
-                        await Shell.Current.Navigation.PushPopupAsync(new PopupResult(TestView.scorepercent, TestView.imageMedal));
-                        await Shell.Current.GoToAsync("..");
-                    }
-                    else
-                    {
-                        await Shell.Current.DisplayAlert("Тест пройден", "Результат не сохранен, процент правильных ответов не изменился" + "\n" + TestView.scorepercent + "%", "OK");
-                        await Shell.Current.GoToAsync("..");
-                    }
-
-                }
+               
+                
             }
             catch (Exception ex)
             {

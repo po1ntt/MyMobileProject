@@ -21,11 +21,8 @@ namespace MyProjectStart.Views.Popups
         private void ClickOnFrame_Tapped(object sender, EventArgs e)
         {
             string name = ((Frame)sender).ClassId;
-            if (name == "AddTema")
-            {
-                Navigation.PushPopupAsync(new PopupAddTema());
-            }
-            else if (name == "AddQuestion")
+         
+             if (name == "AddQuestion")
             {
                 Navigation.PushAsync(new AddAnswersForTest());
 

@@ -9,7 +9,6 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout  HorizontalOptions="Center" VerticalOptions="Center">
-            <Picker Title="Выберите тему"  BackgroundColor="LightBlue"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TemaList}" SelectedItem="{Binding SelectedTema}" ItemDisplayBinding="{Binding NameTema}" />
             <Picker Title="Выберите категорию" BackgroundColor="LightBlue"   TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding CathegoriesList}" SelectedItem="{Binding SelectedCategory}" ItemDisplayBinding="{Binding CathegoryName}" />
             <Picker Title="Выберите тест" BackgroundColor="LightBlue"  x:Name="testpicker" TextColor="Black"   TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TestsList}" SelectedItem="{Binding SeletedTest}" ItemDisplayBinding="{Binding Name}" />
             <Picker Title="Выберите вопрос" BackgroundColor="LightBlue"  x:Name="questpicker" SelectedIndexChanged="Picker_SelectedIndexChanged"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding QuestionsList}" ItemDisplayBinding="{Binding TextQuest}" />

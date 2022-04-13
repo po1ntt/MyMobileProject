@@ -15,12 +15,7 @@
                
             </StackLayout>
             <StackLayout Grid.Row="1" >
-                <Frame BorderColor="Blue"  CornerRadius="50" ClassId="EditTema">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ClickOnFrame_Tapped" />
-                    </Frame.GestureRecognizers>
-                    <Label Text="Редактировать тему" TextColor="Blue" FontSize="18" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
-                </Frame>
+               
                 <Frame BorderColor="Blue"  CornerRadius="50" ClassId="EditCategory">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ClickOnFrame_Tapped" />

@@ -16,13 +16,8 @@
                    
                 </StackLayout>
                 <StackLayout Grid.Row="1" >
-                    <Frame BorderColor="Blue"  CornerRadius="50" ClassId="AddTema">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ClickOnFrame_Tapped" />
-                    </Frame.GestureRecognizers>
-                    <Label Text="Добавить новую тему" TextColor="Blue" FontSize="18" HorizontalTextAlignment="Center" FontFamily="SansRegular" />
-                    </Frame>
-                    
+                   
+ 
                     <Frame BorderColor="Blue"  CornerRadius="50" ClassId="AddCategory">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ClickOnFrame_Tapped" />
