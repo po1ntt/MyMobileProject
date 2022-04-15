@@ -1,10 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:helpers="clr-namespace:MyProjectStart.Helpers"
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:vm="clr-namespace:MyProjectStart.ViewsModel"
-             x:Class="MyProjectStart.Views.CategoryView"
+             x:Class="MyProjectStart.Views.CatView"
              BackgroundColor="White"
              Title="{Binding SelectedCateg.CathegoryName}"
              Appearing="ContentPage_Appearing">

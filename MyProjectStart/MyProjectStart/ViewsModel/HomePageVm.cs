@@ -66,8 +66,19 @@ namespace MyProjectStart.ViewsModel
                 return _Login;
             }
         }
-
-        public ObservableCollection<Cathegory> Cathegories { get; set; }
+        private ObservableCollection<Cathegory> _Cathegories;
+        public ObservableCollection<Cathegory> Cathegories 
+            {
+                set
+                {
+                    _Cathegories = value;
+                    OnPropertyChanged();
+                }
+                get
+            {
+                    return _Cathegories;
+                }
+            }
         public ObservableCollection<LerningCategories> lerningCategories { get; set; }
         public ObservableCollection<ItemLearnCategory> itemofLerningCategory { get; set; }
 
@@ -81,7 +92,7 @@ namespace MyProjectStart.ViewsModel
             else
                 Login = login;
             itemofLerningCategory = new ObservableCollection<ItemLearnCategory>();
-            Cathegories = new ObservableCollection<Cathegory>();
+         Cathegories = new ObservableCollection<Cathegory>();
             lerningCategories = new ObservableCollection<LerningCategories>();
             GetCategories();
             GetLearningCategories();

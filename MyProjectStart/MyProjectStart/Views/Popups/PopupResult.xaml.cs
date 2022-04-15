@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,12 @@ namespace MyProjectStart.Views.Popups
             InitializeComponent();
             ScorePercenLabel.Text = "Процент правильных ответов: " + scopercent + "%";
             ImageMedal.Source = imagemedal;
+        }
+
+        private async void PopupPage_BackgroundClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.Navigation.PopPopupAsync();
+            await Shell.Current.Navigation.PopAsync();
         }
     }
 }

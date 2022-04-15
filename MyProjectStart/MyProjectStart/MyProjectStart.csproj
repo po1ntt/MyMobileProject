@@ -58,7 +58,7 @@
     <EmbeddedResource Update="AshellWithLogin.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\CategoryView.xaml">
+    <EmbeddedResource Update="Views\CatView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ContactsPage.xaml">

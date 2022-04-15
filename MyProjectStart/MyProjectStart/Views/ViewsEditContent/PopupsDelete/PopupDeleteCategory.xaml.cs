@@ -25,6 +25,17 @@ namespace MyProjectStart.Views.ViewsEditContent.PopupsDelete
             var selectequest = SelectedCat.SelectedItem as Cathegory;
             СathegoryServices сathegoryService = new СathegoryServices();
             await сathegoryService.DeleteCathegory(selectequest.CathegoryId);
+            await Shell.Current.DisplayAlert("Удаление", "Категория успешно удалена", "Ок");
+            EditingPopupsVM editing = new EditingPopupsVM();
+            editing.GetCategories();
+            SelectedCat.ItemsSource = null;
+            SelectedCat.ItemsSource = editing.CathegoriesList;
+        }
+
+        private void SelectedCat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DelButton.IsEnabled = true;
+            DelButton.BackgroundColor = Color.Yellow;
         }
     }
 }

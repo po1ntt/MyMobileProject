@@ -1,5 +1,6 @@
 ﻿using MyProjectStart.Models;
 using MyProjectStart.Services;
+using MyProjectStart.ViewsModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,9 @@ namespace MyProjectStart.Views.ViewsEditContent.PopupsAdd
             bool result = await сathegoryServices.AddCategory(txbNameCat.Text);
             if(result == true)
             {
+               
                 await Shell.Current.DisplayAlert("Добавление категории", "Добавление категории прошло успешно", "Ок");
+              
             }
         }
 
@@ -38,6 +41,11 @@ namespace MyProjectStart.Views.ViewsEditContent.PopupsAdd
                 addButton.IsEnabled = true;
                 addButton.BackgroundColor = Color.Yellow;
 
+            }
+            else
+            {
+                addButton.IsEnabled = false;
+                addButton.BackgroundColor = Color.Gray;
             }
         }
     }

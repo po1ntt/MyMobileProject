@@ -41,4 +41,7 @@
     <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
         <ShellContent  ContentTemplate="{DataTemplate views:LoginPage}" />
     </ShellItem>
+    <ShellItem Route="СategoryView" FlyoutItemIsVisible="False">
+        <ShellContent  ContentTemplate="{DataTemplate views:CatView}" />
+    </ShellItem>
 </Shell>

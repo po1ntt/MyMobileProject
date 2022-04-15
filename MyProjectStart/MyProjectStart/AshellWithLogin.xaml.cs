@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyProjectStart.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace MyProjectStart
         public AshellWithLogin()
         {
             InitializeComponent();
+          
+
         }
     }
 }

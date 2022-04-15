@@ -38,7 +38,8 @@
                                 FontSize="18" 
                                 ItemsSource="{Binding Cathegories}"
                                 SelectedItem="{Binding SelectedCathegory}"
-                                ItemDisplayBinding="{Binding CathegoryName}"/>
+                                ItemDisplayBinding="{Binding CathegoryName}"
+                                x:Name="Picker"/>
                         <ListView ItemsSource="{Binding CathegoriesItems}"
                                   SelectionMode="None" >
                             <ListView.ItemTemplate>

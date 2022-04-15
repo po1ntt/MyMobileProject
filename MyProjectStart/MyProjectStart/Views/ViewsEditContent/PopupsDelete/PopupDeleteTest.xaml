@@ -8,12 +8,13 @@
     <Frame WidthRequest="330" HeightRequest="400" BackgroundColor="White" HorizontalOptions="Center"  VerticalOptions="Center" CornerRadius="30">
             <StackLayout WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
             <Picker Title="Выберите категорию"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding CathegoriesList}" SelectedItem="{Binding SelectedCategory}" ItemDisplayBinding="{Binding CathegoryName}" />
-            <Picker Title="Выберите тест" TextColor="Black"  x:Name="SelectedTest"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TestsList}" SelectedItem="{Binding SeletedTest}" ItemDisplayBinding="{Binding Name}"  />
+            <Picker Title="Выберите тест" SelectedIndexChanged="SelectedTest_SelectedIndexChanged"  TextColor="Black"  x:Name="SelectedTest"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TestsList}" SelectedItem="{Binding SeletedTest}" ItemDisplayBinding="{Binding Name}"  />
             <Button CornerRadius="50" BackgroundColor="Gray"
                          Text="Удалить" FontFamily="SansRegular"
                         TextColor="Black"
                         IsEnabled="False"
-                    Clicked="Button_Clicked"/>
+                    Clicked="Button_Clicked"
+                    x:Name="DelButton"/>
             </StackLayout>
         </Frame>
     

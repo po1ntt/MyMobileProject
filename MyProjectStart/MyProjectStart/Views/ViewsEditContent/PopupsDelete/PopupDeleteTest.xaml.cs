@@ -25,5 +25,11 @@ namespace MyProjectStart.Views.ViewsEditContent.PopupsDelete
              TestItemServices testService = new TestItemServices();
             await testService.DeleteTest(selectedtest.TestId);
         }
+
+        private void SelectedTest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DelButton.IsEnabled = true;
+            DelButton.BackgroundColor = Color.Yellow;
+        }
     }
 }

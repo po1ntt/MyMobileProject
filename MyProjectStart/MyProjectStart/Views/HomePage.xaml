@@ -83,7 +83,7 @@
                             VerticalOptions="FillAndExpand"
                             HorizontalScrollBarVisibility="Never"
                           
-                       
+                            x:Name="CatList"
                             SelectionChanged="CollectionView_SelectionChanged"
                             SelectionMode="Single"
                           

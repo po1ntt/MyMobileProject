@@ -303,9 +303,7 @@ namespace MyProjectStart.Views
             if (Result)
             {
 
-                await Shell.Current.Navigation.PushPopupAsync(new PopupResult(TestView.scorepercent, TestView.imageMedal));
-                await Shell.Current.Navigation.PopAsync();
-
+                await Shell.Current.Navigation.PushPopupAsync(new PopupResult(Math.Round(TestView.scorepercent, 1), TestView.imageMedal));
             }
             else
             {
@@ -314,12 +312,11 @@ namespace MyProjectStart.Views
                 if (await resultservice.UpdateResult(cvm.SelectedTest.Name, cvm.SelectedCathegory.CathegoryId, Login, Math.Round(TestView.scorepercent, 1), cvm.SelectedTest.TestId, TestView.imageMedal))
                 {
                     await Shell.Current.Navigation.PushPopupAsync(new PopupResult(Math.Round(TestView.scorepercent, 1), TestView.imageMedal));
-                    await Shell.Current.GoToAsync("..");
                 }
                 else
                 {
                     await Shell.Current.DisplayAlert("Тест пройден", "Результат не сохранен, процент правильных ответов не изменился" + "\n" + Math.Round(TestView.scorepercent, 1) + "%", "OK");
-                    await Shell.Current.GoToAsync("..");
+                    await Shell.Current.Navigation.PopAsync();
                 }
 
             }

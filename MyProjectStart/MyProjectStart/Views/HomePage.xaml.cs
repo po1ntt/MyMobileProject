@@ -33,7 +33,7 @@ namespace MyProjectStart.Views
             var category = e.CurrentSelection.FirstOrDefault() as Cathegory;
             if (category == null)
                 return;
-            await Shell.Current.Navigation.PushAsync(new CategoryView(category));
+            await Shell.Current.Navigation.PushAsync(new CatView(category));
             ((CollectionView)sender).SelectedItem = null;
         }
 
@@ -50,7 +50,10 @@ namespace MyProjectStart.Views
         private async void ContentPage_Appearing(object sender, EventArgs e)
         {
             HomePageVm homePageVm = new HomePageVm();
+            homePageVm.Cathegories.Clear();
             homePageVm.GetCategories();
+            CatList.ItemsSource = null;
+            CatList.ItemsSource = homePageVm.Cathegories;
             if(ToolbarItems.Count < 3)
             {
                 UserServices userServices = new UserServices();

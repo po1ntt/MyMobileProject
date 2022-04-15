@@ -33,7 +33,7 @@
                             <customcontrols:CustomEntry x:Name="txbPass2" PlaceholderColor="Black"  BorderColor="Blue" BorderWidth="2" Text="{Binding Password2}" IsCurvedCornersEnabled="True" Placeholder="Повторите пароль" IsPassword="True" TextColor="Black"  />
               
                         <Label Text="Дата рождения"  FontSize="15" Margin="0,0,0, 4" TextColor="Blue"  FontFamily="SansRegular"  />
-                        <DatePicker MinimumDate="01/01/1970"  MaximumDate="11/03/2022" FontSize="15" TextColor="Black" BackgroundColor="FloralWhite"/>
+                        <DatePicker MinimumDate="01/01/1970" FontAttributes="Bold" Visual="Material"  MaximumDate="11/14/2022" FontSize="15" TextColor="Black" BackgroundColor="FloralWhite"/>
                             <Button CornerRadius="50" Margin="0,-8,0,0" Text="Завершить регистрацию" BackgroundColor="Transparent" TextColor="Blue" FontFamily="SansRegular" BorderColor="Blue" BorderWidth="2" Command="{Binding RegCommand}"/>
                         </StackLayout>
                     </StackLayout>

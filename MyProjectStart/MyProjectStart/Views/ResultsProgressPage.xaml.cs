@@ -20,6 +20,7 @@ namespace MyProjectStart.Views
 
         private async void ContentPage_Appearing(object sender, EventArgs e)
         {
+            Picker.SelectedIndex = -1;
             if (ToolbarItems.Count < 1)
             {
                 UserServices userServices = new UserServices();

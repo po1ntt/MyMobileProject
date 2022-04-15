@@ -25,5 +25,11 @@ namespace MyProjectStart.Views.ViewsEditContent.PopupsDelete
             QuestionService questionService = new QuestionService();
             await questionService.DeleteQuest(selectequest.id_quest);
         }
+
+        private void selectedQuestion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DelButton.IsEnabled = true;
+            DelButton.BackgroundColor = Color.Yellow;
+        }
     }
 }

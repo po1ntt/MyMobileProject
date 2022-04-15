@@ -52,7 +52,7 @@ namespace MyProjectStart.Views.ViewsEditContent
             GetCategories();
         }
 
-        private async void GetCategories()
+        public async void GetCategories()
         {
             var data = await new Services.СathegoryServices().GetCathegoryAsync();
             CathegoriesList.Clear();
@@ -61,7 +61,7 @@ namespace MyProjectStart.Views.ViewsEditContent
                 CathegoriesList.Add(item);
             }
         }
-        private async void GetTestsItems(int cathegoryId)
+        public async void GetTestsItems(int cathegoryId)
         {
             var data = await new Services.TestItemServices().GetTestByCathegoryAsync(cathegoryId);
             TestsList.Clear();
@@ -74,7 +74,7 @@ namespace MyProjectStart.Views.ViewsEditContent
             }
            
         }
-        private async void GetQuestionByTest(int testid)
+        public async void GetQuestionByTest(int testid)
         {
             var data = await new Services.QuestionService().GetQuestionsAsyncBYTest(testid);
             QuestionsList.Clear();

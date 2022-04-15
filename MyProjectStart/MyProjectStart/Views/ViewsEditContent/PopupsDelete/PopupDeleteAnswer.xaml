@@ -9,12 +9,13 @@
             <StackLayout WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
             <Picker Title="Выберите категорию"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular"  ItemsSource="{Binding CathegoriesList}" SelectedItem="{Binding SelectedCategory}" ItemDisplayBinding="{Binding CathegoryName}" />
             <Picker Title="Выберите тест"  TextColor="Black"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding TestsList}" SelectedItem="{Binding SeletedTest}" ItemDisplayBinding="{Binding Name}" />
-            <Picker Title="Выберите вопрос" TextColor="Black"  x:Name="selectedQuestion"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding QuestionsList}" ItemDisplayBinding="{Binding TextQuest}" />
+            <Picker Title="Выберите вопрос" TextColor="Black" SelectedIndexChanged="selectedQuestion_SelectedIndexChanged"  x:Name="selectedQuestion"  TitleColor="Black" HorizontalTextAlignment="Center" FontFamily="SansRegular" ItemsSource="{Binding QuestionsList}" ItemDisplayBinding="{Binding TextQuest}" />
             <Button CornerRadius="50" BackgroundColor="Gray"
                         BorderWidth="2" Text="Удалить" FontFamily="SansRegular"
                         TextColor="Black"
                        IsEnabled="False"
-                    Clicked="Button_Clicked"/>
+                    Clicked="Button_Clicked"
+                    x:Name="DelButton"/>
             </StackLayout>
         </Frame>
 </animations:PopupPage>
