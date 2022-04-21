@@ -1,9 +1,9 @@
 # MyMobileProject
 Project(Victorina)
-Services-запросы к бд
-Models-модельки
+Services-запросы к бдModels-модельки
 views- код/верстка
 viewsmodels-коллекции/методы/свойства к страницам
+
 ![image](https://user-images.githubusercontent.com/78019072/164568908-54aa445f-86fd-4b47-a9bf-ba4d1d659e1e.png)
 ![image](https://user-images.githubusercontent.com/78019072/164568913-7487e799-2947-4578-a73d-2323319d611e.png)
 ![image](https://user-images.githubusercontent.com/78019072/164568919-2e7d7a47-6bab-45c2-9d01-03b3b58c602e.png)
